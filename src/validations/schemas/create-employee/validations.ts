@@ -1,7 +1,7 @@
 import { ObjectSchema } from 'yup'
 import { ContextData, StepValues } from '../../../contexts/create-employee-form'
 import { stepOneSchema, stepTwoSchema, validateFile } from '..'
-import { ValidationResult } from '@/@types/yup'
+import { ValidationResult } from '../../../@types/yup'
 
 export const validateCurrentStep = async (
   formData: ContextData,

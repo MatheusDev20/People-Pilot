@@ -1,6 +1,6 @@
 
 import React from 'react'
-import fakeAvatar from '../../../assets/imgs/fake-avatar1.png'
+import fakeAvatar from '../../../../assets/imgs/fake-avatar1.png'
 
 export const CardInfo = (): React.JSX.Element => {
   return (

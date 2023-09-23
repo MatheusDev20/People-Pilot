@@ -1,7 +1,7 @@
 import { BiFilterAlt } from 'react-icons/bi'
 import React from 'react'
 import { BsPersonPlusFill } from 'react-icons/bs'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 export const FilterButton = (): React.JSX.Element => {
   return (
@@ -16,7 +16,7 @@ export const FilterButton = (): React.JSX.Element => {
 
 export const AddEmployeeButton = (): React.JSX.Element => {
   return (
-    <Link href="/employees/create">
+    <a href='employee/create'>
       <button
         className="bg-transparent
         text-blue-800 border border-solid
@@ -31,6 +31,6 @@ export const AddEmployeeButton = (): React.JSX.Element => {
           </span>
         </div>
       </button>
-    </Link>
+    </a>
   )
 }

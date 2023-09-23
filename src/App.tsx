@@ -1,11 +1,9 @@
-import BaseLayout from "./layout"
+
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router";
 
 function App() {
-  return (
-    <BaseLayout>
-     <h1>ALO</h1>
-    </BaseLayout>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

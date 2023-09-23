@@ -3,11 +3,7 @@ import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
 import { Provider } from './providers'
 
-export default function BaseLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function BaseLayout({children}: { children: React.ReactNode}) {
 
   return (
     <div className="flex">

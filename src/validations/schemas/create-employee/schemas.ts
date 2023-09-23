@@ -1,4 +1,4 @@
-import { ValidationResult } from '@/@types/yup'
+import { ValidationResult } from '../../../@types/yup'
 import { object, string } from 'yup'
 
 export const stepOneSchema = object({
