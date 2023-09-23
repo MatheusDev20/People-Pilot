@@ -11,6 +11,7 @@ import { ValidationResult } from '../../../../@types/yup'
 import { ObjectSchema } from 'yup'
 import { Spinner } from '@material-tailwind/react'
 import { CiCircleAlert } from 'react-icons/ci'
+import { login } from '../../../../api/auth'
 // import { login } from '@/app/api/functions/auth'
 
 export const Form = (): React.JSX.Element => {
@@ -30,6 +31,8 @@ export const Form = (): React.JSX.Element => {
       setErrors(errors)
       return
     }
+
+    login(loginForm)
 
     // const { accessToken, user } = await login(loginForm)
     // setLocalStorage('auth', JSON.stringify({ accessToken, userId: user.id }))

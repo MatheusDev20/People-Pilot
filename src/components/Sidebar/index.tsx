@@ -3,6 +3,7 @@ import React from 'react'
 import logo from '../../assets/imgs/logo1.png'
 import { Navigation } from './Navigation'
 import { ThemeSwitch } from './ThemeSwitch'
+import { Link } from 'react-router-dom'
 
 export const Sidebar = (): React.JSX.Element => {
   return (
@@ -11,7 +12,9 @@ export const Sidebar = (): React.JSX.Element => {
     >
       <div className="relative">
         <header className="flex items-center justify-center py-3">
-          <img src={logo} alt="KSX" className="place-self-center" />
+          <Link to='/app/home'>
+            <img src={logo} alt="KSX" className="place-self-center cursor-pointer" />
+          </Link>
         </header>
         <Navigation />
       </div>

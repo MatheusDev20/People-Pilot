@@ -16,7 +16,7 @@ export const FilterButton = (): React.JSX.Element => {
 
 export const AddEmployeeButton = (): React.JSX.Element => {
   return (
-    <a href='employee/create'>
+    <Link to='/app/employee/create'>
       <button
         className="bg-transparent
         text-blue-800 border border-solid
@@ -31,6 +31,6 @@ export const AddEmployeeButton = (): React.JSX.Element => {
           </span>
         </div>
       </button>
-    </a>
+    </Link>
   )
 }
