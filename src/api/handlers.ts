@@ -1,22 +1,23 @@
-import { BasicRequest, BasicResponse } from '../@types/http'
-import { getTokenFromStorage } from '../utils/auth'
+import { BasicRequest } from '../@types/http'
 import { axiosInstance } from '../utils/axios'
+
+
 export const GET = async (request: BasicRequest): Promise<any> => {
-  const token = getTokenFromStorage()
   const { headers, path, authenticated } = request
 
   try {
     const response = await axiosInstance.get(`${path}`, {
-      headers: authenticated ? { ...headers, api_token: token } : headers,
+      headers,
+      withCredentials: authenticated
     })
 
-    console.log(response)
-
     if (response.status !== 200) {
-      return { statusCode: 500, body: null }
+      return { body: null }
     }
 
-    return response
+    const { body } = response.data
+
+    return body
 
 
   } catch (err: any) {
@@ -25,27 +26,21 @@ export const GET = async (request: BasicRequest): Promise<any> => {
 }
 
 export const POST = async (request: BasicRequest): Promise<any> => {
-  const token = getTokenFromStorage()
-  const { headers, path, body, authenticated } = request
+  const { headers, path, body } = request
 
-  const requestHeaders = headers ?? { 'Content-Type': 'application/json' }
-  console.log(body)
   try {
     const response = await axiosInstance.post(`${path}`, body, {
-      headers: authenticated
-        ? { ...requestHeaders, api_token: token }
-        : headers,
-    },
-    )
+      headers: headers ?? { 'Content-Type': 'application/json' },
+      withCredentials: true
+    })
+    console.log(response.data)
 
 
     if (response.status !== 200) {
       return { statusCode: 500, body: null }
     }
 
-    console.log(response)
-
-    return response
+    return response.data
   } catch (err: any) {
     throw new Error(err)
   }

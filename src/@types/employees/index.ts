@@ -1,3 +1,4 @@
+
 export type ActiveUser = {
   name: string
   avatar: string
@@ -32,4 +33,9 @@ export type StepThreeData = {
 export type CreateEmployeeForm = {
   stepOne: StepOneData
   stepTwo: StepTwoData
+}
+
+export type AuthPayload = {
+  accessToken: string;
+  loggedUser: ActiveUser
 }

@@ -1,11 +1,6 @@
 export type BasicRequest = {
   path: string
+  authenticated: boolean
   headers?: any
   body?: any
-  authenticated: boolean
-}
-
-export type BasicResponse = {
-  statusCode: number
-  body: any
 }

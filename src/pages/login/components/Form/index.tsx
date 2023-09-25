@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-'use client'
-
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { SignInButton } from '../Buttons/sign-in-button'
 import { LoginFormData } from '../../../../@types'
@@ -11,8 +8,8 @@ import { ValidationResult } from '../../../../@types/yup'
 import { ObjectSchema } from 'yup'
 import { Spinner } from '@material-tailwind/react'
 import { CiCircleAlert } from 'react-icons/ci'
+import { useNavigate } from "react-router-dom";
 import { login } from '../../../../api/auth'
-// import { login } from '@/app/api/functions/auth'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
@@ -22,7 +19,7 @@ export const Form = (): React.JSX.Element => {
     email: '',
   })
   const [alert, setAlert] = useState('')
-
+  const navigate = useNavigate()
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
@@ -32,11 +29,8 @@ export const Form = (): React.JSX.Element => {
       return
     }
 
-    login(loginForm)
-
-    // const { accessToken, user } = await login(loginForm)
-    // setLocalStorage('auth', JSON.stringify({ accessToken, userId: user.id }))
-    // router.push('/employees')
+    await login(loginForm)
+    navigate('/app/home')
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
