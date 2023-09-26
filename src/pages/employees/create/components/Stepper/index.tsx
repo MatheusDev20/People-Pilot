@@ -1,47 +1,48 @@
-'use client'
-
-import React, { useState } from 'react'
-import { Button, Stepper as MuiStepper, Step, StepLabel } from '@mui/material'
+import React, { useState } from "react";
+import { Button, Stepper as MuiStepper, Step, StepLabel } from "@mui/material";
 import {
   StepFour as FinalStep,
   StepOne,
   StepThree,
   StepTwo,
   steps,
-} from '../Steps'
-import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
-import { validateCurrentStep } from '../../../../../validations/schemas'
+} from "../Steps";
+import { useCreateEmployeeForm } from "../../../../../contexts/create-employee-form";
+import { validateCurrentStep } from "../../../../../validations/schemas";
 
 export const Stepper = (): React.JSX.Element => {
-  const { formData } = useCreateEmployeeForm()
-  const [activeStep, setActiveStep] = React.useState(0)
-  const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
+  const { formData } = useCreateEmployeeForm();
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [errors, setErrors] = useState<Record<string, string[]> | null>(null);
 
-  const getCurrentStep = (currStep: number) => {
+  const getCurrentStep = (currStep: number): JSX.Element | undefined => {
     switch (currStep) {
       case 0:
-        return <StepOne errors={errors} />
+        return <StepOne errors={errors} />;
 
       case 1:
-        return <StepTwo errors={errors} />
+        return <StepTwo errors={errors} />;
 
       case 2:
-        return <StepThree errors={errors} />
+        return <StepThree errors={errors} />;
     }
-  }
+  };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
-  const handleNext = async () => {
-    const { veredict, errors } = await validateCurrentStep(formData, activeStep)
+  const handleBack = (): void => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+  const handleNext = async (): Promise<void> => {
+    const { veredict, errors } = await validateCurrentStep(
+      formData,
+      activeStep,
+    );
     if (!veredict) {
-      setErrors(errors)
-      return
+      setErrors(errors);
+      return;
     }
-    setErrors(null)
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  }
+    setErrors(null);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
 
   return (
     <div className="flex flex-col w-full gap-6 p-3">
@@ -51,7 +52,7 @@ export const Stepper = (): React.JSX.Element => {
             <Step key={`label-${index}`}>
               <StepLabel>{label}</StepLabel>
             </Step>
-          )
+          );
         })}
       </MuiStepper>
       <div className="flex p-3">{getCurrentStep(activeStep)}</div>
@@ -76,11 +77,11 @@ export const Stepper = (): React.JSX.Element => {
               className="text-white font-semibold bg-blue-500"
               variant="contained"
             >
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};

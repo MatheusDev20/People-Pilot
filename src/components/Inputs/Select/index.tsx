@@ -1,20 +1,20 @@
-import clsx from 'clsx'
-import React, { InputHTMLAttributes, ReactNode } from 'react'
-import { CiCircleAlert } from 'react-icons/ci'
+import clsx from "clsx";
+import React, { type InputHTMLAttributes, type ReactNode } from "react";
+import { CiCircleAlert } from "react-icons/ci";
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
-  wSize: 'small' | 'medium' | 'large'
-  icon: ReactNode
-  label: String
-  placeholder: string
-  error: string[] | null
+  wSize: "small" | "medium" | "large";
+  icon: ReactNode;
+  label: string;
+  placeholder: string;
+  error: string[] | null;
 }
 
 const classes = {
-  mediumInput: 'w-1/2',
-  largeInput: 'w-full',
-  smallInput: 'w-1/4',
-}
+  mediumInput: "w-1/2",
+  largeInput: "w-full",
+  smallInput: "w-1/4",
+};
 
 export const CustomSelect = ({
   wSize,
@@ -28,11 +28,11 @@ export const CustomSelect = ({
     <div
       className={clsx(
         {
-          [classes.mediumInput]: wSize === 'medium',
-          [classes.largeInput]: wSize === 'large',
-          [classes.smallInput]: wSize === 'small',
+          [classes.mediumInput]: wSize === "medium",
+          [classes.largeInput]: wSize === "large",
+          [classes.smallInput]: wSize === "small",
         },
-        'flex flex-col gap-2',
+        "flex flex-col gap-2",
       )}
     >
       <label className="font-semibold text-sm p-2.5 text-gray-600">
@@ -49,8 +49,8 @@ export const CustomSelect = ({
           defaultValue=""
           {...rest}
           className={clsx(
-            { 'border-red-600': error },
-            'text-sm sm:text-base relative w-full border rounded bg-white placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2.5 pr-2 pl-12',
+            { "border-red-600": error },
+            "text-sm sm:text-base relative w-full border rounded bg-white placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2.5 pr-2 pl-12",
           )}
         >
           {/* TODO: Turn this dyamic */}
@@ -67,5 +67,5 @@ export const CustomSelect = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

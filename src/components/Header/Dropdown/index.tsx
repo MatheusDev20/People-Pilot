@@ -1,9 +1,7 @@
-'use client'
+import { Menu } from "@headlessui/react";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { Menu } from '@headlessui/react'
-import { BsThreeDotsVertical } from 'react-icons/bs'
-
-export function MyDropdown() {
+export function MyDropdown(): JSX.Element {
   return (
     <Menu>
       <Menu.Button className="w-4 h-4">
@@ -13,7 +11,7 @@ export function MyDropdown() {
         <Menu.Item>
           {({ active }) => (
             <a
-              className={`${active && 'bg-blue-800'}`}
+              className={`${active && "bg-blue-800"}`}
               href="/account-settings"
             >
               Account settings
@@ -22,5 +20,5 @@ export function MyDropdown() {
         </Menu.Item>
       </Menu.Items>
     </Menu>
-  )
+  );
 }

@@ -1,32 +1,38 @@
-import { PersonIcon, LockIcon, DepartmentIcon } from '../../../../../../assets/icons'
-import { CustomInput } from '../../../../../../components/Inputs/Standard'
-import { CustomSelect} from '../../../../../../components/Inputs/Select'
-import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
-import React from 'react'
+import {
+  PersonIcon,
+  LockIcon,
+  DepartmentIcon,
+} from "../../../../../../assets/icons";
+import { CustomInput } from "../../../../../../components/Inputs/Standard";
+import { CustomSelect } from "../../../../../../components/Inputs/Select";
+import { useCreateEmployeeForm } from "../../../../../../contexts/create-employee-form";
+import React from "react";
 
-type Props = {
-  errors: { [key: string]: string[] } | null
+interface Props {
+  errors: Record<string, string[]> | null;
 }
 export const StepTwo = ({ errors }: Props): React.JSX.Element => {
-  const { formData, setFormData } = useCreateEmployeeForm()
+  const { formData, setFormData } = useCreateEmployeeForm();
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
       stepTwo: { ...formData.stepTwo, [e.target.name]: e.target.value },
-    })
-  }
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    });
+  };
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setFormData({
       ...formData,
       stepTwo: { ...formData.stepTwo, [e.target.name]: e.target.value },
-    })
-  }
+    });
+  };
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-10">
       <div className="flex gap-3 w-full p-1.5">
         <CustomSelect
-          onChange={(e) => handleSelect(e)}
+          onChange={(e) => {
+            handleSelect(e);
+          }}
           wSize="medium"
           name="department"
           error={errors ? errors.department : null}
@@ -35,7 +41,9 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           placeholder="Select an Department..."
         />
         <CustomInput
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           name="password"
           type="password"
           error={errors ? errors.password : null}
@@ -48,7 +56,9 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
       <div className="flex gap-3 w-full p-1.5">
         {/* TODO: Should be Dynamic and load the available positions for the selected department */}
         <CustomSelect
-          onChange={(e) => handleSelect(e)}
+          onChange={(e) => {
+            handleSelect(e);
+          }}
           name="position"
           error={errors ? errors.position : null}
           wSize="medium"
@@ -57,7 +67,9 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           label="Position"
         />
         <CustomInput
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           name="hireDate"
           value={formData.stepTwo.hireDate}
           mask="99/99/9999"
@@ -69,5 +81,5 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         />
       </div>
     </div>
-  )
-}
+  );
+};

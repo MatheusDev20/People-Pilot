@@ -1,36 +1,36 @@
-'use client'
-
-import { CustomInput } from '../../../../../../components/Inputs/Standard'
-import React from 'react'
+import { CustomInput } from "../../../../../../components/Inputs/Standard";
+import React from "react";
 import {
   PersonIcon,
   CalendarIcon,
   EmailIcon,
   AddressIcon,
   PhoneIcon,
-} from '../../../../../../assets/icons'
-import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
+} from "../../../../../../assets/icons";
+import { useCreateEmployeeForm } from "../../../../../../contexts/create-employee-form";
 
-type Props = {
-  errors: { [key: string]: string[] } | null
+interface Props {
+  errors: Record<string, string[]> | null;
 }
 
 export const StepOne = ({ errors }: Props): React.JSX.Element => {
-  const { formData, setFormData } = useCreateEmployeeForm()
+  const { formData, setFormData } = useCreateEmployeeForm();
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
       stepOne: { ...formData.stepOne, [e.target.name]: e.target.value },
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-4">
       {/* Name and Last Name */}
       <div className="flex gap-6 w-full p-1.5">
         <CustomInput
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           wSize="medium"
           name="name"
           // value={formData.stepOne.name}
@@ -41,7 +41,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
           type="text"
         />
         <CustomInput
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           name="lastName"
           error={errors ? errors.lastName : null}
           wSize="medium"
@@ -54,7 +56,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
           name="birthDate"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           wSize="medium"
           error={errors ? errors.birthDate : null}
           label="Birth Date"
@@ -64,7 +68,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         />
         <CustomInput
           name="email"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           wSize="medium"
           error={errors ? errors.email : null}
           label="Email"
@@ -76,7 +82,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
       <div className="flex p-1.5 w-full gap-3">
         <CustomInput
           name="phone"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           wSize="medium"
           error={errors ? errors.phone : null}
           icon={<PhoneIcon />}
@@ -85,7 +93,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         />
         <CustomInput
           name="address"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => {
+            handleInput(e);
+          }}
           wSize="medium"
           error={errors ? errors.address : null}
           icon={<AddressIcon />}
@@ -95,5 +105,5 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         />
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Stepper } from './components/Stepper'
-import { CreateEmployeeFormProvider } from '../../../contexts/create-employee-form'
+import React from "react";
+import { Stepper } from "./components/Stepper";
+import { CreateEmployeeFormProvider } from "../../../contexts/create-employee-form";
 
 export default function CreateEmployeePage(): React.JSX.Element {
   return (
@@ -14,5 +14,5 @@ export default function CreateEmployeePage(): React.JSX.Element {
         </div>
       </main>
     </CreateEmployeeFormProvider>
-  )
+  );
 }

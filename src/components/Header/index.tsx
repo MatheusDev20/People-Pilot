@@ -1,15 +1,13 @@
-
-
-import React from 'react'
-import avatar from '../../assets/imgs/fake-avatar.jpg'
-import { MyDropdown } from './Dropdown'
-import { IoIosNotificationsOutline } from 'react-icons/io'
-import { BsChatLeftText } from 'react-icons/bs'
-import { AiOutlineSearch } from 'react-icons/ai'
-import { useAuth } from '../../contexts/auth-context'
+import React from "react";
+import avatar from "../../assets/imgs/fake-avatar.jpg";
+import { MyDropdown } from "./Dropdown";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { BsChatLeftText } from "react-icons/bs";
+import { AiOutlineSearch } from "react-icons/ai";
+import { useAuth } from "../../contexts/auth-context";
 
 export const Header = (): React.JSX.Element => {
-  const { user } = useAuth()
+  const { user } = useAuth();
   return (
     <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
       {/* Search Input */}
@@ -55,5 +53,5 @@ export const Header = (): React.JSX.Element => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};

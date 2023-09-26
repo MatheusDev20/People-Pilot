@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
-type Props = {
-  icon: ReactNode
-  text: string
+import React, { type ReactNode } from "react";
+interface Props {
+  icon: ReactNode;
+  text: string;
 }
 
 export const NavItem = ({ icon, text }: Props): React.JSX.Element => {
@@ -16,5 +16,5 @@ export const NavItem = ({ icon, text }: Props): React.JSX.Element => {
         {text}
       </span>
     </div>
-  )
-}
+  );
+};

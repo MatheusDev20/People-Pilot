@@ -1,4 +1,4 @@
-export const LoadingSpinner = () => {
+export const LoadingSpinner = (): JSX.Element => {
   return (
     <div role="status">
       <svg
@@ -19,5 +19,5 @@ export const LoadingSpinner = () => {
       </svg>
       <span className="sr-only">Loading...</span>
     </div>
-  )
-}
+  );
+};
