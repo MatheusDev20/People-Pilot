@@ -6,32 +6,42 @@ import LoginPage from "../pages/login/page";
 import CreateEmployeePage from "../pages/employees/create/page";
 import EmployeeDetailPage from "../pages/employees/detail/page";
 import { DepartmentsPage } from "../pages/departments/page";
+import { PrivateRoute } from "./private";
+import { Provider } from "../providers";
 
 export const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/app",
-    element: <Root />,
+    path: '/',
+    element: <Provider />,
     children: [
       {
-        path: "home",
-        element: <HomeEmployeePage />
+        path: "/login",
+        element: <LoginPage />,
       },
       {
-        path: "employee/create",
-        element: <CreateEmployeePage />
+        path: "/app",
+        element: <Root />,
+        children: [
+          {
+            path: "home",
+            element: <PrivateRoute redirectPath="/login">
+                        <HomeEmployeePage />
+                      </PrivateRoute>
+          },
+          {
+            path: "employee/create",
+            element: <CreateEmployeePage />
+          },
+          {
+            path: "employee/detail",
+            element: <EmployeeDetailPage />
+          },
+          {
+            path: "departments",
+            element: <DepartmentsPage />
+          }
+        ]
       },
-      {
-        path: "employee/detail",
-        element: <EmployeeDetailPage />
-      },
-      {
-        path: "departments",
-        element: <DepartmentsPage />
-      }
     ]
-  },
+  }
 ]);

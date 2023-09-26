@@ -8,48 +8,29 @@ import { loginFormSchema } from '../../../../validations/schemas/login/login-for
 import { ValidationResult } from '../../../../@types/yup'
 import { ObjectSchema } from 'yup'
 import { Spinner } from '@material-tailwind/react'
-import { useNavigate } from "react-router-dom";
-import { login } from '../../../../api/auth'
 import { useAuth } from '../../../../contexts/auth-context'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
-  const [loginFailedMessage, setLoginFailedMessage] = useState('')
-  const [loading, setLoading] = useState<boolean>(false)
   const [loginForm, setLogin] = useState<LoginFormData>({
     password: '',
     email: '',
   })
 
-  const { setUser } = useAuth()
-  const navigate = useNavigate()
+  const { signIn, loading, failedMessage, setFailedMessage } = useAuth()
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    if(loginFailedMessage) setLoginFailedMessage('')
-
-    try {
-      setLoading(true)
+  
+    if(failedMessage) setFailedMessage('')
       e.preventDefault()
       const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
-  
       if (!veredict) {
         setErrors(errors)
-        setLoading(false)
         return
       }
 
       setErrors(null)
-      const response = await login(loginForm)
-      const { user } = response
-
-      setUser(user)
-      setLoading(false)
-      navigate('/app/home')
+      signIn(loginForm)
     }
-    catch(err: any) {
-      setLoginFailedMessage(err.message)
-      setLoading(false)
-    }
-  }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin({ ...loginForm, [e.target.name]: e.target.value })
@@ -81,11 +62,11 @@ export const Form = (): React.JSX.Element => {
             label="Password"
             placeholder="Password..."
           />
-          {loginFailedMessage && (
+          {failedMessage && (
             <div className="flex gap-2 items-center">
               {
                 <span className=" text-sm text-red-500 font-semibold">
-                  {loginFailedMessage}
+                  {failedMessage}
                 </span>
           
               }

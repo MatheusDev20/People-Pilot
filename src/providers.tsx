@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
+import { Outlet } from 'react-router-dom'
 import { AuthProvider } from './contexts/auth-context'
 
-export const Provider = ({ children }: { children: React.ReactNode }) => {
-  return <AuthProvider>{children}</AuthProvider>
+export const Provider = () => {
+  return <AuthProvider>
+           <Outlet />
+        </AuthProvider>
 }

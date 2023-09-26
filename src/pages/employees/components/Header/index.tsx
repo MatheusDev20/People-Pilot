@@ -1,8 +1,6 @@
 
 import React from 'react'
 import { AddEmployeeButton, FilterButton } from '../Buttons/buttons'
-import { useAuth } from '../../../../contexts/auth-context'
-
 
 export const Header = (): React.JSX.Element => {
   return (

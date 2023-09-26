@@ -1,8 +1,8 @@
-import React from 'react'
-import EditIcon from '../../../../../assets/svgs/edit.svg'
+import React from "react";
+import EditIcon from "../../../../../assets/svgs/edit.svg";
 
-type TabTitleProps = {
-  title: string
+interface TabTitleProps {
+  title: string;
 }
 
 export const TabTitle = ({ title }: TabTitleProps): React.JSX.Element => {
@@ -13,5 +13,5 @@ export const TabTitle = ({ title }: TabTitleProps): React.JSX.Element => {
         <img className="w-6 cursor-pointer" src={EditIcon} alt="edit" />
       </div>
     </header>
-  )
-}
+  );
+};
