@@ -4,3 +4,7 @@ export type BasicRequest = {
   headers?: any
   body?: any
 }
+
+export type BasicResponse<T> = {
+  body: T
+}

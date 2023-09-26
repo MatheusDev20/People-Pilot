@@ -1,9 +1,10 @@
 
 import React, { ReactNode, createContext, useContext, useState } from 'react'
+import { ActiveUser } from '../@types/employees'
 
 export type AuthenticationContextProps = {
-  user: any
-  setUser: React.Dispatch<any>
+  user: ActiveUser | null
+  setUser: React.Dispatch<ActiveUser>
   isAuthenticated: boolean
 }
 
@@ -15,7 +16,7 @@ const AuthProvider = ({
 }: {
   children: ReactNode
 }): React.JSX.Element => {
-  const [user, setUser] = useState<any | null>(null)
+  const [user, setUser] = useState<ActiveUser | null>(null)
 
   return (
     <AuthenticationContext.Provider

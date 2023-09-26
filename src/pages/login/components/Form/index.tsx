@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import alert from '../../../../assets/svgs/alert.svg'
 import { SignInButton } from '../Buttons/sign-in-button'
 import { LoginFormData } from '../../../../@types'
 import { CustomInput } from '../../../../components/Inputs/Standard'
@@ -7,30 +8,47 @@ import { loginFormSchema } from '../../../../validations/schemas/login/login-for
 import { ValidationResult } from '../../../../@types/yup'
 import { ObjectSchema } from 'yup'
 import { Spinner } from '@material-tailwind/react'
-import { CiCircleAlert } from 'react-icons/ci'
 import { useNavigate } from "react-router-dom";
 import { login } from '../../../../api/auth'
+import { useAuth } from '../../../../contexts/auth-context'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<{ [key: string]: string[] } | null>(null)
+  const [loginFailedMessage, setLoginFailedMessage] = useState('')
   const [loading, setLoading] = useState<boolean>(false)
   const [loginForm, setLogin] = useState<LoginFormData>({
     password: '',
     email: '',
   })
-  const [alert, setAlert] = useState('')
+
+  const { setUser } = useAuth()
   const navigate = useNavigate()
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
+    if(loginFailedMessage) setLoginFailedMessage('')
 
-    if (!veredict) {
-      setErrors(errors)
-      return
+    try {
+      setLoading(true)
+      e.preventDefault()
+      const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
+  
+      if (!veredict) {
+        setErrors(errors)
+        setLoading(false)
+        return
+      }
+
+      setErrors(null)
+      const response = await login(loginForm)
+      const { user } = response
+
+      setUser(user)
+      setLoading(false)
+      navigate('/app/home')
     }
-
-    await login(loginForm)
-    navigate('/app/home')
+    catch(err: any) {
+      setLoginFailedMessage(err.message)
+      setLoading(false)
+    }
   }
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,14 +81,15 @@ export const Form = (): React.JSX.Element => {
             label="Password"
             placeholder="Password..."
           />
-          {alert && (
-            <div className="flex gap-2">
-              <CiCircleAlert className="text-red-500" />
+          {loginFailedMessage && (
+            <div className="flex gap-2 items-center">
               {
-                <span className="text-sm text-red-500 font-semibold">
-                  {alert}
+                <span className=" text-sm text-red-500 font-semibold">
+                  {loginFailedMessage}
                 </span>
+          
               }
+            <img src={alert} alt='alert' className='h-5 w-5' />
             </div>
           )}
           <a className="text-sm mb-10 mt-5 cursor-pointer no-underline font-medium text-blue-800 hover:text-blue-400 dark:text-primary-500">

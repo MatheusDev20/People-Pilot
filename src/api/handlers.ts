@@ -1,5 +1,5 @@
-import { BasicRequest } from '../@types/http'
-import { axiosInstance } from '../utils/axios'
+import { BasicRequest, BasicResponse } from '../@types/http'
+import { handleRequestError, axiosInstance } from '../utils/axios'
 
 
 export const GET = async (request: BasicRequest): Promise<any> => {
@@ -11,12 +11,7 @@ export const GET = async (request: BasicRequest): Promise<any> => {
       withCredentials: authenticated
     })
 
-    if (response.status !== 200) {
-      return { body: null }
-    }
-
     const { body } = response.data
-
     return body
 
 
@@ -25,7 +20,7 @@ export const GET = async (request: BasicRequest): Promise<any> => {
   }
 }
 
-export const POST = async (request: BasicRequest): Promise<any> => {
+export const POST = async <T>(request: BasicRequest): Promise<BasicResponse<T>> => {
   const { headers, path, body } = request
 
   try {
@@ -33,15 +28,10 @@ export const POST = async (request: BasicRequest): Promise<any> => {
       headers: headers ?? { 'Content-Type': 'application/json' },
       withCredentials: true
     })
-    console.log(response.data)
+    const { data } = response
+    return data
 
-
-    if (response.status !== 200) {
-      return { statusCode: 500, body: null }
-    }
-
-    return response.data
   } catch (err: any) {
-    throw new Error(err)
+    throw new Error(handleRequestError(err, 'Erro no sistema, tente mais tarde'))
   }
 }

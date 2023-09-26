@@ -10,7 +10,7 @@ export default function HomeEmployeePage() {
   },[])
   return (
     <div className="flex flex-col md:flex-col sm:h-full bg-gray-50 max-w-full">
-      <Header employeesSelected={3} />
+      <Header />
       <CardList />
     </div>
   )

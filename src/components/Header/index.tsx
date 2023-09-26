@@ -1,15 +1,15 @@
 
 
-import React, { useState } from 'react'
+import React from 'react'
 import avatar from '../../assets/imgs/fake-avatar.jpg'
 import { MyDropdown } from './Dropdown'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { BsChatLeftText } from 'react-icons/bs'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { ActiveUser } from '../../@types/employees'
+import { useAuth } from '../../contexts/auth-context'
 
-export const Header = ({ userId }: { userId: string }): React.JSX.Element => {
-  const [activeUser, setActiveUser] = useState<ActiveUser | null>(null)
+export const Header = (): React.JSX.Element => {
+  const { user } = useAuth()
   return (
     <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
       {/* Search Input */}
@@ -42,10 +42,10 @@ export const Header = ({ userId }: { userId: string }): React.JSX.Element => {
           {/* Profile Avatar and Role */}
           <div className="flex-col justify-center hidden md:flex">
             <span className="text-sm text-blue-800 font-bold">
-              {activeUser?.name}
+              {user?.name}
             </span>
             <span className="text-gray-400 font-semibold text-xs place-self-start">
-              {activeUser?.position}
+              {user?.position}
             </span>
           </div>
 
