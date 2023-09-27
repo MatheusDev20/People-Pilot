@@ -31,15 +31,27 @@ export const router = createBrowserRouter([
           },
           {
             path: "employee/create",
-            element: <CreateEmployeePage />,
+            element: (
+              <PrivateRoute redirectPath="login">
+                <CreateEmployeePage />,
+              </PrivateRoute>
+            ),
           },
           {
             path: "employee/detail",
-            element: <EmployeeDetailPage />,
+            element: (
+              <PrivateRoute redirectPath="login">
+                <EmployeeDetailPage />,
+              </PrivateRoute>
+            ),
           },
           {
             path: "departments",
-            element: <DepartmentsPage />,
+            element: (
+              <PrivateRoute redirectPath="login">
+                <DepartmentsPage />
+              </PrivateRoute>
+            ),
           },
         ],
       },

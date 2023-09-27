@@ -9,6 +9,5 @@ interface Props {
 export const PrivateRoute = ({ children, redirectPath }: Props): ReactNode => {
   const { user } = useAuth();
   if (!user) return <Navigate to={redirectPath} replace />;
-
   return children;
 };

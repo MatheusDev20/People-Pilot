@@ -6,7 +6,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   wSize: "small" | "medium" | "large";
   icon: ReactNode;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   error: string[] | null;
 }
 
@@ -55,7 +55,7 @@ export const CustomSelect = ({
         >
           {/* TODO: Turn this dyamic */}
           <option value="">{placeholder}</option>
-          <option value="Tech Department">Tech Department</option>
+          <option value="Tech Department">Tech</option>
           <option value="People and Culture">People and culture</option>
           <option value="Operations">Operations</option>
         </select>

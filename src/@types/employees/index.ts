@@ -1,41 +1,54 @@
-
-export type ActiveUser = {
-  name: string
-  avatar: string
-  created_at: string
-  email: string
-  hire_date: string
-  id: string
-  phone: string
-  position: string
-  updated_at: string
+export interface Employee {
+  name: string;
+  avatar: string;
+  created_at: string;
+  email: string;
+  hire_date: string;
+  id: string;
+  phone: string;
+  position: string;
+  updated_at: string;
+  status: string;
 }
 
-export type StepOneData = {
-  name: string
-  lastName: string
-  birthDate: string
-  email: string
-  address: string
-  phone: string
+export interface ActiveUser {
+  name: string;
+  avatar: string;
+  created_at: string;
+  email: string;
+  hire_date: string;
+  id: string;
+  phone: string;
+  position: string;
+  updated_at: string;
+  status: string;
 }
 
-export type StepTwoData = {
-  position: string
-  department: string
-  hireDate: string
+export interface StepOneData {
+  name: string;
+  lastName: string;
+  birthDate: string;
+  email: string;
+  address: string;
+  phone: string;
 }
 
-export type StepThreeData = {
-  avatar: File | null
+export interface StepTwoData {
+  position: string;
+  department: string;
+  hireDate: string;
 }
 
-export type CreateEmployeeForm = {
-  stepOne: StepOneData
-  stepTwo: StepTwoData
+export interface StepThreeData {
+  avatar: File | null;
 }
 
-export type AuthPayload = {
+export interface CreateEmployeeForm {
+  stepOne: StepOneData;
+  stepTwo: StepTwoData;
+}
+
+export interface AuthPayload {
   accessToken: string;
-  loggedUser: ActiveUser
+  loggedUser: ActiveUser;
 }

@@ -1,15 +1,14 @@
-import React, { ChangeEvent, useState } from 'react'
-import { BsThreeDots } from 'react-icons/bs'
-import { CardLabel } from './CardLabel'
+import React from "react";
+import { BsThreeDots } from "react-icons/bs";
+import { CardLabel } from "./CardLabel";
 
-type CardLabelProps = {
-  employeeStatus: 'Not Active' | 'Active'
+interface CardLabelProps {
+  employeeStatus: "Not Active" | "Active";
 }
 
 export const CardHeader = ({
   employeeStatus,
 }: CardLabelProps): React.JSX.Element => {
-
   return (
     <header className="flex justify-between items-center">
       <input
@@ -22,5 +21,5 @@ export const CardHeader = ({
         <BsThreeDots className="cursor-pointer hover:text-blue-600" />
       </div>
     </header>
-  )
-}
+  );
+};
