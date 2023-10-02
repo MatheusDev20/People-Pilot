@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import sun from "../../../assets/imgs/sun.png";
 import moon from "../../../assets/imgs/moon.png";
+import { type Theme, useTheme } from "../../../hooks/theme";
 
 export const ThemeSwitch = (): React.JSX.Element => {
-  const [mode, setMode] = useState("light");
-  const set = (theme: string): void => {
-    setMode(theme);
+  const { theme, setTheme } = useTheme();
+  const set = (theme: Theme): void => {
+    localStorage.setItem("theme", theme);
+    setTheme(theme);
   };
   return (
     <div className="hidden md:flex place-self-center w-3/4 h-12 border border-solid border-red mb-12 rounded-xl bg-gray-200 p-1">
@@ -16,7 +18,7 @@ export const ThemeSwitch = (): React.JSX.Element => {
           set("light");
         }}
         className={`flex gap-2 cursor-pointer justify-center items-center rounded-xl ${
-          mode === "light" ? "bg-white" : ""
+          theme === "light" ? "bg-white" : ""
         } w-1/2`}
       >
         <img src={sun} alt="sun" className="h-4 w-4 cursor-pointer " />
@@ -28,7 +30,7 @@ export const ThemeSwitch = (): React.JSX.Element => {
           set("dark");
         }}
         className={`flex gap-2 cursor-pointer justify-center items-center ${
-          mode === "dark" ? "bg-white" : ""
+          theme === "dark" ? "bg-white" : ""
         } w-1/2 rounded-xl`}
       >
         <img src={moon} alt="moon" className="h-4 w-4 cursor-pointer" />

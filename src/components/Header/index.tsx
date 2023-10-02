@@ -9,7 +9,7 @@ import { useAuth } from "../../contexts/auth-context";
 export const Header = (): React.JSX.Element => {
   const { user } = useAuth();
   return (
-    <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4">
+    <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4 dark:bg-gray-800">
       {/* Search Input */}
       <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28 mr-4 md:mr-0">
         <div className="flex md:w-[15%] p-3 items-center justify-center">

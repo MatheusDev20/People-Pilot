@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from "react";
 import { Button, Stepper as MuiStepper, Step, StepLabel } from "@mui/material";
 import {
