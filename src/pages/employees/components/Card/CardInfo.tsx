@@ -18,7 +18,7 @@ export const CardInfo = ({
           alt="Fake Avatar"
           className="self-center rounded-full w-20 h-20"
         />
-        <div className="flex flex-col items-center p-4">
+        <div className="flex flex-col items-center p-4 dark:text-white">
           <span className="text-lg font-semibold">{employeeName}</span>
           <span className="self-center text-sm text-gray-400 font-semibold">
             {employeePosition}

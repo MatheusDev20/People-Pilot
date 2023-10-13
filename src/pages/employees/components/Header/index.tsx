@@ -11,7 +11,7 @@ export const Header = ({ foundedEmployees }: Props): React.JSX.Element => {
       {/* Filter and Total of employees */}
       {/* <span>{user.name}</span> */}
       <div className="flex gap-20 p-2 items-center w-full justify-between">
-        <span className="text-sm md:text-2xl text-blue-800 md:mt-0 mt-4">
+        <span className="text-sm md:text-2xl text-blue-800 md:mt-0 mt-4 dark:text-white">
           {foundedEmployees} Employees Founded
         </span>
         <div className="justify-self-end flex gap-12">

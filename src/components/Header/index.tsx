@@ -3,26 +3,14 @@ import avatar from "../../assets/imgs/fake-avatar.jpg";
 import { MyDropdown } from "./Dropdown";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { BsChatLeftText } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
 import { useAuth } from "../../contexts/auth-context";
 
 export const Header = (): React.JSX.Element => {
   const { user } = useAuth();
   return (
-    <header className="flex border-gray-200 justify-between border-b-[1.5px] border-solid p-4 dark:bg-gray-800">
-      {/* Search Input */}
-      <div className="flex rounded-xl bg-slate-100 place-self-center md:w-1/4 md:ml-12 ml-28 mr-4 md:mr-0">
-        <div className="flex md:w-[15%] p-3 items-center justify-center">
-          <AiOutlineSearch size={16} className="place-self-center" />
-        </div>
-        <input
-          type="text"
-          className="rounded-xl no-underline bg-slate-100 text-sm block flex-1 p-2.5 outline-none ring-0"
-          placeholder="Search Employee ..."
-        />
-      </div>
+    <header className="flex justify-end border-b-[0.50px] border-solid p-4 dark:bg-[#1A1A1B] border-[#343536]">
       {/* Logged user Avatar */}
-      <div className="flex gap-12 justify-self-end md:justify-normal">
+      <div className="flex gap-12 md:justify-normal">
         <div className="gap-6 items-center hidden md:flex">
           {/* Icons */}
           <IoIosNotificationsOutline

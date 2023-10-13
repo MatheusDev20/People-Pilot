@@ -10,9 +10,7 @@ export const Navigation = (): React.JSX.Element => {
   return (
     <nav className="flex flex-col gap-4">
       <div>
-        <span className="px-4 text-xs font-semibold text-gray-400">
-          General
-        </span>
+        <h3 className="px-4 text-xs font-semibold text-gray-500 ">General</h3>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
           <a href="/employees">
@@ -31,7 +29,7 @@ export const Navigation = (): React.JSX.Element => {
       </div>
 
       <div>
-        <span className="px-4 mb-7 text-xs font-semibold text-gray-400">
+        <span className="px-4 mb-7 text-xs font-semibold text-gray-400 dark:text-white">
           Support
         </span>
         <div className="flex flex-col mt-3 gap-5">

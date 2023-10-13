@@ -18,7 +18,7 @@ export const CardHeader = ({
       />
       <div className="flex gap-4 items-center">
         <CardLabel status={employeeStatus} />
-        <BsThreeDots className="cursor-pointer hover:text-blue-600" />
+        <BsThreeDots className="cursor-pointer hover:text-blue-600 dark:text-white" />
       </div>
     </header>
   );
