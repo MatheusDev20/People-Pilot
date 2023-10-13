@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/auth-context";
 export const Header = (): React.JSX.Element => {
   const { user } = useAuth();
   return (
-    <header className="flex justify-end border-b-[0.50px] border-solid p-4 dark:bg-[#1A1A1B] border-[#343536]">
+    <header className="flex justify-end p-4 dark:bg-darkGray-900 border-solid dark:border-darkGray-600 border-b-[0.4px]">
       {/* Logged user Avatar */}
       <div className="flex gap-12 md:justify-normal">
         <div className="gap-6 items-center hidden md:flex">

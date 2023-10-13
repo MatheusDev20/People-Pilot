@@ -47,11 +47,15 @@ export const Stepper = (): React.JSX.Element => {
 
   return (
     <div className="flex flex-col w-full gap-6 p-3">
-      <MuiStepper activeStep={activeStep}>
-        {steps.map((label, index) => {
+      <MuiStepper activeStep={activeStep} alternativeLabel>
+        {steps.map((step, index) => {
           return (
             <Step key={`label-${index}`}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel StepIconComponent={step.icon}>
+                <span className="text-gray-500 dark:text-white">
+                  {step.label}
+                </span>
+              </StepLabel>
             </Step>
           );
         })}

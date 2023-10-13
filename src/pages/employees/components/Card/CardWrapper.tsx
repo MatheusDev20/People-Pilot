@@ -6,7 +6,7 @@ export const CardWrapper = ({
   children: ReactNode;
 }): JSX.Element => {
   return (
-    <div className="max-w-full border-solid dark:border-[#343536] border-2 flex flex-col p-2 gap-6 dark:bg-[#272729]">
+    <div className="max-w-full border-solid dark:border-darkGray-600 border-2 flex flex-col p-2 gap-6 dark:bg-darkGray-700">
       {children}
     </div>
   );
