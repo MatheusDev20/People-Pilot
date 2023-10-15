@@ -23,7 +23,13 @@ export default {
       indigo: colors.indigo,
       yellow: colors.yellow,
       green: colors.green,
-      blue: colors.blue
+      blue: colors.blue,
+      twitter: {
+        blue: {
+          main: `rgb(29, 155, 240)`,
+          secondary:`rgb(26, 140, 216)`
+        }
+      }
     }
   },
   darkMode: 'class',

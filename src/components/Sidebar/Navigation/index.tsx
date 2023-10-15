@@ -10,16 +10,18 @@ export const Navigation = (): React.JSX.Element => {
   return (
     <nav className="flex flex-col gap-4">
       <div>
-        <h3 className="px-4 text-xs font-semibold text-gray-500 ">General</h3>
+        <h3 className="px-4 text-xs font-semibold text-gray-500 dark:text-white">
+          General
+        </h3>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          <a href="/employees">
+          <a href="/home">
             <NavItem icon={<AiOutlineHome />} text="Home" />
           </a>
-          <a href="/employees">
+          <a href="/home">
             <NavItem icon={<BsPersonVcard />} text="Employees" />
           </a>
-          <a href="/employees">
+          <a href="/home">
             <NavItem icon={<BiTask />} text="Tasks" />
           </a>
           <a href="/departments">

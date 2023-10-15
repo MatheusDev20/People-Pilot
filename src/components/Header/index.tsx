@@ -15,9 +15,9 @@ export const Header = (): React.JSX.Element => {
           {/* Icons */}
           <IoIosNotificationsOutline
             size={24}
-            className="text-gray-500 font-semibold cursor-pointer hover:text-blue-800"
+            className="text-gray-500 dark:text-twitter-blue-main dark:hover:text-twitter-blue-secondary font-semibold cursor-pointer hover:text-blue-800"
           />
-          <BsChatLeftText className="text-gray-500 font-semibold cursor-pointer hover:text-blue-800" />
+          <BsChatLeftText className="text-gray-500 dark:text-twitter-blue-main dark:hover:text-twitter-blue-secondary font-semibold cursor-pointer hover:text-blue-800" />
         </div>
         <div className="flex gap-6">
           <img
@@ -27,10 +27,10 @@ export const Header = (): React.JSX.Element => {
           />
           {/* Profile Avatar and Role */}
           <div className="flex-col justify-center hidden md:flex">
-            <span className="text-sm text-blue-800 font-bold">
+            <span className="text-sm text-twitter-blue-main font-bold">
               {user?.name}
             </span>
-            <span className="text-gray-400 font-semibold text-xs place-self-start">
+            <span className="dark:text-white text-black font-semibold text-xs place-self-start">
               {user?.position}
             </span>
           </div>

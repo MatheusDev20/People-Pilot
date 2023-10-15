@@ -5,7 +5,7 @@ export function MyDropdown(): JSX.Element {
   return (
     <Menu>
       <Menu.Button className="w-4 h-4">
-        <BsThreeDotsVertical color="black" />
+        <BsThreeDotsVertical className="text-black dark:text-white" />
       </Menu.Button>
       <Menu.Items>
         <Menu.Item>
