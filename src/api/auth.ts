@@ -1,4 +1,4 @@
-import { type LoginFormData, type LoginPayload } from "../@types";
+import { type LoginPayload, type LoginFormData } from "./../@types/index";
 import { timeout } from "../utils";
 import { POST } from "./handlers";
 
@@ -12,6 +12,20 @@ export const login = async (data: LoginFormData): Promise<LoginPayload> => {
     });
     const { body } = response;
 
+    return body;
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
+};
+
+export const refresh = async (): Promise<LoginPayload> => {
+  try {
+    const response = await POST<LoginPayload>({
+      path: "/auth/refresh",
+      authenticated: true,
+    });
+
+    const { body } = response;
     return body;
   } catch (err: any) {
     throw new Error(err.message);
