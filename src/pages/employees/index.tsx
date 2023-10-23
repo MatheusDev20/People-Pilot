@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 
 import { useEmployeeList } from "../../hooks/employee-list";
 
-export default function HomeEmployeePage(): JSX.Element {
+export default function EmployeePage(): JSX.Element {
   const { data, isLoading, isError } = useEmployeeList();
   if (isLoading) return <h1>Loading...</h1>;
   return (

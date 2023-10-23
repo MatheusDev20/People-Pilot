@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Root } from "./root";
-import HomeEmployeePage from "../pages/employees";
+import EmployeePage from "../pages/employees";
 import LoginPage from "../pages/login/page";
 import CreateEmployeePage from "../pages/employees/create/page";
 import EmployeeDetailPage from "../pages/employees/detail/page";
@@ -25,7 +25,15 @@ export const router = createBrowserRouter([
             path: "home",
             element: (
               <PrivateRoute redirectPath="/login">
-                <HomeEmployeePage />
+                <h1>Home Page</h1>
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "employees",
+            element: (
+              <PrivateRoute redirectPath="/login">
+                <EmployeePage />
               </PrivateRoute>
             ),
           },

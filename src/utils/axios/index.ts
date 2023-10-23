@@ -10,10 +10,14 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   const { response } = error;
   const originalRequest = error.config;
   const status = response?.status;
+  const data: any = response?.data;
 
-  if (status === 401 && originalRequest) {
+  if (
+    status === 401 &&
+    originalRequest &&
+    data.response.name === "TokenExpiredError"
+  ) {
     await refresh();
-
     return await axiosInstance(originalRequest);
   }
 };
