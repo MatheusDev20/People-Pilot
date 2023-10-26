@@ -35,7 +35,6 @@ export const CardList = ({ list }: Props): React.JSX.Element => {
       </div>
       <footer className="px-8 place-self-center w-full">
         <Pagination.Wrapper>
-          <Pagination.Limit />
           <Pagination.List />
         </Pagination.Wrapper>
       </footer>

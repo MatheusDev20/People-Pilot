@@ -1,4 +1,4 @@
-export const PaginationList = () => {
+export const PaginationList = (): JSX.Element => {
   return (
     <div>
       <nav>
@@ -46,5 +46,5 @@ export const PaginationList = () => {
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
