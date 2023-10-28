@@ -37,6 +37,7 @@ export interface StepTwoData {
   position: string
   department: string
   hireDate: string
+  password: string
 }
 
 export interface StepThreeData {

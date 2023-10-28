@@ -43,7 +43,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           name="department"
           error={errors ? errors.department : null}
           icon={<DepartmentIcon />}
-          label="Departamento"
+          label="Departament"
           placeholder="Select an Department..."
         />
         <CustomInput

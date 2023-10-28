@@ -43,7 +43,12 @@ export const Stepper = (): React.JSX.Element => {
     setErrors(null)
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
-  console.log(formData)
+
+  // const handleFinish = async (): Promise<void> => {
+  //   const mutation = useMutation({
+  //     mutationFn: () => {},
+  //   })
+  // }
   return (
     <div className="flex flex-col w-full gap-6 p-3 border">
       <MuiStepper activeStep={activeStep} alternativeLabel>
@@ -89,13 +94,23 @@ export const Stepper = (): React.JSX.Element => {
               Back
             </Button>
           )}
-          <Button
-            onClick={handleNext}
-            className="text-white font-semibold bg-blue-500"
-            variant="contained"
-          >
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
+          {activeStep === steps.length - 1 ? (
+            <Button
+              // onClick={handleFinish}
+              className="text-white font-semibold bg-blue-500"
+              variant="contained"
+            >
+              Finish
+            </Button>
+          ) : (
+            <Button
+              onClick={handleNext}
+              className="text-white font-semibold bg-blue-500"
+              variant="contained"
+            >
+              Next
+            </Button>
+          )}
         </div>
       )}
     </div>

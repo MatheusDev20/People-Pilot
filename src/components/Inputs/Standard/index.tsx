@@ -42,11 +42,17 @@ export const CustomInput = ({
         </label>
         <div className="relative">
           {/* Icon */}
-          <div className="absolute flex border border-transparent left-0 top-0 h-full w-10 ">
+          <div
+            className={clsx(
+              { 'border-red-600': error },
+              'absolute flex border left-0 top-0 h-full w-10',
+            )}
+          >
             <div className="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full">
               {icon}
             </div>
           </div>
+
           {mask ? (
             <div className="flex flex-col gap-2 w-full">
               <InputMask
@@ -75,9 +81,7 @@ export const CustomInput = ({
         {error && (
           <footer className="flex gap-4 items-center">
             <CiCircleAlert className="text-red-500" />
-            <span className="text-sm text-red-500 font-semibold">
-              {error[0]}
-            </span>
+            <span className="text-sm text-red-500">{error[0]}</span>
           </footer>
         )}
       </div>
