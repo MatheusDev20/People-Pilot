@@ -19,5 +19,5 @@ export const LoadingSpinner = (): JSX.Element => {
       </svg>
       <span className="sr-only">Loading...</span>
     </div>
-  );
-};
+  )
+}

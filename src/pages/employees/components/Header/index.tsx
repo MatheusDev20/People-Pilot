@@ -1,9 +1,9 @@
-import React from "react";
-import { AddEmployeeButton, FilterButton } from "../Buttons/buttons";
+import React from 'react'
+import { AddEmployeeButton, FilterButton } from '../Buttons/buttons'
 
 type Props = {
-  foundedEmployees: number;
-};
+  foundedEmployees: number
+}
 
 export const Header = ({ foundedEmployees }: Props): React.JSX.Element => {
   return (
@@ -21,5 +21,5 @@ export const Header = ({ foundedEmployees }: Props): React.JSX.Element => {
       </div>
       {/* Rest of infos and actions that i dont know Yet */}
     </header>
-  );
-};
+  )
+}

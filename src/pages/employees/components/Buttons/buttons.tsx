@@ -1,7 +1,7 @@
-import { BiFilterAlt } from "react-icons/bi";
-import React from "react";
-import { BsPersonPlusFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { BiFilterAlt } from 'react-icons/bi'
+import React from 'react'
+import { BsPersonPlusFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 export const FilterButton = (): React.JSX.Element => {
   return (
@@ -11,8 +11,8 @@ export const FilterButton = (): React.JSX.Element => {
         <span className="text-sm tracking-wide">Filter</span>
       </div>
     </button>
-  );
-};
+  )
+}
 
 export const AddEmployeeButton = (): React.JSX.Element => {
   return (
@@ -21,8 +21,8 @@ export const AddEmployeeButton = (): React.JSX.Element => {
         <button
           className="
            text-blue-800 border border-solid
-          border-blue-800 px-4 py-2 rounded 
-          hover:border-transparent hover:text-white hover:bg-blue-600 
+          border-blue-800 px-4 py-2 rounded
+          hover:border-transparent hover:text-white hover:bg-blue-600
           transition duration-300 ease-in-out w-28 md:w-[100%] items-center flex justify-center mr-12 md:mr-0
           dark:bg-twitter-blue-main dark:text-white dark:hover:bg-twitter-blue-secondary"
         >
@@ -35,5 +35,5 @@ export const AddEmployeeButton = (): React.JSX.Element => {
         </button>
       </div>
     </Link>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
-import React from "react";
-import { EmployeeCard } from "../Card";
-import { Pagination } from "../Pagination";
-import { type Employee } from "../../../../@types/employees";
+import React from 'react'
+import { EmployeeCard } from '../Card'
+import { Pagination } from '../Pagination'
+import { type Employee } from '../../../../@types/employees'
 
 interface Props {
-  list: Employee[];
+  list: Employee[]
 }
 export const CardList = ({ list }: Props): React.JSX.Element => {
   return (
@@ -15,7 +15,7 @@ export const CardList = ({ list }: Props): React.JSX.Element => {
             <EmployeeCard.Wrapper key={employee.id}>
               <EmployeeCard.Header
                 employeeStatus={
-                  employee.status !== "Active" ? "Not Active" : employee.status
+                  employee.status !== 'Active' ? 'Not Active' : employee.status
                 }
               />
               <EmployeeCard.Info
@@ -30,7 +30,7 @@ export const CardList = ({ list }: Props): React.JSX.Element => {
                 phone={employee.phone}
               />
             </EmployeeCard.Wrapper>
-          );
+          )
         })}
       </div>
       <footer className="px-8 place-self-center w-full">
@@ -39,5 +39,5 @@ export const CardList = ({ list }: Props): React.JSX.Element => {
         </Pagination.Wrapper>
       </footer>
     </main>
-  );
-};
+  )
+}

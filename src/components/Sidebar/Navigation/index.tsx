@@ -1,10 +1,10 @@
-import React from "react";
-import { AiOutlineHome } from "react-icons/ai";
-import { FcDepartment } from "react-icons/fc";
-import { BiTask } from "react-icons/bi";
-import { BsPersonVcard } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
-import { NavItem } from "../NavItem";
+import React from 'react'
+import { AiOutlineHome } from 'react-icons/ai'
+import { FcDepartment } from 'react-icons/fc'
+import { BiTask } from 'react-icons/bi'
+import { BsPersonVcard } from 'react-icons/bs'
+import { FiSettings } from 'react-icons/fi'
+import { NavItem } from '../NavItem'
 
 export const Navigation = (): React.JSX.Element => {
   return (
@@ -39,5 +39,5 @@ export const Navigation = (): React.JSX.Element => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}

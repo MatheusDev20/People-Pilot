@@ -1,16 +1,16 @@
-import Employee from "../../../assets/imgs/fake-avatar1.png";
-import { InfoLabel } from "./components/InfoLabel";
-import { TabContent, TabsNavigation } from "./components/Tabs";
-import { useState } from "react";
-import { TabTitle } from "./components/TabTitle";
-import { BasicInfoProfile } from "./components/Tabs/BasicProfile";
+import Employee from '../../../assets/imgs/fake-avatar1.png'
+import { InfoLabel } from './components/InfoLabel'
+import { TabContent, TabsNavigation } from './components/Tabs'
+import { useState } from 'react'
+import { TabTitle } from './components/TabTitle'
+import { BasicInfoProfile } from './components/Tabs/BasicProfile'
 
 export default function EmployeeDetailPage(): JSX.Element {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0)
 
   const handleTab = (activeTab: number): void => {
-    setActiveTab(activeTab);
-  };
+    setActiveTab(activeTab)
+  }
 
   return (
     <div className="flex flex-col md:flex-row sm:h-full gap-10 p-3 max-w-full">
@@ -56,5 +56,5 @@ export default function EmployeeDetailPage(): JSX.Element {
         </TabContent>
       </div>
     </div>
-  );
+  )
 }

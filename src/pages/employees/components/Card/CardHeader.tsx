@@ -1,9 +1,9 @@
-import React from "react";
-import { BsThreeDots } from "react-icons/bs";
-import { CardLabel } from "./CardLabel";
+import React from 'react'
+import { BsThreeDots } from 'react-icons/bs'
+import { CardLabel } from './CardLabel'
 
 interface CardLabelProps {
-  employeeStatus: "Not Active" | "Active";
+  employeeStatus: 'Not Active' | 'Active'
 }
 
 export const CardHeader = ({
@@ -21,5 +21,5 @@ export const CardHeader = ({
         <BsThreeDots className="cursor-pointer hover:text-blue-600 dark:text-white" />
       </div>
     </header>
-  );
-};
+  )
+}

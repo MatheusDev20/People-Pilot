@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import { CardList } from "./components/CardList";
-import { Header } from "./components/Header";
+import { CardList } from './components/CardList'
+import { Header } from './components/Header'
 
-import { useEmployeeList } from "../../hooks/employee-list";
+import { useEmployeeList } from '../../hooks/employee-list'
 
 export default function EmployeePage(): JSX.Element {
-  const { data, isLoading, isError } = useEmployeeList();
-  if (isLoading) return <h1>Loading...</h1>;
+  const { data, isLoading, isError } = useEmployeeList()
+  if (isLoading) return <h1>Loading...</h1>
   return (
     <>
       {isError ? (
@@ -19,5 +19,5 @@ export default function EmployeePage(): JSX.Element {
         </div>
       )}
     </>
-  );
+  )
 }

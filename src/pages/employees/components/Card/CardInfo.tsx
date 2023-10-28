@@ -1,9 +1,9 @@
-import React from "react";
-import fallBack from "../../../../assets/imgs/fake-avatar1.png";
+import React from 'react'
+import fallBack from '../../../../assets/imgs/fake-avatar1.png'
 interface Props {
-  employeeName: string;
-  employeePosition: string;
-  employeeAvatar: string;
+  employeeName: string
+  employeePosition: string
+  employeeAvatar: string
 }
 export const CardInfo = ({
   employeeName,
@@ -26,5 +26,5 @@ export const CardInfo = ({
         </div>
       </main>
     </div>
-  );
-};
+  )
+}

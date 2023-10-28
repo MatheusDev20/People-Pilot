@@ -1,54 +1,54 @@
 export interface Employee {
-  name: string;
-  avatar: string;
-  created_at: string;
-  email: string;
-  hire_date: string;
-  id: string;
-  phone: string;
-  position: string;
-  updated_at: string;
-  status: string;
+  name: string
+  avatar: string
+  created_at: string
+  email: string
+  hire_date: string
+  id: string
+  phone: string
+  position: string
+  updated_at: string
+  status: string
 }
 
 export interface ActiveUser {
-  name: string;
-  avatar: string;
-  created_at: string;
-  email: string;
-  hire_date: string;
-  id: string;
-  phone: string;
-  position: string;
-  updated_at: string;
-  status: string;
+  name: string
+  avatar: string
+  created_at: string
+  email: string
+  hire_date: string
+  id: string
+  phone: string
+  position: string
+  updated_at: string
+  status: string
 }
 
 export interface StepOneData {
-  name: string;
-  lastName: string;
-  birthDate: string;
-  email: string;
-  address: string;
-  phone: string;
+  name: string
+  lastName: string
+  birthDate: string
+  email: string
+  address: string
+  phone: string
 }
 
 export interface StepTwoData {
-  position: string;
-  department: string;
-  hireDate: string;
+  position: string
+  department: string
+  hireDate: string
 }
 
 export interface StepThreeData {
-  avatar: File | null;
+  avatar: File | null
 }
 
 export interface CreateEmployeeForm {
-  stepOne: StepOneData;
-  stepTwo: StepTwoData;
+  stepOne: StepOneData
+  stepTwo: StepTwoData
 }
 
 export interface AuthPayload {
-  accessToken: string;
-  loggedUser: ActiveUser;
+  accessToken: string
+  loggedUser: ActiveUser
 }

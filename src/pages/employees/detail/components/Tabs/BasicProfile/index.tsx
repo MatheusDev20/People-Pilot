@@ -1,5 +1,5 @@
-import React from "react";
-import { InfoLabel } from "../../InfoLabel";
+import React from 'react'
+import { InfoLabel } from '../../InfoLabel'
 
 export const BasicInfoProfile = (): React.JSX.Element => {
   return (
@@ -27,5 +27,5 @@ export const BasicInfoProfile = (): React.JSX.Element => {
         <InfoLabel title="City" info="Juiz de Fora" w="w-1/2" />
       </section>
     </div>
-  );
-};
+  )
+}

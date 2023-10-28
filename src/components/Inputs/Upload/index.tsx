@@ -1,16 +1,16 @@
-import React, { type ChangeEvent } from "react";
-import uploadIcon from "../../../assets/svgs/upload.svg";
-import { useCreateEmployeeForm } from "../../../contexts/create-employee-form";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
+import React, { type ChangeEvent } from 'react'
+import uploadIcon from '../../../assets/svgs/upload.svg'
+import { useCreateEmployeeForm } from '../../../contexts/create-employee-form'
+import { AiOutlineExclamationCircle } from 'react-icons/ai'
 
 interface Props {
-  errors: string[] | null;
+  errors: string[] | null
 }
 export const UploadInput = ({ errors }: Props): React.JSX.Element => {
-  const { setFormData, formData } = useCreateEmployeeForm();
+  const { setFormData, formData } = useCreateEmployeeForm()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const file = e.target.files ? e.target.files[0] : null;
+    const file = e.target.files ? e.target.files[0] : null
 
     setFormData({
       ...formData,
@@ -18,8 +18,8 @@ export const UploadInput = ({ errors }: Props): React.JSX.Element => {
         ...formData.stepThree,
         avatar: file,
       },
-    });
-  };
+    })
+  }
 
   return (
     <div className="flex flex-col gap-4 w-full items-center">
@@ -47,5 +47,5 @@ export const UploadInput = ({ errors }: Props): React.JSX.Element => {
         </footer>
       )}
     </div>
-  );
-};
+  )
+}

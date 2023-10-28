@@ -1,4 +1,4 @@
-import { ActiveUser } from "./employees"
+import { ActiveUser } from './employees'
 
 export type LoginFormData = {
   email: string

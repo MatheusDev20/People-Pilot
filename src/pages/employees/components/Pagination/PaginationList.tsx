@@ -46,5 +46,5 @@ export const PaginationList = (): JSX.Element => {
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}

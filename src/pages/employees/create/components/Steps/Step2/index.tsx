@@ -2,36 +2,42 @@ import {
   PersonIcon,
   LockIcon,
   DepartmentIcon,
-} from "../../../../../../assets/icons";
-import { CustomInput } from "../../../../../../components/Inputs/Standard";
-import { CustomSelect } from "../../../../../../components/Inputs/Select";
-import { useCreateEmployeeForm } from "../../../../../../contexts/create-employee-form";
-import React from "react";
+} from '../../../../../../assets/icons'
+import { CustomInput } from '../../../../../../components/Inputs/Standard'
+import { CustomSelect } from '../../../../../../components/Inputs/Select'
+import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
+import React from 'react'
 
 interface Props {
-  errors: Record<string, string[]> | null;
+  errors: Record<string, string[]> | null
 }
 export const StepTwo = ({ errors }: Props): React.JSX.Element => {
-  const { formData, setFormData } = useCreateEmployeeForm();
+  const { formData, setFormData } = useCreateEmployeeForm()
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
-      stepTwo: { ...formData.stepTwo, [e.target.name]: e.target.value },
-    });
-  };
+      stepTwo: {
+        ...formData.stepTwo,
+        [e.target.name]: e.target.value,
+      },
+    })
+  }
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setFormData({
       ...formData,
-      stepTwo: { ...formData.stepTwo, [e.target.name]: e.target.value },
-    });
-  };
+      stepTwo: {
+        ...formData.stepTwo,
+        [e.target.name]: e.target.value,
+      },
+    })
+  }
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-10">
       <div className="flex gap-3 w-full p-1.5">
         <CustomSelect
           onChange={(e) => {
-            handleSelect(e);
+            handleSelect(e)
           }}
           wSize="medium"
           name="department"
@@ -42,7 +48,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         />
         <CustomInput
           onChange={(e) => {
-            handleInput(e);
+            handleInput(e)
           }}
           name="password"
           type="password"
@@ -57,7 +63,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         {/* TODO: Should be Dynamic and load the available positions for the selected department */}
         <CustomSelect
           onChange={(e) => {
-            handleSelect(e);
+            handleSelect(e)
           }}
           name="position"
           error={errors ? errors.position : null}
@@ -68,7 +74,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         />
         <CustomInput
           onChange={(e) => {
-            handleInput(e);
+            handleInput(e)
           }}
           name="hireDate"
           value={formData.stepTwo.hireDate}
@@ -81,5 +87,5 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         />
       </div>
     </div>
-  );
-};
+  )
+}

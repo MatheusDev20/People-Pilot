@@ -1,16 +1,16 @@
-import { UploadInput } from "../../../../../../components/Inputs/Upload";
-import React from "react";
-import genericAvatar from "../../../../../../assets/imgs/generic-avatar.jpg";
-import { useCreateEmployeeForm } from "../../../../../../contexts/create-employee-form";
+import { UploadInput } from '../../../../../../components/Inputs/Upload'
+import React from 'react'
+import genericAvatar from '../../../../../../assets/imgs/generic-avatar.jpg'
+import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 
 interface Props {
-  errors: Record<string, string[]> | null;
+  errors: Record<string, string[]> | null
 }
 
 export const StepThree = ({ errors }: Props): React.JSX.Element => {
   const {
     formData: { stepThree },
-  } = useCreateEmployeeForm();
+  } = useCreateEmployeeForm()
   return (
     <div className="flex w-full p-12 gap-5 items-center">
       {!stepThree.avatar || errors?.avatar ? (
@@ -28,5 +28,5 @@ export const StepThree = ({ errors }: Props): React.JSX.Element => {
       )}
       <UploadInput errors={errors ? errors.avatar : null} />
     </div>
-  );
-};
+  )
+}

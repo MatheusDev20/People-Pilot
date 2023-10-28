@@ -1,5 +1,5 @@
-import { Menu } from "@headlessui/react";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { Menu } from '@headlessui/react'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
 export function MyDropdown(): JSX.Element {
   return (
@@ -11,7 +11,7 @@ export function MyDropdown(): JSX.Element {
         <Menu.Item>
           {({ active }) => (
             <a
-              className={`${active && "bg-blue-800"}`}
+              className={`${active && 'bg-blue-800'}`}
               href="/account-settings"
             >
               Account settings
@@ -20,5 +20,5 @@ export function MyDropdown(): JSX.Element {
         </Menu.Item>
       </Menu.Items>
     </Menu>
-  );
+  )
 }

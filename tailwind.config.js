@@ -2,13 +2,10 @@
 const colors = require('tailwindcss/colors')
 
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
-    
+
     colors: {
       black: colors.black,
       white: colors.white,
@@ -27,10 +24,10 @@ export default {
       twitter: {
         blue: {
           main: `rgb(29, 155, 240)`,
-          secondary:`rgb(26, 140, 216)`
-        }
-      }
-    }
+          secondary: `rgb(26, 140, 216)`,
+        },
+      },
+    },
   },
   darkMode: 'class',
   plugins: [],

@@ -1,12 +1,12 @@
-import React from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsTelephoneForward } from "react-icons/bs";
+import React from 'react'
+import { AiOutlineMail } from 'react-icons/ai'
+import { BsTelephoneForward } from 'react-icons/bs'
 
 interface Props {
-  department: string;
-  hiredDate: string;
-  phone: string;
-  email: string;
+  department: string
+  hiredDate: string
+  phone: string
+  email: string
 }
 export const CardFooter = ({
   department,
@@ -51,5 +51,5 @@ export const CardFooter = ({
         </div>
       </section>
     </footer>
-  );
-};
+  )
+}

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 // import logo from "../../assets/imgs/logo1.png";
-import { Navigation } from "./Navigation";
-import { ThemeSwitch } from "./ThemeSwitch";
-import { Link } from "react-router-dom";
-import { useTheme } from "../../hooks/theme";
+import { Navigation } from './Navigation'
+import { ThemeSwitch } from './ThemeSwitch'
+import { Link } from 'react-router-dom'
+import { useTheme } from '../../hooks/theme'
 
 export const Sidebar = (): React.JSX.Element => {
-  const { theme } = useTheme();
-  console.log("Theme na Sidebar", theme);
+  const { theme } = useTheme()
+  console.log('Theme na Sidebar', theme)
 
   return (
     <aside
@@ -30,5 +30,5 @@ export const Sidebar = (): React.JSX.Element => {
       </div>
       <ThemeSwitch />
     </aside>
-  );
-};
+  )
+}

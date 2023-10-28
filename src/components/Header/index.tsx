@@ -1,24 +1,24 @@
-import React from "react";
-import avatar from "../../assets/imgs/fake-avatar.jpg";
-import { MyDropdown } from "./Dropdown";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { BsChatLeftText } from "react-icons/bs";
-import { useAuth } from "../../contexts/auth-context";
+import React from 'react'
+import avatar from '../../assets/imgs/fake-avatar.jpg'
+import { MyDropdown } from './Dropdown'
+// import { IoIosNotificationsOutline } from "react-icons/io";
+// import { BsChatLeftText } from "react-icons/bs";
+import { useAuth } from '../../contexts/auth-context'
 
 export const Header = (): React.JSX.Element => {
-  const { user } = useAuth();
+  const { user } = useAuth()
+
   return (
     <header className="flex justify-end p-4 dark:bg-darkGray-900 border-solid dark:border-darkGray-600 border-b-[0.4px]">
       {/* Logged user Avatar */}
       <div className="flex gap-12 md:justify-normal">
-        <div className="gap-6 items-center hidden md:flex">
-          {/* Icons */}
+        {/* <div className="gap-6 items-center hidden md:flex">
           <IoIosNotificationsOutline
             size={24}
             className="text-gray-500 dark:text-twitter-blue-main dark:hover:text-twitter-blue-secondary font-semibold cursor-pointer hover:text-blue-800"
           />
           <BsChatLeftText className="text-gray-500 dark:text-twitter-blue-main dark:hover:text-twitter-blue-secondary font-semibold cursor-pointer hover:text-blue-800" />
-        </div>
+        </div> */}
         <div className="flex gap-6">
           <img
             src={avatar}
@@ -41,5 +41,5 @@ export const Header = (): React.JSX.Element => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}

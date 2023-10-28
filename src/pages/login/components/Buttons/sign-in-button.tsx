@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react'
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { }
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const SignInButton = ({
   children,
