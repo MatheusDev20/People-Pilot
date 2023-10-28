@@ -12,12 +12,17 @@ import {
 import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
 import { validateCurrentStep } from '../../../../../validations/schemas'
 import { StepperCheckIcon } from '../../../../../assets/icons'
+import { useMutation } from '@tanstack/react-query'
+import { postEmployee } from '../../../../../api/employee'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
+  const mutation = useMutation({
+    mutationFn: postEmployee,
+  })
   const getCurrentStep = (currStep: number): JSX.Element | undefined => {
     switch (currStep) {
       case 0:
@@ -44,18 +49,14 @@ export const Stepper = (): React.JSX.Element => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
 
-  // const handleFinish = async (): Promise<void> => {
-  //   const mutation = useMutation({
-  //     mutationFn: () => {},
-  //   })
-  // }
+  const handleFinish = async (): Promise<void> => {
+    mutation.mutate(formData)
+  }
   return (
     <div className="flex flex-col w-full gap-6 p-3 border">
       <MuiStepper activeStep={activeStep} alternativeLabel>
         {steps.map((step, index) => {
-          console.log('Active Step and index', activeStep, index)
           const isStepCompleted = activeStep > index
-
           return (
             <Step key={step.label}>
               <StepLabel
@@ -96,7 +97,7 @@ export const Stepper = (): React.JSX.Element => {
           )}
           {activeStep === steps.length - 1 ? (
             <Button
-              // onClick={handleFinish}
+              onClick={handleFinish}
               className="text-white font-semibold bg-blue-500"
               variant="contained"
             >

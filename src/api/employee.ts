@@ -1,6 +1,7 @@
 import { type Employee } from '../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../contexts/create-employee-form'
-import { GET } from './handlers'
+import { convertDateFormat } from '../utils/dates'
+import { GET, POST } from './handlers'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
   const data = await GET({
@@ -12,10 +13,33 @@ export const getEmployeeList = async (): Promise<Employee[]> => {
 
 export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
-): Promise<void> => {
-  // const { stepOne, stepTwo } = employeeFormData
-  // const body = {
-  //   ...stepOne,
-  //   ...stepTwo,
-  // }
+): Promise<{ createdId: string }> => {
+  const { stepOne, stepTwo } = employeeFormData
+
+  const birthDate = convertDateFormat(stepOne.birthDate)
+  const hireDate = convertDateFormat(stepTwo.hireDate)
+
+  const body = {
+    name: stepOne.name,
+    email: stepOne.email,
+    password: stepTwo.password,
+    birthDate,
+    phone: stepOne.phone,
+    position: stepTwo.position,
+    departmentName: stepTwo.department,
+    roles: 'employee',
+    hire_date: hireDate,
+  }
+
+  const data = await POST<{ createdId: string }>({
+    authenticated: false,
+    path: '/employee',
+    body,
+  })
+
+  const {
+    body: { createdId },
+  } = data
+
+  return { createdId }
 }

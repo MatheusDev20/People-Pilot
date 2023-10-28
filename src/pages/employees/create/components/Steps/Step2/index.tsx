@@ -60,18 +60,18 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
         />
       </div>
       <div className="flex gap-3 w-full p-1.5">
-        {/* TODO: Should be Dynamic and load the available positions for the selected department */}
-        <CustomSelect
+        <CustomInput
           onChange={(e) => {
-            handleSelect(e)
+            handleInput(e)
           }}
           name="position"
           error={errors ? errors.position : null}
           wSize="medium"
           icon={<PersonIcon />}
-          placeholder="Select the employee position"
+          placeholder="New employee position..."
           label="Position"
         />
+
         <CustomInput
           onChange={(e) => {
             handleInput(e)
