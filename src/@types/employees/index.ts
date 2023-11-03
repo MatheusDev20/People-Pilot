@@ -1,6 +1,7 @@
 export interface Employee {
   name: string
   avatar: string
+  birthDate: string
   created_at: string
   email: string
   hire_date: string
@@ -9,6 +10,7 @@ export interface Employee {
   position: string
   updated_at: string
   status: string
+  department: any
 }
 
 export interface ActiveUser {

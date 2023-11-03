@@ -27,10 +27,10 @@ export default function EmployeeDetailPage(): JSX.Element {
 
   return (
     <div className="flex flex-col md:flex-row sm:h-full gap-10 p-3 max-w-full">
-      {isSuccess ? (
+      {isSuccess && data ? (
         <aside className="p-6 flex gap-6 flex-col shadow-xl ml-8 items-center max-w-sm">
           {/* Avatar + Name */}
-          <div className="flex flex-col gap-2 items-center">
+          <div className="flex flex-col gap-5 items-center">
             <img
               src={data.avatar ?? Employee}
               alt="employee_picture"
@@ -49,11 +49,18 @@ export default function EmployeeDetailPage(): JSX.Element {
           {/* Other Infos */}
           <div className="flex flex-col gap-5 w-full">
             <InfoLabel title="Journey" info="5x8" w="100%" />
-            <InfoLabel title="Admission Date" info="10/05/2023" w="100%" />
-            <InfoLabel title="Registration" info="05323" w="100%" />
-            <InfoLabel title="Manager" info="Diego Moraes" w="100%" />
-            <InfoLabel title="Position" info="FrontEnd Engineer" w="100%" />
-            <InfoLabel title="Department" info="IT" w="100%" />
+            <InfoLabel title="Admission Date" info={data.hire_date} w="100%" />
+            <InfoLabel
+              title="Manager"
+              info={data.department.manager}
+              w="100%"
+            />
+            <InfoLabel title="Position" info={data.position} w="100%" />
+            <InfoLabel
+              title="Department"
+              info={data.department.name}
+              w="100%"
+            />
           </div>
         </aside>
       ) : (
@@ -62,18 +69,21 @@ export default function EmployeeDetailPage(): JSX.Element {
       {/* Basic Info + Avatar */}
 
       {/* Personal Information + Payment information */}
-
-      <div className="md:flex-1 flex flex-col">
-        {/* Tabs */}
-        <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
-        <TabContent idx={0} title="Basic Info Profile" activeTab={activeTab}>
-          <TabTitle title="Personal Data" />
-          <BasicInfoProfile />
-        </TabContent>
-        <TabContent idx={1} title="Payment Information" activeTab={activeTab}>
-          Aqui vai o básico de pagamento
-        </TabContent>
-      </div>
+      {isSuccess ? (
+        <div className="md:flex-1 flex flex-col">
+          {/* Tabs */}
+          <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
+          <TabContent idx={0} title="Basic Info Profile" activeTab={activeTab}>
+            <TabTitle title="Personal Data" />
+            <BasicInfoProfile employee={data} />
+          </TabContent>
+          <TabContent idx={1} title="Payment Information" activeTab={activeTab}>
+            Aqui vai o básico de pagamento
+          </TabContent>
+        </div>
+      ) : (
+        <span>Error</span>
+      )}
     </div>
   )
 }

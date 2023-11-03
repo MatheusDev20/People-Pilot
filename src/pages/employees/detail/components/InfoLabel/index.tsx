@@ -13,8 +13,12 @@ export const InfoLabel = ({ title, info, w }: Props): React.JSX.Element => {
         w === 'full' ? 'w-full' : w
       } h-14`}
     >
-      <span className="text-sm text-gray-400 font-bold">{title}</span>
-      <p className="text-md font-semibold text-gray-500">{info}</p>
+      <span className="text-md dark:text-twitter-blue-main text-gray-400 font-semibold">
+        {title}
+      </span>
+      <p className="text-sm font-semibold dark:text-white text-gray-500 mt-2">
+        {info}
+      </p>
     </section>
   )
 }

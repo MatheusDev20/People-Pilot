@@ -63,7 +63,6 @@ export const postEmployee = async (
     path: '/employee',
     body,
   })
-  console.log(data)
 
   if (file) await uploadAvatar(file, data.body.id)
 
