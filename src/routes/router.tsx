@@ -41,15 +41,15 @@ export const router = createBrowserRouter([
             path: 'employee/create',
             element: (
               <PrivateRoute redirectPath="login">
-                <CreateEmployeePage />,
+                <CreateEmployeePage />
               </PrivateRoute>
             ),
           },
           {
-            path: 'employee/detail',
+            path: 'employee/detail/:id',
             element: (
               <PrivateRoute redirectPath="login">
-                <EmployeeDetailPage />,
+                <EmployeeDetailPage />
               </PrivateRoute>
             ),
           },

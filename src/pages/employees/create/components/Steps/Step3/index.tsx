@@ -6,7 +6,6 @@ import { useCreateEmployeeForm } from '../../../../../../contexts/create-employe
 interface Props {
   errors: Record<string, string[]> | null
   isLoading: boolean
-  isSucesss: boolean
 }
 const Loading = (): React.JSX.Element => {
   return (
@@ -16,22 +15,11 @@ const Loading = (): React.JSX.Element => {
   )
 }
 
-export const StepThree = ({
-  errors,
-  isLoading,
-  isSucesss,
-}: Props): React.JSX.Element => {
+export const StepThree = ({ errors, isLoading }: Props): React.JSX.Element => {
   const {
     formData: { stepThree },
   } = useCreateEmployeeForm()
 
-  if (isSucesss) {
-    return (
-      <div className="flex w-full p-12 gap-5 items-center">
-        <h1>Criado com sucesso!</h1>
-      </div>
-    )
-  }
   return (
     <div className="flex w-full p-12 gap-5 items-center">
       {isLoading ? (

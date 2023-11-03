@@ -12,6 +12,15 @@ export const getEmployeeList = async (): Promise<Employee[]> => {
   return data
 }
 
+export const getEmployeeById = async (id: string): Promise<Employee> => {
+  const data = await GET({
+    path: `/employee/details/${id}`,
+    authenticated: true,
+  })
+
+  return data
+}
+
 export const uploadAvatar = async (file: File, id: string): Promise<string> => {
   const headers = 'multipart/form-data'
   const formData = new FormData()

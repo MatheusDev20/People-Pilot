@@ -8,11 +8,11 @@ interface Props {
 }
 export const CardList = ({ list }: Props): React.JSX.Element => {
   return (
-    <main className="flex flex-col gap-0">
+    <main className="flex flex-col gap-0 cursor-pointer">
       <div className="p-8 grid grid-cols-4 gap-4 w-full">
         {list.map((employee) => {
           return (
-            <EmployeeCard.Wrapper key={employee.id}>
+            <EmployeeCard.Wrapper key={employee.id} id={employee.id}>
               <EmployeeCard.Header
                 employeeStatus={
                   employee.status !== 'Active' ? 'Not Active' : employee.status
