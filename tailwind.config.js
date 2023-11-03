@@ -27,6 +27,9 @@ export default {
           secondary: `rgb(26, 140, 216)`,
         },
       },
+      // btn: {
+      //   disabled:
+      // }
     },
   },
   darkMode: 'class',

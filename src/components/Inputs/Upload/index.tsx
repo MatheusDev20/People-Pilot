@@ -28,11 +28,11 @@ export const UploadInput = ({ errors }: Props): React.JSX.Element => {
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <img src={uploadIcon} alt="upload-icon" className="w-8 h-8" />
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span>
-              or drag and drop
+              <span className="font-semibold">Click to upload</span> or drag and
+              drop a file
             </p>
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">
-              PNG, JPG
+              Allowed formats: PNG,JPG
             </p>
           </div>
           <input type="file" className="hidden" onChange={handleChange} />

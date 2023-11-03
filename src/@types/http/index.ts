@@ -3,6 +3,7 @@ export type BasicRequest = {
   authenticated: boolean
   headers?: any
   body?: any
+  formData?: FormData
 }
 
 export type BasicResponse<T> = {

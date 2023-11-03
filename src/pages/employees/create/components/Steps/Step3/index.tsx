@@ -5,28 +5,55 @@ import { useCreateEmployeeForm } from '../../../../../../contexts/create-employe
 
 interface Props {
   errors: Record<string, string[]> | null
+  isLoading: boolean
+  isSucesss: boolean
+}
+const Loading = (): React.JSX.Element => {
+  return (
+    <div className="flex flex-col items-center w-full gap-5">
+      <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
+    </div>
+  )
 }
 
-export const StepThree = ({ errors }: Props): React.JSX.Element => {
+export const StepThree = ({
+  errors,
+  isLoading,
+  isSucesss,
+}: Props): React.JSX.Element => {
   const {
     formData: { stepThree },
   } = useCreateEmployeeForm()
+
+  if (isSucesss) {
+    return (
+      <div className="flex w-full p-12 gap-5 items-center">
+        <h1>Criado com sucesso!</h1>
+      </div>
+    )
+  }
   return (
     <div className="flex w-full p-12 gap-5 items-center">
-      {!stepThree.avatar || errors?.avatar ? (
-        <img
-          src={genericAvatar}
-          alt="preview"
-          className="rounded-full h-36 w-36"
-        />
+      {isLoading ? (
+        <Loading />
       ) : (
-        <img
-          src={URL.createObjectURL(stepThree.avatar)}
-          alt="preview"
-          className="rounded-full h-36 w-36"
-        />
+        <>
+          {!stepThree.avatar || errors?.avatar ? (
+            <img
+              src={genericAvatar}
+              alt="preview"
+              className="rounded-full h-36 w-36"
+            />
+          ) : (
+            <img
+              src={URL.createObjectURL(stepThree.avatar)}
+              alt="preview"
+              className="rounded-full h-36 w-36"
+            />
+          )}
+          <UploadInput errors={errors ? errors.avatar : null} />
+        </>
       )}
-      <UploadInput errors={errors ? errors.avatar : null} />
     </div>
   )
 }

@@ -41,6 +41,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           }}
           wSize="medium"
           name="department"
+          value={formData.stepTwo.department}
           error={errors ? errors.department : null}
           icon={<DepartmentIcon />}
           label="Departament"
@@ -51,6 +52,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
             handleInput(e)
           }}
           name="password"
+          value={formData.stepTwo.password}
           type="password"
           error={errors ? errors.password : null}
           wSize="medium"
@@ -65,6 +67,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
             handleInput(e)
           }}
           name="position"
+          value={formData.stepTwo.position}
           error={errors ? errors.position : null}
           wSize="medium"
           icon={<PersonIcon />}

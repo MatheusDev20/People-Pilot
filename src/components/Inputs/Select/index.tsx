@@ -54,7 +54,6 @@ export const CustomSelect = ({
             </div>
           </div>
           <select
-            defaultValue=""
             {...rest}
             className={clsx(
               {
@@ -65,8 +64,8 @@ export const CustomSelect = ({
           >
             {/* TODO: Turn this dyamic */}
             <option value="">{placeholder}</option>
-            <option value="Tech Department">Tech</option>
-            <option value="People and Culture">People and culture</option>
+            <option value="Tech">Tech</option>
+            <option value="People and Culture">People and Culture</option>
             <option value="Operations">Operations</option>
           </select>
         </div>

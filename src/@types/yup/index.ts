@@ -1,6 +1,4 @@
 export type ValidationResult = {
-  errors: {
-    [key: string]: string[]
-  } | null
+  errors: Record<string, string[]> | null
   veredict: boolean
 }

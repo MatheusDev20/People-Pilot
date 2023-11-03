@@ -30,15 +30,14 @@ const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
     stepOne: {
       name: '',
       birthDate: '',
-      address: '',
       email: '',
-      lastName: '',
       phone: '',
     },
     stepTwo: {
       department: '',
       hireDate: new Date().toLocaleDateString('pt-BR'),
       position: '',
+      password: '',
     },
     stepThree: {
       avatar: null,

@@ -4,7 +4,6 @@ import {
   PersonIcon,
   CalendarIcon,
   EmailIcon,
-  AddressIcon,
   PhoneIcon,
 } from '../../../../../../assets/icons'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
@@ -28,7 +27,7 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
 
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-4">
-      {/* Name and Last Name */}
+      {/* Name */}
       <div className="flex gap-6 w-full p-1.5">
         <CustomInput
           onChange={(e) => {
@@ -36,29 +35,32 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
           }}
           wSize="medium"
           name="name"
-          // value={formData.stepOne.name}
+          value={formData.stepOne.name}
           error={errors ? errors.name : null}
           icon={<PersonIcon />}
           label="First Name"
           placeholder="Katarine Devito..."
           type="text"
         />
+        {/* Email */}
         <CustomInput
+          name="email"
+          value={formData.stepOne.email}
           onChange={(e) => {
             handleInput(e)
           }}
-          name="lastName"
-          error={errors ? errors.lastName : null}
           wSize="medium"
-          icon={<PersonIcon />}
-          placeholder="Last Name..."
-          label="Last Name"
+          error={errors ? errors.email : null}
+          label="Email"
+          icon={<EmailIcon />}
+          placeholder="katarine@stx.com..."
         />
       </div>
       {/* Date of Birth and Email Address */}
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
           name="birthDate"
+          value={formData.stepOne.birthDate}
           onChange={(e) => {
             handleInput(e)
           }}
@@ -70,41 +72,17 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
           placeholder="09/09/1999..."
         />
         <CustomInput
-          name="email"
-          onChange={(e) => {
-            handleInput(e)
-          }}
-          wSize="medium"
-          error={errors ? errors.email : null}
-          label="Email"
-          icon={<EmailIcon />}
-          placeholder="katarine@stx.com..."
-        />
-      </div>
-      {/* Address  and Phone */}
-      <div className="flex p-1.5 w-full gap-3">
-        <CustomInput
           name="phone"
+          value={formData.stepOne.phone}
           onChange={(e) => {
             handleInput(e)
           }}
           wSize="medium"
           error={errors ? errors.phone : null}
           icon={<PhoneIcon />}
-          label="Address"
-          placeholder="134 Trainer Avenue Bloomington IL Illinois 61701"
-        />
-        <CustomInput
-          name="address"
-          onChange={(e) => {
-            handleInput(e)
-          }}
-          wSize="medium"
-          error={errors ? errors.address : null}
-          icon={<AddressIcon />}
           label="Phone"
-          mask="(99)-99999-9999"
-          placeholder="(32) 999850138 ..."
+          mask="(99) 999999999"
+          placeholder="(32) 999850138..."
         />
       </div>
     </div>

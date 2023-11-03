@@ -37,3 +37,23 @@ export const POST = async <T>(
     )
   }
 }
+
+export const PATCH = async <T>(
+  request: BasicRequest,
+): Promise<BasicResponse<T>> => {
+  const { headers, path, formData } = request
+
+  try {
+    const response = await axiosInstance.patch(`${path}`, formData, {
+      headers: headers ?? {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    })
+    const { data } = response
+
+    return data
+  } catch (err: any) {
+    throw new Error(err)
+  }
+}

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { Button, Stepper as MuiStepper, Step, StepLabel } from '@mui/material'
+import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material'
 import {
   StepFour as FinalStep,
   StepOne,
@@ -14,15 +14,17 @@ import { validateCurrentStep } from '../../../../../validations/schemas'
 import { StepperCheckIcon } from '../../../../../assets/icons'
 import { useMutation } from '@tanstack/react-query'
 import { postEmployee } from '../../../../../api/employee'
+import { StandardButton } from '../../../../../components/Buttons/Standard'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
-  const mutation = useMutation({
+  const { isLoading, mutate, isSuccess } = useMutation({
     mutationFn: postEmployee,
   })
+
   const getCurrentStep = (currStep: number): JSX.Element | undefined => {
     switch (currStep) {
       case 0:
@@ -32,7 +34,13 @@ export const Stepper = (): React.JSX.Element => {
         return <StepTwo errors={errors} />
 
       case 2:
-        return <StepThree errors={errors} />
+        return (
+          <StepThree
+            errors={errors}
+            isLoading={isLoading}
+            isSucesss={isSuccess}
+          />
+        )
     }
   }
 
@@ -50,13 +58,14 @@ export const Stepper = (): React.JSX.Element => {
   }
 
   const handleFinish = async (): Promise<void> => {
-    mutation.mutate(formData)
+    mutate(formData)
   }
   return (
-    <div className="flex flex-col w-full gap-6 p-3 border">
+    <div className="flex flex-col w-full gap-6 p-3">
       <MuiStepper activeStep={activeStep} alternativeLabel>
         {steps.map((step, index) => {
-          const isStepCompleted = activeStep > index
+          const isStepCompleted =
+            activeStep > index || formData.stepThree.avatar
           return (
             <Step key={step.label}>
               <StepLabel
@@ -86,31 +95,16 @@ export const Stepper = (): React.JSX.Element => {
       ) : (
         <div className="justify-center gap-24 flex p-3">
           {activeStep !== 0 && (
-            <Button
-              variant="contained"
-              className="text-white font-semibold bg-blue-500"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-            >
+            <StandardButton disabled={isLoading} onClick={handleBack}>
               Back
-            </Button>
+            </StandardButton>
           )}
           {activeStep === steps.length - 1 ? (
-            <Button
-              onClick={handleFinish}
-              className="text-white font-semibold bg-blue-500"
-              variant="contained"
-            >
-              Finish
-            </Button>
+            <StandardButton disabled={isLoading} onClick={handleFinish}>
+              Create Employee
+            </StandardButton>
           ) : (
-            <Button
-              onClick={handleNext}
-              className="text-white font-semibold bg-blue-500"
-              variant="contained"
-            >
-              Next
-            </Button>
+            <StandardButton onClick={handleNext}>Next</StandardButton>
           )}
         </div>
       )}
