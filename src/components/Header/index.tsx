@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from '../../assets/imgs/fake-avatar.jpg'
+import avatar from '../../assets/imgs/fake-avatar1.png'
 import { MyDropdown } from './Dropdown'
 // import { IoIosNotificationsOutline } from "react-icons/io";
 // import { BsChatLeftText } from "react-icons/bs";
@@ -21,7 +21,7 @@ export const Header = (): React.JSX.Element => {
         </div> */}
         <div className="flex gap-6">
           <img
-            src={avatar}
+            src={user?.avatar ?? avatar}
             className="w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer"
             alt="me"
           />

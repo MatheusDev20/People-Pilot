@@ -1,6 +1,6 @@
 import { UploadInput } from '../../../../../../components/Inputs/Upload'
 import React from 'react'
-import genericAvatar from '../../../../../../assets/imgs/generic-avatar.jpg'
+import genericAvatar from '../../../../../../assets/imgs/fake-avatar1.png'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 
 interface Props {
