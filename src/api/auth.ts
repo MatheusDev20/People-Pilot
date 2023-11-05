@@ -1,10 +1,8 @@
 import { type LoginPayload, type LoginFormData } from './../@types/index'
-import { timeout } from '../utils'
 import { POST } from './handlers'
 
 export const login = async (data: LoginFormData): Promise<LoginPayload> => {
   try {
-    await timeout(2000)
     const response = await POST<LoginPayload>({
       path: '/auth/login',
       body: data,

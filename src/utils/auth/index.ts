@@ -17,3 +17,7 @@ export const getTokenFromStorage = (): string | null => {
 
   return accessToken
 }
+
+export const removeLocalStorage = (key: string): void => {
+  localStorage.removeItem(key)
+}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react'
 import avatar from '../../assets/imgs/fake-avatar1.png'
 import { MyDropdown } from './Dropdown'
@@ -6,7 +7,7 @@ import { MyDropdown } from './Dropdown'
 import { useAuth } from '../../contexts/auth-context'
 
 export const Header = (): React.JSX.Element => {
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
 
   return (
     <header className="flex justify-end p-4 dark:bg-darkGray-900 border-solid dark:border-darkGray-600 border-b-[0.4px]">
@@ -34,7 +35,7 @@ export const Header = (): React.JSX.Element => {
               {user?.position}
             </span>
           </div>
-
+          <span onClick={signOut}>Logout</span>
           <div className="place-self-center mr-11">
             <MyDropdown />
           </div>
