@@ -1,4 +1,8 @@
-import { type LoginPayload, type LoginFormData } from './../@types/index'
+import {
+  type LoginPayload,
+  type LoginFormData,
+  type LogoutPayload,
+} from './../@types/index'
 import { POST } from './handlers'
 
 export const login = async (data: LoginFormData): Promise<LoginPayload> => {
@@ -6,11 +10,25 @@ export const login = async (data: LoginFormData): Promise<LoginPayload> => {
     const response = await POST<LoginPayload>({
       path: '/auth/login',
       body: data,
-      authenticated: false,
+      authenticated: true,
     })
     const { body } = response
 
     return body
+  } catch (err: any) {
+    throw new Error(err.message)
+  }
+}
+
+export const logout = async (): Promise<Date> => {
+  try {
+    const response = await POST<LogoutPayload>({
+      authenticated: true,
+      path: '/auth/logout',
+    })
+    const { body } = response
+
+    return body.logoutTime
   } catch (err: any) {
     throw new Error(err.message)
   }

@@ -1,8 +1,16 @@
+import { useEffect } from 'react'
 import sideImage from '../../assets/imgs/login_side.jpg'
 import logo from '../../assets/imgs/logo1.png'
 import { Form } from './components/Form'
+import { useAuth } from '../../contexts/auth-context'
+import { useNavigate } from 'react-router-dom'
 
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (user) navigate('/app/home')
+  }, [])
   return (
     <div className="w-full h-screen">
       <main className="flex flex-col md:flex-row sm:h-full pt-6">

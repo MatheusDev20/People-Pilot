@@ -20,15 +20,16 @@ export const GET = async (request: BasicRequest): Promise<any> => {
 export const POST = async <T>(
   request: BasicRequest,
 ): Promise<BasicResponse<T>> => {
-  const { headers, path, body } = request
+  const { headers, path, body, authenticated } = request
 
   try {
     const response = await axiosInstance.post(`${path}`, body, {
       headers: headers ?? {
         'Content-Type': 'application/json',
       },
-      withCredentials: true,
+      withCredentials: authenticated,
     })
+    console.log('res', response)
     const { data } = response
     return data
   } catch (err: any) {

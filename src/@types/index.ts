@@ -1,4 +1,4 @@
-import { ActiveUser } from './employees'
+import { type ActiveUser } from './employees'
 
 export type LoginFormData = {
   email: string
@@ -7,4 +7,7 @@ export type LoginFormData = {
 
 export type LoginPayload = {
   user: ActiveUser
+}
+export type LogoutPayload = {
+  logoutTime: Date
 }

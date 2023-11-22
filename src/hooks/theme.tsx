@@ -17,8 +17,10 @@ export const useTheme = (): Hook => {
     setTheme(mode)
     localStorage.setItem('theme', mode)
   }
+
   useEffect(() => {
     const root = window.document.documentElement
+    console.log(theme)
     if (theme === 'dark') {
       root.classList.add(theme)
       localStorage.setItem('theme', theme)

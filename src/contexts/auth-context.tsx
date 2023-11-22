@@ -6,14 +6,13 @@ import React, {
 } from 'react'
 import { type ActiveUser } from '../@types/employees'
 import { type LoginFormData } from '../@types'
-import { login } from '../api/auth'
+import { login, logout } from '../api/auth'
 import { useNavigate } from 'react-router-dom'
 import {
   getFromLocalStorage,
   removeLocalStorage,
   setLocalStorage,
 } from '../utils/auth'
-import { useTheme } from '../hooks/theme'
 
 export interface AuthenticationContextProps {
   user: ActiveUser | null
@@ -41,7 +40,6 @@ const AuthProvider = ({
   const [failedMessage, setFailedMessage] = useState<string>('')
 
   const navigate = useNavigate()
-  const { setThemeMode } = useTheme()
 
   const signIn = async (loginInformation: LoginFormData): Promise<void> => {
     setLoading(true)
@@ -49,8 +47,8 @@ const AuthProvider = ({
     try {
       const response = await login(loginInformation)
       const { user } = response
+      setUser(user)
       setLocalStorage('profile', JSON.stringify(user))
-      setThemeMode('dark')
       setLoading(false)
       navigate('/app/home')
     } catch (err: any) {
@@ -60,8 +58,9 @@ const AuthProvider = ({
   }
 
   const signOut = async (): Promise<void> => {
+    await logout()
     removeLocalStorage('profile')
-    setThemeMode('light')
+    setUser(null)
     navigate('/login')
   }
 

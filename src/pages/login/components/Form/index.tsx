@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { type ChangeEvent, type FormEvent, useState } from 'react'
 import alert from '../../../../assets/svgs/alert.svg'
 import { SignInButton } from '../Buttons/sign-in-button'
 import { type LoginFormData } from '../../../../@types'
-import { CustomInput } from '../../../../components/Inputs/Standard'
 import { LockIcon, PersonIcon } from '../../../../assets/icons/index'
 import { loginFormSchema } from '../../../../validations/schemas/login/login-form-schema'
 import { type ValidationResult } from '../../../../@types/yup'
 import { type ObjectSchema } from 'yup'
 import { Spinner } from '@material-tailwind/react'
 import { useAuth } from '../../../../contexts/auth-context'
+import { LoginInput } from '../Inputs'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
@@ -40,13 +41,11 @@ export const Form = (): React.JSX.Element => {
   return (
     <>
       <form
-        onSubmit={async (e) => {
-          await handleSubmit(e)
-        }}
+        onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center p-8 justify-items-center"
       >
         <div className="flex flex-col w-full items-center p-4">
-          <CustomInput
+          <LoginInput
             name="email"
             onChange={(e) => {
               handleInput(e)
@@ -58,7 +57,7 @@ export const Form = (): React.JSX.Element => {
             placeholder="Username or STX email..."
           />
 
-          <CustomInput
+          <LoginInput
             name="password"
             type="password"
             onChange={(e) => {
