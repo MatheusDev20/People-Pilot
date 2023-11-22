@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "check-format": "prettier . --check",
-    "warn-test": "echo \"Escreve Teste pra essa bosta ai vagabundo\""
+    "warn-test": "echo \"Escreve Teste pra essa bosta ai vagabundo 🤡🤡🤡🤡🤡🤡🤡🤡🤡\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
