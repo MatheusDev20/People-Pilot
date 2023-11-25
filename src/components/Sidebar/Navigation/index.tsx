@@ -8,7 +8,7 @@ import { NavItem } from '../NavItem'
 
 export const Navigation = (): React.JSX.Element => {
   return (
-    <nav className="flex flex-col gap-4">
+    <nav className="flex flex-col gap-4 mt-4">
       <div>
         <h3 className="px-4 text-xs font-semibold text-gray-500 dark:text-white">
           General

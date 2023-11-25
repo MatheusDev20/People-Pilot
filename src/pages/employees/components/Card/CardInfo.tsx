@@ -16,7 +16,7 @@ export const CardInfo = ({
         <img
           src={employeeAvatar ?? fallBack}
           alt="Fake Avatar"
-          className="self-center rounded-full w-20 h-20"
+          className="self-center rounded-full w-24 h-24 object-cover"
         />
         <div className="flex flex-col items-center p-4 dark:text-white">
           <span className="text-lg font-semibold">{employeeName}</span>

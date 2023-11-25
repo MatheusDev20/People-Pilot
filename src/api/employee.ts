@@ -6,7 +6,7 @@ import { GET, PATCH, POST } from './handlers'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
   const data = await GET({
-    path: '/employee?name=Tech',
+    path: '/employee',
     authenticated: true,
   })
   return data
@@ -49,12 +49,11 @@ export const postEmployee = async (
   const body = {
     name: stepOne.name,
     email: stepOne.email,
-    password: stepTwo.password,
     birthDate,
     phone: stepOne.phone,
     position: stepTwo.position,
     departmentName: stepTwo.department,
-    roles: 'employee',
+    role: 'employee',
     hire_date: hireDate,
   }
 

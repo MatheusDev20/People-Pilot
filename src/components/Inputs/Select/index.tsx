@@ -64,9 +64,10 @@ export const CustomSelect = ({
           >
             {/* TODO: Turn this dyamic */}
             <option value="">{placeholder}</option>
-            <option value="Tech">Tech</option>
-            <option value="People and Culture">People and Culture</option>
-            <option value="Operations">Operations</option>
+            <option value="Sales">Sales</option>
+            <option value="HR">Human Resources</option>
+            <option value="Reception">Reception</option>
+            <option value="Accounting">Accounting</option>
           </select>
         </div>
         {error && (

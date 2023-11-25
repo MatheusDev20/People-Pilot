@@ -1,8 +1,4 @@
-import {
-  PersonIcon,
-  LockIcon,
-  DepartmentIcon,
-} from '../../../../../../assets/icons'
+import { PersonIcon, DepartmentIcon } from '../../../../../../assets/icons'
 import { CustomInput } from '../../../../../../components/Inputs/Standard'
 import { CustomSelect } from '../../../../../../components/Inputs/Select'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
@@ -39,7 +35,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           onChange={(e) => {
             handleSelect(e)
           }}
-          wSize="medium"
+          wSize="large"
           name="department"
           value={formData.stepTwo.department}
           error={errors ? errors.department : null}
@@ -47,21 +43,6 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           label="Departament"
           placeholder="Select an Department..."
         />
-        <CustomInput
-          onChange={(e) => {
-            handleInput(e)
-          }}
-          name="password"
-          value={formData.stepTwo.password}
-          type="password"
-          error={errors ? errors.password : null}
-          wSize="medium"
-          icon={<LockIcon />}
-          placeholder="@stx password access..."
-          label="Password Acesss"
-        />
-      </div>
-      <div className="flex gap-3 w-full p-1.5">
         <CustomInput
           onChange={(e) => {
             handleInput(e)

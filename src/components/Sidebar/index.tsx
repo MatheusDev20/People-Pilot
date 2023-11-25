@@ -1,5 +1,4 @@
 import React from 'react'
-// import logo from "../../assets/imgs/logo1.png";
 import { Navigation } from './Navigation'
 import { ThemeSwitch } from './ThemeSwitch'
 import { Link } from 'react-router-dom'
@@ -16,14 +15,14 @@ export const Sidebar = (): React.JSX.Element => {
       <div className="relative">
         <header className="flex items-center justify-center py-12">
           <Link to="/app/home">
-            {/* <img
-              src={logo}
-              alt="KSX"
-              className="place-self-center cursor-pointer"
-            /> */}
-            <span className="text-3xl place-self-center cursor-pointer dark:text-white">
-              STX
-            </span>
+            <div className="flex flex-col gap-3">
+              <span className="text-2xl place-self-center cursor-pointer dark:text-white font-bebas">
+                DUNDER
+              </span>
+              <span className="text-2xl place-self-center cursor-pointer dark:text-white font-bebas">
+                MIFFLIN
+              </span>
+            </div>
           </Link>
         </header>
         <Navigation />

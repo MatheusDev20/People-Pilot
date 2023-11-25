@@ -34,7 +34,7 @@ export default function EmployeeDetailPage(): JSX.Element {
             <img
               src={data.avatar ?? Employee}
               alt="employee_picture"
-              className="w-48 h-48 rounded-md"
+              className="w-48 h-48 rounded-md object-cover"
             />
 
             <span className="text-md font-black dark:text-white leading-6">

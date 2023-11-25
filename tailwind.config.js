@@ -5,7 +5,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
-
+    fontFamily: {
+      bebas: ['BEBAS', 'sans-serif'],
+    },
     colors: {
       black: colors.black,
       white: colors.white,
