@@ -1,10 +1,11 @@
 import { UploadInput } from '../../../../../../components/Inputs/Upload'
-import React from 'react'
+import React, { type SetStateAction } from 'react'
 import genericAvatar from '../../../../../../assets/imgs/fake-avatar1.png'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 
 interface Props {
   errors: Record<string, string[]> | null
+  setErrors: React.Dispatch<SetStateAction<Record<string, string[]> | null>>
   isLoading: boolean
 }
 const Loading = (): React.JSX.Element => {
@@ -15,7 +16,11 @@ const Loading = (): React.JSX.Element => {
   )
 }
 
-export const StepThree = ({ errors, isLoading }: Props): React.JSX.Element => {
+export const StepThree = ({
+  errors,
+  setErrors,
+  isLoading,
+}: Props): React.JSX.Element => {
   const {
     formData: { stepThree },
   } = useCreateEmployeeForm()
@@ -26,7 +31,7 @@ export const StepThree = ({ errors, isLoading }: Props): React.JSX.Element => {
         <Loading />
       ) : (
         <>
-          {!stepThree.avatar || errors?.avatar ? (
+          {!stepThree.avatar ? (
             <img
               src={genericAvatar}
               alt="preview"
@@ -39,7 +44,7 @@ export const StepThree = ({ errors, isLoading }: Props): React.JSX.Element => {
               className="rounded-full h-36 w-36"
             />
           )}
-          <UploadInput errors={errors ? errors.avatar : null} />
+          <UploadInput errors={errors ?? null} setErrors={setErrors} />
         </>
       )}
     </div>

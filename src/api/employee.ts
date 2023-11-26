@@ -1,6 +1,5 @@
 import { type Employee } from '../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../contexts/create-employee-form'
-import { timeout } from '../utils'
 import { convertDateFormat } from '../utils/dates'
 import { GET, PATCH, POST } from './handlers'
 
@@ -40,7 +39,6 @@ export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   const { stepOne, stepTwo, stepThree } = employeeFormData
-  await timeout(3000)
   const file = stepThree.avatar
 
   const birthDate = convertDateFormat(stepOne.birthDate)

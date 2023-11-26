@@ -1,7 +1,7 @@
 import React from 'react'
-import { AiOutlineHome } from 'react-icons/ai'
-import { FcDepartment } from 'react-icons/fc'
-import { BiTask } from 'react-icons/bi'
+// import { AiOutlineHome } from 'react-icons/ai'
+// import { FcDepartment } from 'react-icons/fc'
+// import { BiTask } from 'react-icons/bi'
 import { BsPersonVcard } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import { NavItem } from '../NavItem'
@@ -15,18 +15,18 @@ export const Navigation = (): React.JSX.Element => {
         </h3>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          <a href="/app/home">
+          {/* <a href="/app/home">
             <NavItem icon={<AiOutlineHome />} text="Home" />
-          </a>
+          </a> */}
           <a href="/app/employees">
             <NavItem icon={<BsPersonVcard />} text="Employees" />
           </a>
-          <a href="/home">
+          {/* <a href="/home">
             <NavItem icon={<BiTask />} text="Tasks" />
-          </a>
-          <a href="/departments">
+          </a> */}
+          {/* <a href="/departments">
             <NavItem icon={<FcDepartment />} text="Departments" />
-          </a>
+          </a> */}
         </div>
       </div>
 

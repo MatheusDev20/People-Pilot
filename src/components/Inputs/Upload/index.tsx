@@ -1,17 +1,26 @@
 import React, { type ChangeEvent } from 'react'
 import uploadIcon from '../../../assets/svgs/upload.svg'
 import { useCreateEmployeeForm } from '../../../contexts/create-employee-form'
-import { AiOutlineExclamationCircle } from 'react-icons/ai'
+import { validateFile } from '../../../validations/schemas'
 
 interface Props {
-  errors: string[] | null
+  errors: Record<string, string[]> | null
+  setErrors: any
 }
-export const UploadInput = ({ errors }: Props): React.JSX.Element => {
+export const UploadInput = ({
+  errors,
+  setErrors,
+}: Props): React.JSX.Element => {
   const { setFormData, formData } = useCreateEmployeeForm()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files ? e.target.files[0] : null
-
+    const { errors, veredict } = validateFile(file)
+    console.log(veredict)
+    if (!veredict) {
+      setErrors(errors)
+      return
+    }
     setFormData({
       ...formData,
       stepThree: {
@@ -20,7 +29,6 @@ export const UploadInput = ({ errors }: Props): React.JSX.Element => {
       },
     })
   }
-
   return (
     <div className="flex flex-col gap-4 w-full items-center">
       <div className="flex items-center justify-center w-full">
@@ -40,9 +48,23 @@ export const UploadInput = ({ errors }: Props): React.JSX.Element => {
       </div>
       {errors && (
         <footer className="flex gap-4 items-center">
-          <AiOutlineExclamationCircle className="font-semibold text-red-500" />
-          <span className="text-sm text-red-500 font-semibold">
-            {errors[0]}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 text-red-500 text-sm"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+            />
+          </svg>
+
+          <span className="text-sm text-red-500">
+            {errors.avatar ?? errors.avatar[0]}
           </span>
         </footer>
       )}

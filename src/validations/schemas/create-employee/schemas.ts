@@ -13,14 +13,10 @@ export const stepOneSchema = object({
 export const stepTwoSchema = object({
   department: string().required('Department is required'),
   position: string().required('Position is required'),
-  password: string()
-    .required()
-    .min(8, 'Password must be at least 8 characters'),
-
   hireDate: string().required('Hire date is required'),
 })
 
-const validFileExtensions = ['jpg', 'png']
+const validFileExtensions = ['jpg', 'png', 'jpeg']
 
 export function validateFile(file: File | null): ValidationResult {
   if (!file) {

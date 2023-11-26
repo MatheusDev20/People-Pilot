@@ -28,7 +28,13 @@ export const Stepper = (): React.JSX.Element => {
         return <StepTwo errors={errors} />
 
       case 2:
-        return <StepThree errors={errors} isLoading={isLoading} />
+        return (
+          <StepThree
+            errors={errors}
+            setErrors={setErrors}
+            isLoading={isLoading}
+          />
+        )
     }
   }
 
@@ -37,6 +43,7 @@ export const Stepper = (): React.JSX.Element => {
   }
   const handleNext = async (): Promise<void> => {
     const { veredict, errors } = await validateCurrentStep(formData, activeStep)
+
     if (!veredict) {
       setErrors(errors)
       return
