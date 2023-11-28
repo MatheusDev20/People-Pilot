@@ -11,3 +11,10 @@ export type LoginPayload = {
 export type LogoutPayload = {
   logoutTime: Date
 }
+
+export type Feedback = {
+  title: string
+  type: 'success' | 'error' | 'warning' | ''
+  msg: string
+  onScreen: boolean
+}

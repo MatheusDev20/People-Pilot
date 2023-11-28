@@ -3,11 +3,13 @@ const colors = require('tailwindcss/colors')
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  plugins: [require('daisyui')],
   theme: {
     extend: {},
     fontFamily: {
       bebas: ['BEBAS', 'sans-serif'],
     },
+
     colors: {
       black: colors.black,
       white: colors.white,
@@ -35,5 +37,4 @@ export default {
     },
   },
   darkMode: 'class',
-  plugins: [],
 }

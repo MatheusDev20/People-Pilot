@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import sideImage from '../../assets/imgs/login_side.jpg'
-import logo from '../../assets/imgs/logo1.png'
 import { Form } from './components/Form'
 import { useAuth } from '../../contexts/auth-context'
 import { useNavigate } from 'react-router-dom'
+import { Logo } from '../../components/Logo'
 
 export default function LoginPage(): JSX.Element {
   const { user } = useAuth()
@@ -13,25 +13,16 @@ export default function LoginPage(): JSX.Element {
   }, [])
   return (
     <div className="w-full h-screen">
-      <main className="flex flex-col md:flex-row sm:h-full pt-6">
+      <main className="flex flex-col md:flex-row sm:h-full">
         <aside className="md:w-1/2 sm:w-full sm:h-full flex items-center py-12">
           <main className="flex flex-col p-12 mb-4 w-full">
-            <div className="flex w-full items-center justify-center">
-              <img src={logo} alt="KSX" className="place-self-center mb-12" />
+            <div className="flex flex-col gap-11 items-center">
+              <Logo size="text-4xl" />
+              <h3 className="text-white tracking-tighter text-2xl">
+                Welcome back, please enter your credentials
+              </h3>
             </div>
-            {/* Welcome Messages */}
-            <div className="flex flex-col">
-              <div className="place-self-center flex flex-col gap-8">
-                <h1 className="place-self-center text-3xl font-semibold text-blue-800">
-                  Welcome to{' '}
-                  <span className="tracking-wider text-blue-400">KSX</span>
-                </h1>
-                <p className="text-gray-500 tracking-tighter text-lg">
-                  Welcome back, please enter your credentials
-                </p>
-              </div>
-              <Form />
-            </div>
+            <Form />
           </main>
         </aside>
 

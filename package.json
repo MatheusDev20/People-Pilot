@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "check-format": "prettier . --check",
+    "format": "prettier --loglevel warn --write \"**/*.{js,json,jsx,ts,tsx,html}\"",
     "warn-test": "echo \"Escreve Teste pra essa bosta ai vagabundo 🤡🤡🤡🤡🤡🤡🤡🤡🤡\""
   },
   "dependencies": {
@@ -47,6 +48,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.11",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^39.1.0",
@@ -60,7 +62,6 @@
     "prettier": "3.0.3",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.5",
-    "husky": "^8.0.0"
+    "vite": "^4.4.5"
   }
 }
