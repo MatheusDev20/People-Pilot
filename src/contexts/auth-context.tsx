@@ -13,7 +13,6 @@ import {
   removeLocalStorage,
   setLocalStorage,
 } from '../utils/auth'
-import { timeout } from '../utils'
 
 export interface AuthenticationContextProps {
   user: ActiveUser | null
@@ -44,7 +43,6 @@ const AuthProvider = ({
 
   const signIn = async (loginInformation: LoginFormData): Promise<void> => {
     setLoading(true)
-    await timeout(30000)
 
     try {
       const response = await login(loginInformation)

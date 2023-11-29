@@ -35,6 +35,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           onChange={(e) => {
             handleSelect(e)
           }}
+          step="stepTwo"
           wSize="large"
           name="department"
           value={formData.stepTwo.department}
@@ -48,6 +49,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
             handleInput(e)
           }}
           name="position"
+          step="stepTwo"
           value={formData.stepTwo.position}
           error={errors ? errors.position : null}
           wSize="medium"
@@ -61,6 +63,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
             handleInput(e)
           }}
           name="hireDate"
+          step="stepTwo"
           value={formData.stepTwo.hireDate}
           mask="99/99/9999"
           error={errors ? errors.hireDate : null}

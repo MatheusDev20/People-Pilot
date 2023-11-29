@@ -18,8 +18,8 @@ export default function LoginPage(): JSX.Element {
           <main className="flex flex-col p-12 mb-4 w-full">
             <div className="flex flex-col gap-11 items-center">
               <Logo size="text-4xl" />
-              <h3 className="text-white tracking-tighter text-2xl">
-                Welcome back, please enter your credentials
+              <h3 className="text-white tracking-tighter md:text-2xl text-sm">
+                Welcome back! please enter your credentials
               </h3>
             </div>
             <Form />

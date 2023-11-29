@@ -6,18 +6,14 @@ import {
 import { POST } from './handlers'
 
 export const login = async (data: LoginFormData): Promise<LoginPayload> => {
-  try {
-    const response = await POST<LoginPayload>({
-      path: '/auth/login',
-      body: data,
-      authenticated: true,
-    })
-    const { body } = response
+  const response = await POST<LoginPayload>({
+    path: '/auth/login',
+    body: data,
+    authenticated: true,
+  })
+  const { body } = response
 
-    return body
-  } catch (err: any) {
-    throw new Error(err.message)
-  }
+  return body
 }
 
 export const logout = async (): Promise<Date> => {

@@ -7,34 +7,26 @@ import {
   PhoneIcon,
 } from '../../../../../../assets/icons'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
+import {
+  normalizeDate,
+  normalizePhone,
+} from '../../../../../../components/Inputs/Masks'
 
 interface Props {
   errors: Record<string, string[]> | null
 }
 
 export const StepOne = ({ errors }: Props): React.JSX.Element => {
-  const { formData, setFormData } = useCreateEmployeeForm()
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setFormData({
-      ...formData,
-      stepOne: {
-        ...formData.stepOne,
-        [e.target.name]: e.target.value,
-      },
-    })
-  }
+  const { formData } = useCreateEmployeeForm()
 
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-4">
       {/* Name */}
       <div className="flex gap-6 w-full p-1.5">
         <CustomInput
-          onChange={(e) => {
-            handleInput(e)
-          }}
           wSize="medium"
           name="name"
+          step="stepOne"
           value={formData.stepOne.name}
           error={errors ? errors.name : null}
           icon={<PersonIcon />}
@@ -45,10 +37,8 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         {/* Email */}
         <CustomInput
           name="email"
+          step="stepOne"
           value={formData.stepOne.email}
-          onChange={(e) => {
-            handleInput(e)
-          }}
           wSize="medium"
           error={errors ? errors.email : null}
           label="Email"
@@ -60,29 +50,25 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
           name="birthDate"
+          step="stepOne"
           value={formData.stepOne.birthDate}
-          onChange={(e) => {
-            handleInput(e)
-          }}
           wSize="medium"
           error={errors ? errors.birthDate : null}
           label="Birth Date"
           icon={<CalendarIcon />}
-          mask="99/99/9999"
+          mask={normalizeDate}
           placeholder="09/09/1999..."
         />
         <CustomInput
           name="phone"
+          step="stepOne"
           value={formData.stepOne.phone}
-          onChange={(e) => {
-            handleInput(e)
-          }}
           wSize="medium"
           error={errors ? errors.phone : null}
           icon={<PhoneIcon />}
           label="Phone"
-          mask="(99) 999999999"
-          placeholder="(32) 999850138..."
+          mask={normalizePhone}
+          placeholder="(32) 9 99850138..."
         />
       </div>
     </div>

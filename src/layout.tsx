@@ -10,12 +10,9 @@ export default function BaseLayout({
   return (
     <div className="flex">
       <Sidebar />
-
       <div className={'w-full flex flex-col ml-[80px] md:ml-[230px] h-screen'}>
         <Header />
-        <main className="flex-1 bg-gray-50 dark:bg-[#121212] p-3">
-          {children}
-        </main>
+        <main className="flex-1 p-3 bg-base-100">{children}</main>
       </div>
     </div>
   )

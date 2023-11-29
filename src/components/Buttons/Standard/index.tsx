@@ -3,12 +3,14 @@ import clsx from 'clsx'
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode
+  size?: string
   disabled?: boolean
 }
 
 export const StandardButton = ({
   children,
   disabled,
+  size,
   ...rest
 }: Props): JSX.Element => {
   return (
@@ -16,8 +18,8 @@ export const StandardButton = ({
       disabled={disabled}
       className={clsx(
         !disabled
-          ? 'bg-twitter-blue-main hover:bg-twitter-blue-secondary  text-white font-semibold py-2 px-4 rounded cursor-pointer'
-          : 'bg-gray-300 text-white font-semibold py-2 px-4 rounded cursor-pointer',
+          ? `btn-primary btn ${size} hover:bg-blue-400`
+          : `btn-disabled btn ${size}`,
       )}
       {...rest}
     >

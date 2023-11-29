@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import React, { type InputHTMLAttributes, type ReactNode } from 'react'
-import { CiCircleAlert } from 'react-icons/ci'
-import InputMask from 'react-input-mask'
+import { useCreateEmployeeForm } from '../../../contexts/create-employee-form'
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   wSize: 'small' | 'medium' | 'large'
   icon: ReactNode
   label: string
-  mask?: string | Array<string | RegExp>
+  mask?: any
   error: string[] | null
+  step?: 'stepOne' | 'stepTwo' | 'stepThree'
 }
 
 const classes = {
@@ -22,9 +22,23 @@ export const CustomInput = ({
   icon,
   mask,
   label,
+  step,
   error,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
+  const { formData, setFormData } = useCreateEmployeeForm()
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const value = mask ? mask(e.target.value) : e.target.value
+
+    setFormData({
+      ...formData,
+      [step as string]: {
+        ...formData[step as keyof typeof formData],
+        [e.target.name]: value,
+      },
+    })
+  }
   return (
     <div
       className={clsx(
@@ -33,58 +47,26 @@ export const CustomInput = ({
           [classes.largeInput]: wSize === 'large',
           [classes.smallInput]: wSize === 'small',
         },
-        'flex w-full p-2 items-center justify-center',
+        'flex flex-col gap-3 w-full p-2',
       )}
     >
-      <div className="flex flex-col gap-2 w-[80%]">
-        <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
-          {label}
-        </label>
-        <div className="relative">
-          {/* Icon */}
-          <div
-            className={clsx(
-              { 'border-red-600': error },
-              'absolute flex border left-0 top-0 h-full w-10',
-            )}
-          >
-            <div className="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full">
-              {icon}
-            </div>
-          </div>
-
-          {mask ? (
-            <div className="flex flex-col gap-2 w-full">
-              <InputMask
-                mask={mask}
-                {...rest}
-                className={clsx(
-                  {
-                    'border-red-600': error,
-                  },
-                  'text-sm sm:text-base relative w-full dark:bg-darkGray-700 border rounded placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12 dark:text-white text-black',
-                )}
-              />
-            </div>
-          ) : (
-            <input
-              {...rest}
-              className={clsx(
-                {
-                  'border-red-600': error,
-                },
-                'text-sm sm:text-base dark:bg-darkGray-700 relative w-full border rounded placeholder-gray-400 dark:placeholder-gray-500 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-12 dark:text-white text-black',
-              )}
-            />
-          )}
-        </div>
-        {error && (
-          <footer className="flex gap-4 items-center">
-            <CiCircleAlert className="text-red-500" />
-            <span className="text-sm text-red-500">{error[0]}</span>
-          </footer>
+      <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
+        {label}
+      </label>
+      <input
+        {...rest}
+        onChange={handleInput}
+        type="text"
+        className={clsx(
+          error && 'input-error outline-none',
+          'input input-ghost bg-accent-content w-full text-white ',
         )}
-      </div>
+      />
+      {error && (
+        <footer className="flex gap-4 items-start p-1">
+          <span className="text-sm text-red-500">{error[0]}</span>
+        </footer>
+      )}
     </div>
   )
 }

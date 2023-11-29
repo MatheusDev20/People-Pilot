@@ -15,7 +15,7 @@ export const CardFooter = ({
   email,
 }: Props): React.JSX.Element => {
   return (
-    <footer className="flex flex-col p-5 bg-gray-100 gap-6 rounded-md dark:bg-[#1A1A1B]">
+    <footer className="flex flex-col p-5 gap-6 rounded-md bg-accent-content">
       <header className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <span className="text-sm text-blue-500 font-semibold dark:text-white">

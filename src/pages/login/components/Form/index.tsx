@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { type ChangeEvent, type FormEvent, useState } from 'react'
-import alert from '../../../../assets/svgs/alert.svg'
 import { type LoginFormData } from '../../../../@types'
-import { LockIcon, PersonIcon } from '../../../../assets/icons/index'
 import { loginFormSchema } from '../../../../validations/schemas/login/login-form-schema'
 import { type ValidationResult } from '../../../../@types/yup'
 import { type ObjectSchema } from 'yup'
@@ -44,15 +42,13 @@ export const Form = (): React.JSX.Element => {
         className="flex flex-col gap-5 items-center p-8 justify-items-center"
       >
         <div className="flex flex-col w-full items-center p-4">
-          <div className="w-full flex flex-col items-center gap-3">
+          <div className="w-full flex flex-col items-center gap-3 p-2">
             <LoginInput
               name="email"
               onChange={(e) => {
                 handleInput(e)
               }}
               error={errors ? errors.email : null}
-              wSize="medium"
-              icon={<PersonIcon />}
               label="Email"
               placeholder="Username or STX email..."
             />
@@ -64,27 +60,18 @@ export const Form = (): React.JSX.Element => {
                 handleInput(e)
               }}
               error={errors ? errors.password : null}
-              wSize="medium"
-              icon={<LockIcon />}
               label="Password"
               placeholder="Password..."
             />
+            {failedMessage && (
+              <span className="text-sm text-red-500">{failedMessage}</span>
+            )}
           </div>
-          {failedMessage && (
-            <div className="flex gap-2 items-center">
-              {
-                <span className=" text-sm text-red-500 font-semibold">
-                  {failedMessage}
-                </span>
-              }
-              <img src={alert} alt="alert" className="h-5 w-5" />
-            </div>
-          )}
           <a className="text-sm mb-10 mt-5 link-primary cursor-pointer no-underline font-medium hover:text-blue-400">
             Forgot password?
           </a>
           <button
-            className="btn btn-primary w-[35%] hover:bg-blue-400"
+            className="btn btn-primary w-[80%] md:w-[35%] hover:bg-blue-400"
             onClick={() => handleSubmit}
           >
             {loading ? (

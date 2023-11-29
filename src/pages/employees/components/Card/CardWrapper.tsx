@@ -16,7 +16,7 @@ export const CardWrapper = ({
   return (
     <div
       onClick={navigateDetail}
-      className="max-w-full border-solid dark:border-darkGray-600 border-2 flex flex-col p-2 gap-6 dark:bg-darkGray-700 hover:dark:border-twitter-blue-secondary transition ease-in-out delay-75 "
+      className="max-w-full border-solid dark:border-darkGray-600 border-2 flex flex-col p-2 gap-6 bg-base-300 hover:dark:border-twitter-blue-secondary transition ease-in-out delay-75 "
     >
       {children}
     </div>

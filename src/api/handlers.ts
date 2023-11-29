@@ -29,7 +29,8 @@ export const POST = async <T>(
       },
       withCredentials: authenticated,
     })
-    console.log('res', response)
+
+    console.log('HANDLER', response)
     const { data } = response
     return data
   } catch (err: any) {

@@ -6,10 +6,7 @@ export default function CreateEmployeePage(): React.JSX.Element {
   return (
     <CreateEmployeeFormProvider>
       <main className="flex flex-col p-8">
-        <h1 className="text-sm md:text-3xl font-semibold dark:text-white">
-          Register new Employee
-          <button className="btn btn-secondary">Secondary</button>
-        </h1>
+        <h1 className="text-sm md:text-3xl font-semibold">New Employee</h1>
         <div className="flex mt-8">
           <Stepper />
         </div>

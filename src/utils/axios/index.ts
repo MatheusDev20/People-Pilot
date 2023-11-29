@@ -20,6 +20,8 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
     await refresh()
     return await axiosInstance(originalRequest)
   }
+
+  throw error
 }
 
 axiosInstance.interceptors.response.use((response) => {
@@ -30,7 +32,9 @@ export const handleRequestError = (
   error: any,
   defaultMessage = 'Erro de Sistema',
 ): string => {
+  console.log(error)
   if (error instanceof AxiosError) {
+    console.log('aXIOS')
     const { response } = error
     const message = response?.data.response.message
 

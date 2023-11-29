@@ -16,7 +16,6 @@ export const UploadInput = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files ? e.target.files[0] : null
     const { errors, veredict } = validateFile(file)
-    console.log(veredict)
     if (!veredict) {
       setErrors(errors)
       return

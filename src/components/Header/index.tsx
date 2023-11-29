@@ -7,7 +7,7 @@ export const Header = (): React.JSX.Element => {
   const { user, signOut } = useAuth()
 
   return (
-    <header className="flex justify-end p-4 dark:bg-darkGray-900 border-solid dark:border-darkGray-600 border-b-[0.4px]">
+    <header className="flex justify-end p-4 bg-base-300 border-solid border-neutral border-b-[0.4px]">
       {/* Logged user Avatar */}
       <div className="flex md:justify-normal">
         <div className="flex gap-8 items-center  pl-12 pr-12">
