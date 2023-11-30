@@ -6,19 +6,19 @@ import { validateCurrentStep } from '../../../../../validations/schemas'
 import { useMutation } from '@tanstack/react-query'
 import { postEmployee } from '../../../../../api/employee'
 import { StandardButton } from '../../../../../components/Buttons/Standard'
-import { type Feedback } from '../../../../../@types'
-import { AlertModal } from '../../../../../components/AlertModal'
+// import { type Feedback } from '../../../../../@types'
+
 import clsx from 'clsx'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
-  const [feedback, setFeedback] = useState<Feedback>({
-    title: '',
-    type: '',
-    msg: '',
-    onScreen: false,
-  })
+  // const [feedback, setFeedback] = useState<Feedback>({
+  //   title: '',
+  //   type: '',
+  //   msg: '',
+  //   onScreen: false,
+  // })
 
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
@@ -62,30 +62,20 @@ export const Stepper = (): React.JSX.Element => {
   const handleFinish = async (): Promise<void> => {
     try {
       mutate(formData)
-      setFeedback({
-        msg: 'Employee created with success',
-        onScreen: true,
-        title: 'Created',
-        type: 'success',
-      })
     } catch (err) {
-      setFeedback({
-        msg: 'Error creating employee',
-        onScreen: true,
-        type: 'error',
-        title: 'Error',
-      })
+      console.log(err)
     }
-    mutate(formData)
   }
 
   return (
     <>
       {isSuccess ? (
-        <StepFour employeeId={data} />
+        <>
+          {' '}
+          <StepFour employeeId={data} />
+        </>
       ) : (
         <div className="flex flex-col w-full gap-6 p-3">
-          {feedback.onScreen && <AlertModal feedback={feedback} />}
           <ul className="steps">
             {steps.map((step) => (
               <li

@@ -32,51 +32,30 @@ export const CustomSelect = ({
           [classes.largeInput]: wSize === 'large',
           [classes.smallInput]: wSize === 'small',
         },
-        'flex w-full p-2 items-center justify-center',
+        'flex flex-col gap-3 w-full p-2',
       )}
     >
-      <div className="flex flex-col gap-2 w-[80%]">
-        {/* Input Label */}
-        <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
-          {label}
-        </label>
-        {/* Input Itself */}
-        <div className="relative">
-          {/* Input ICON */}
-          <div
-            className={clsx(
-              { 'border-red-600': error },
-              'absolute flex border left-0 top-0 h-full w-10',
-            )}
-          >
-            <div className="flex items-center justify-center rounded-tl rounded-bl z-10 bg-gray-100 text-gray-600 text-lg h-full w-full">
-              {icon}
-            </div>
-          </div>
-          <select
-            {...rest}
-            className={clsx(
-              {
-                'border-red-600': error,
-              },
-              'text-sm sm:text-base relative w-full border rounded bg-white placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2.5 pr-2 pl-12',
-            )}
-          >
-            {/* TODO: Turn this dyamic */}
-            <option value="">{placeholder}</option>
-            <option value="Sales">Sales</option>
-            <option value="HR">Human Resources</option>
-            <option value="Reception">Reception</option>
-            <option value="Accounting">Accounting</option>
-          </select>
+      {/* Input Label */}
+      <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
+        {label}
+      </label>
+      {/* Input Itself */}
+      <select
+        className="select select-ghost w-full bg-accent-content "
+        {...rest}
+      >
+        <option value="">{placeholder}</option>
+        <option value="Sales">Sales</option>
+        <option value="HR">Human Resources</option>
+        <option value="Reception">Reception</option>
+        <option value="Accounting">Accounting</option>
+      </select>
+      {error && (
+        <div className="flex gap-4 items-center">
+          <CiCircleAlert className="text-red-500" />
+          <span className="text-sm text-red-500">{error[0]}</span>
         </div>
-        {error && (
-          <div className="flex gap-4 items-center">
-            <CiCircleAlert className="text-red-500" />
-            <span className="text-sm text-red-500">{error[0]}</span>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   )
 }

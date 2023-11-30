@@ -1,5 +1,12 @@
 import axios, { AxiosError } from 'axios'
 import { refresh } from '../../api/auth'
+const unauthorizedMessages = ['Expired Cookie', 'JsonWebTokenError']
+
+export type HttpResponse = {
+  response: any
+  timestamp: string
+  path: string
+}
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_KSX_BACKEND_URL,
@@ -10,12 +17,12 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   const { response } = error
   const originalRequest = error.config
   const status = response?.status
-  const data: any = response?.data
+  const axiosData = response?.data as HttpResponse
 
   if (
     status === 401 &&
     originalRequest &&
-    data.response.name === 'TokenExpiredError'
+    unauthorizedMessages.includes(axiosData.response.message)
   ) {
     await refresh()
     return await axiosInstance(originalRequest)
