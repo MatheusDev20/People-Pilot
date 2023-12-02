@@ -50,7 +50,7 @@ export const Form = (): React.JSX.Element => {
               }}
               error={errors ? errors.email : null}
               label="Email"
-              placeholder="Username or STX email..."
+              placeholder="Email..."
             />
 
             <LoginInput

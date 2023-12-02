@@ -1,7 +1,12 @@
+import { AxiosError } from 'axios'
 import { type Employee } from '../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../contexts/create-employee-form'
+import { ApplicationError } from '../exceptions/errors'
+
 import { convertDateFormat } from '../utils/dates'
 import { GET, PATCH, POST } from './handlers'
+import { extractApiError } from '../utils/axios'
+import { timeout } from '../utils'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
   const data = await GET({
@@ -38,30 +43,36 @@ export const uploadAvatar = async (file: File, id: string): Promise<string> => {
 export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
-  const { stepOne, stepTwo, stepThree } = employeeFormData
-  const file = stepThree.avatar
+  try {
+    await timeout(15000)
+    const { stepOne, stepTwo, stepThree } = employeeFormData
+    const file = stepThree.avatar
 
-  const birthDate = convertDateFormat(stepOne.birthDate)
-  const hireDate = convertDateFormat(stepTwo.hireDate)
+    const birthDate = convertDateFormat(stepOne.birthDate)
+    const hireDate = convertDateFormat(stepTwo.hireDate)
 
-  const body = {
-    name: stepOne.name,
-    email: stepOne.email,
-    birthDate,
-    phone: stepOne.phone,
-    position: stepTwo.position,
-    departmentName: stepTwo.department,
-    role: 'employee',
-    hire_date: hireDate,
+    const body = {
+      name: stepOne.name,
+      email: stepOne.email,
+      birthDate,
+      phone: stepOne.phone,
+      position: stepTwo.position,
+      departmentName: stepTwo.department,
+      role: 'employee',
+      hire_date: hireDate,
+    }
+
+    const data = await POST<{ id: string }>({
+      authenticated: false,
+      path: '/employee',
+      body,
+    })
+    if (file) await uploadAvatar(file, data.body.id)
+    return data.body.id
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      throw new ApplicationError(extractApiError(err))
+    }
+    throw new ApplicationError('General System Failure Try again later')
   }
-
-  const data = await POST<{ id: string }>({
-    authenticated: false,
-    path: '/employee',
-    body,
-  })
-
-  if (file) await uploadAvatar(file, data.body.id)
-
-  return data.body.id
 }

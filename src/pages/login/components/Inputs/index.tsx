@@ -15,8 +15,6 @@ export const LoginInput = ({
       <label className="font-semibold text-sm p-2.5 text-white">{label}</label>
       <input
         {...rest}
-        type="text"
-        placeholder="Type here"
         className="input input-ghost bg-accent-content w-full text-white"
       />
       {error && (

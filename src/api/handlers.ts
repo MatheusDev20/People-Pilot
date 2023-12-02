@@ -1,5 +1,5 @@
 import { type BasicRequest, type BasicResponse } from '../@types/http'
-import { handleRequestError, axiosInstance } from '../utils/axios'
+import { axiosInstance } from '../utils/axios'
 
 export const GET = async (request: BasicRequest): Promise<any> => {
   const { headers, path, authenticated } = request
@@ -22,22 +22,14 @@ export const POST = async <T>(
 ): Promise<BasicResponse<T>> => {
   const { headers, path, body, authenticated } = request
 
-  try {
-    const response = await axiosInstance.post(`${path}`, body, {
-      headers: headers ?? {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: authenticated,
-    })
-
-    console.log('HANDLER', response)
-    const { data } = response
-    return data
-  } catch (err: any) {
-    throw new Error(
-      handleRequestError(err, 'Erro no sistema, tente mais tarde'),
-    )
-  }
+  const response = await axiosInstance.post(`${path}`, body, {
+    headers: headers ?? {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: authenticated,
+  })
+  const { data } = response
+  return data
 }
 
 export const PATCH = async <T>(

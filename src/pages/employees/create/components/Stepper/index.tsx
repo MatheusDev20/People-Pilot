@@ -1,29 +1,54 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from 'react'
-import { StepFour, StepOne, StepThree, StepTwo, steps } from '../Steps'
+import React, { useRef, useState } from 'react'
+import { StepOne, StepThree, StepTwo, steps } from '../Steps'
 import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
 import { validateCurrentStep } from '../../../../../validations/schemas'
 import { useMutation } from '@tanstack/react-query'
 import { postEmployee } from '../../../../../api/employee'
 import { StandardButton } from '../../../../../components/Buttons/Standard'
-// import { type Feedback } from '../../../../../@types'
 
 import clsx from 'clsx'
+import { CustomDialog } from '../../../../../components/Dialog'
+import { type Feedback } from '../../../../../@types'
+import { type ApplicationError } from '../../../../../exceptions/errors'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
-  // const [feedback, setFeedback] = useState<Feedback>({
-  //   title: '',
-  //   type: '',
-  //   msg: '',
-  //   onScreen: false,
-  // })
+  const [feedback, setFeedback] = useState<Feedback>({
+    title: '',
+    type: '',
+    msg: '',
+    onScreen: false,
+  })
+
+  const ref = useRef<HTMLDialogElement>(null)
+  const onOpenModal = (): void => {
+    ref.current?.showModal()
+  }
 
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
-  const { isLoading, mutate, isSuccess, data } = useMutation({
+  const { isLoading, mutate } = useMutation({
     mutationFn: postEmployee,
+    onError: (error: ApplicationError) => {
+      setFeedback({
+        msg: error.getErrorMessage(),
+        title: 'Failed to create employee',
+        type: 'error',
+        onScreen: true,
+      })
+      onOpenModal()
+    },
+    onSuccess: () => {
+      setFeedback({
+        msg: 'Employee created successfully',
+        title: 'Employee created',
+        type: 'success',
+        onScreen: true,
+      })
+      onOpenModal()
+    },
   })
 
   const getCurrentStep = (currStep: number): JSX.Element | undefined => {
@@ -60,56 +85,48 @@ export const Stepper = (): React.JSX.Element => {
   }
 
   const handleFinish = async (): Promise<void> => {
-    try {
-      mutate(formData)
-    } catch (err) {
-      console.log(err)
-    }
+    mutate(formData)
   }
 
   return (
-    <>
-      {isSuccess ? (
-        <>
-          {' '}
-          <StepFour employeeId={data} />
-        </>
-      ) : (
-        <div className="flex flex-col w-full gap-6 p-3">
-          <ul className="steps">
-            {steps.map((step) => (
-              <li
-                className={clsx(
-                  {
-                    'step-success':
-                      step.stepId < activeStep || formData.stepThree.avatar,
-                  },
-                  { 'step-accent': step.stepId === activeStep },
-                  'step step-primary',
-                )}
-                key={step.label}
-              >
-                {step.label}
-              </li>
-            ))}
-          </ul>
-          <div className="flex p-3">{getCurrentStep(activeStep)}</div>
-          <div className="justify-center gap-24 flex p-3">
-            {activeStep !== 0 && (
-              <StandardButton disabled={isLoading} onClick={handleBack}>
-                Back
-              </StandardButton>
+    <div className="flex flex-col w-full gap-6 p-3">
+      <CustomDialog ref={ref} feedback={feedback} />
+      <ul className="steps">
+        {steps.map((step) => (
+          <li
+            className={clsx(
+              {
+                'step-success':
+                  step.stepId < activeStep || formData.stepThree.avatar,
+              },
+              { 'step-accent': step.stepId === activeStep },
+              'step step-primary',
             )}
-            {activeStep === steps.length - 1 ? (
-              <StandardButton disabled={isLoading} onClick={handleFinish}>
-                Create Employee
-              </StandardButton>
+            key={step.label}
+          >
+            {step.label}
+          </li>
+        ))}
+      </ul>
+      <div className="flex p-3">{getCurrentStep(activeStep)}</div>
+      <div className="justify-center gap-24 flex p-3">
+        {activeStep !== 0 && (
+          <StandardButton disabled={isLoading} onClick={handleBack}>
+            Back
+          </StandardButton>
+        )}
+        {activeStep === steps.length - 1 ? (
+          <StandardButton onClick={handleFinish}>
+            {isLoading ? (
+              <span className="loading loading-dots"></span>
             ) : (
-              <StandardButton onClick={handleNext}>NEXT</StandardButton>
+              'Create'
             )}
-          </div>
-        </div>
-      )}
-    </>
+          </StandardButton>
+        ) : (
+          <StandardButton onClick={handleNext}>NEXT</StandardButton>
+        )}
+      </div>
+    </div>
   )
 }

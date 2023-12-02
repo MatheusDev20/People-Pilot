@@ -35,13 +35,13 @@ axiosInstance.interceptors.response.use((response) => {
   return response
 }, refreshToken)
 
-export const handleRequestError = (
+export const extractApiError = (
   error: any,
   defaultMessage = 'Erro de Sistema',
 ): string => {
   console.log(error)
   if (error instanceof AxiosError) {
-    console.log('aXIOS')
+    console.log(error instanceof AxiosError)
     const { response } = error
     const message = response?.data.response.message
 

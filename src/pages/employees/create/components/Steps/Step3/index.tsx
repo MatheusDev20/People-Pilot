@@ -11,7 +11,8 @@ interface Props {
 const Loading = (): React.JSX.Element => {
   return (
     <div className="flex flex-col items-center w-full gap-5">
-      <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
+      {/* <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" /> */}
+      <span className="loading loading-dots w-24 text-primary"></span>
     </div>
   )
 }
