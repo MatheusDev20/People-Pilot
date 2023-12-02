@@ -34,15 +34,20 @@ export const CustomInput = ({
         'flex flex-col gap-3 w-full p-2',
       )}
     >
-      <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
+      <div className="label">
+        <span className="label-text dark:text-white font-semibold">
+          {label}
+        </span>
+      </div>
+      {/* <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
         {label}
-      </label>
+      </label> */}
       <input
         {...rest}
         type="text"
         className={clsx(
           error && 'input-error outline-none',
-          'input input-ghost bg-accent-content w-full text-white ',
+          'input input-ghost bg-accent-content md:w-full text-white w-[80%]',
         )}
       />
       {error && (
