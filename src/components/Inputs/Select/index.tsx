@@ -1,10 +1,9 @@
 import clsx from 'clsx'
-import React, { type InputHTMLAttributes, type ReactNode } from 'react'
+import React, { type InputHTMLAttributes } from 'react'
 import { CiCircleAlert } from 'react-icons/ci'
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   wSize: 'small' | 'medium' | 'large'
-  icon: ReactNode
   label: string
   placeholder?: string
   error: string[] | null
@@ -18,7 +17,6 @@ const classes = {
 
 export const CustomSelect = ({
   wSize,
-  icon,
   label,
   error,
   placeholder,

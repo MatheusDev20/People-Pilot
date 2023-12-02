@@ -1,13 +1,8 @@
 import { CustomInput } from '../../../../../../components/Inputs/Standard'
 import React from 'react'
-import {
-  PersonIcon,
-  CalendarIcon,
-  EmailIcon,
-  PhoneIcon,
-} from '../../../../../../assets/icons'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 import {
+  hasMask,
   normalizeDate,
   normalizePhone,
 } from '../../../../../../components/Inputs/Masks'
@@ -17,7 +12,21 @@ interface Props {
 }
 
 export const StepOne = ({ errors }: Props): React.JSX.Element => {
-  const { formData } = useCreateEmployeeForm()
+  const { formData, setFormData } = useCreateEmployeeForm()
+
+  const handleStepChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const name = e.target.name
+    const mask = hasMask(name)
+    const value = mask ? mask(e.target.value) : e.target.value
+
+    setFormData({
+      ...formData,
+      stepOne: {
+        ...formData.stepOne,
+        [name]: value,
+      },
+    })
+  }
 
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-4">
@@ -26,10 +35,9 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         <CustomInput
           wSize="medium"
           name="name"
-          step="stepOne"
+          onChange={handleStepChange}
           value={formData.stepOne.name}
           error={errors ? errors.name : null}
-          icon={<PersonIcon />}
           label="First Name"
           placeholder="Katarine Devito..."
           type="text"
@@ -37,12 +45,11 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
         {/* Email */}
         <CustomInput
           name="email"
-          step="stepOne"
           value={formData.stepOne.email}
+          onChange={handleStepChange}
           wSize="medium"
           error={errors ? errors.email : null}
           label="Email"
-          icon={<EmailIcon />}
           placeholder="katarine@stx.com..."
         />
       </div>
@@ -50,22 +57,20 @@ export const StepOne = ({ errors }: Props): React.JSX.Element => {
       <div className="flex gap-3 w-full p-1.5">
         <CustomInput
           name="birthDate"
-          step="stepOne"
+          onChange={handleStepChange}
           value={formData.stepOne.birthDate}
           wSize="medium"
           error={errors ? errors.birthDate : null}
           label="Birth Date"
-          icon={<CalendarIcon />}
           mask={normalizeDate}
           placeholder="09/09/1999..."
         />
         <CustomInput
           name="phone"
-          step="stepOne"
+          onChange={handleStepChange}
           value={formData.stepOne.phone}
           wSize="medium"
           error={errors ? errors.phone : null}
-          icon={<PhoneIcon />}
           label="Phone"
           mask={normalizePhone}
           placeholder="(32) 9 99850138..."

@@ -63,7 +63,7 @@ const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
 const useCreateEmployeeForm = (): ContextProps => {
   const context = useContext(CreateEmployeeForm)
   if (context == null) {
-    throw new Error('useModalContext must be used within a provider')
+    throw new Error('createEmployeeForm must be used within a provider')
   }
   return context
 }

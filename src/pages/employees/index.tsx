@@ -4,10 +4,18 @@ import { CardList } from './components/CardList'
 import { Header } from './components/Header'
 
 import { useEmployeeList } from '../../hooks/employee-list'
+import { LoadingDots } from '../../components/Loading/Dots'
 
 export default function EmployeePage(): JSX.Element {
   const { data, isLoading, isError } = useEmployeeList()
-  if (isLoading) return <h1>Loading...</h1>
+
+  if (isLoading)
+    return (
+      <div className="flex flex-col md:flex-col sm:h-full items-center justify-center max-w-full">
+        <LoadingDots />
+      </div>
+    )
+
   return (
     <>
       {isError ? (

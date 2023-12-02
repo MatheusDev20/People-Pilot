@@ -1,8 +1,8 @@
-import { PersonIcon, DepartmentIcon } from '../../../../../../assets/icons'
 import { CustomInput } from '../../../../../../components/Inputs/Standard'
 import { CustomSelect } from '../../../../../../components/Inputs/Select'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 import React from 'react'
+import { hasMask } from '../../../../../../components/Inputs/Masks'
 
 interface Props {
   errors: Record<string, string[]> | null
@@ -10,65 +10,55 @@ interface Props {
 export const StepTwo = ({ errors }: Props): React.JSX.Element => {
   const { formData, setFormData } = useCreateEmployeeForm()
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleStepChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ): void => {
+    const name = e.target.name
+    const mask = hasMask(name)
+
+    const value = mask ? mask(e.target.value) : e.target.value
     setFormData({
       ...formData,
       stepTwo: {
         ...formData.stepTwo,
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
     })
   }
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setFormData({
-      ...formData,
-      stepTwo: {
-        ...formData.stepTwo,
-        [e.target.name]: e.target.value,
-      },
-    })
-  }
+
   return (
     <div className="flex flex-col gap-5 w-full items-start ml-10">
       <div className="flex gap-3 w-full p-1.5">
         <CustomSelect
-          onChange={(e) => {
-            handleSelect(e)
-          }}
+          onChange={handleStepChange}
           step="stepTwo"
           wSize="large"
           name="department"
           value={formData.stepTwo.department}
           error={errors ? errors.department : null}
-          icon={<DepartmentIcon />}
           label="Departament"
           placeholder="Select an Department..."
         />
         <CustomInput
-          onChange={(e) => {
-            handleInput(e)
-          }}
+          onChange={handleStepChange}
           name="position"
           step="stepTwo"
           value={formData.stepTwo.position}
           error={errors ? errors.position : null}
           wSize="medium"
-          icon={<PersonIcon />}
           placeholder="New employee position..."
           label="Position"
         />
 
         <CustomInput
-          onChange={(e) => {
-            handleInput(e)
-          }}
+          onChange={handleStepChange}
           name="hireDate"
           step="stepTwo"
+          disabled={true}
           value={formData.stepTwo.hireDate}
           mask="99/99/9999"
           error={errors ? errors.hireDate : null}
           wSize="medium"
-          icon={<PersonIcon />}
           placeholder="01/12/2023..."
           label="Hire Date"
         />

@@ -1,6 +1,10 @@
 import axios, { AxiosError } from 'axios'
 import { refresh } from '../../api/auth'
-const unauthorizedMessages = ['Expired Cookie', 'JsonWebTokenError']
+const unauthorizedMessages = [
+  'Expired Cookie',
+  'JsonWebTokenError',
+  'Token Signature Verification Failed',
+]
 
 export type HttpResponse = {
   response: any

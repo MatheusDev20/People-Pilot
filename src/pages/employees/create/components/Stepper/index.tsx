@@ -40,12 +40,13 @@ export const Stepper = (): React.JSX.Element => {
       })
       onOpenModal()
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       setFeedback({
         msg: 'Employee created successfully',
         title: 'Employee created',
         type: 'success',
         onScreen: true,
+        createdId: data,
       })
       onOpenModal()
     },

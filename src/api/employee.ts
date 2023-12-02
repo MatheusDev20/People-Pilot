@@ -9,6 +9,7 @@ import { extractApiError } from '../utils/axios'
 import { timeout } from '../utils'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
+  await timeout(3000)
   const data = await GET({
     path: '/employee',
     authenticated: true,
@@ -44,7 +45,7 @@ export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   try {
-    await timeout(15000)
+    await timeout(1000)
     const { stepOne, stepTwo, stepThree } = employeeFormData
     const file = stepThree.avatar
 
@@ -67,7 +68,9 @@ export const postEmployee = async (
       path: '/employee',
       body,
     })
+    console.log('ss', data.body.id)
     if (file) await uploadAvatar(file, data.body.id)
+
     return data.body.id
   } catch (err) {
     if (err instanceof AxiosError) {

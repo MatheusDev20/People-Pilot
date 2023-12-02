@@ -1,10 +1,8 @@
 import clsx from 'clsx'
-import React, { type InputHTMLAttributes, type ReactNode } from 'react'
-import { useCreateEmployeeForm } from '../../../contexts/create-employee-form'
+import React, { type InputHTMLAttributes } from 'react'
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   wSize: 'small' | 'medium' | 'large'
-  icon: ReactNode
   label: string
   mask?: any
   error: string[] | null
@@ -19,26 +17,12 @@ const classes = {
 
 export const CustomInput = ({
   wSize,
-  icon,
   mask,
   label,
   step,
   error,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
-  const { formData, setFormData } = useCreateEmployeeForm()
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = mask ? mask(e.target.value) : e.target.value
-
-    setFormData({
-      ...formData,
-      [step as string]: {
-        ...formData[step as keyof typeof formData],
-        [e.target.name]: value,
-      },
-    })
-  }
   return (
     <div
       className={clsx(
@@ -55,7 +39,6 @@ export const CustomInput = ({
       </label>
       <input
         {...rest}
-        onChange={handleInput}
         type="text"
         className={clsx(
           error && 'input-error outline-none',

@@ -17,4 +17,5 @@ export type Feedback = {
   type: 'success' | 'error' | 'warning' | ''
   msg: string
   onScreen: boolean
+  createdId?: string
 }
