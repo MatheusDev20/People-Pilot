@@ -10,20 +10,22 @@ import { timeout } from '../utils'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
   await timeout(3000)
-  const data = await GET({
+  const response = await GET<Employee[]>({
     path: '/employee',
     authenticated: true,
   })
-  return data
+  const { body } = response
+  return body
 }
 
 export const getEmployeeById = async (id: string): Promise<Employee> => {
-  const data = await GET({
+  const data = await GET<Employee>({
     path: `/employee/details/${id}`,
     authenticated: true,
   })
 
-  return data
+  const { body } = data
+  return body
 }
 
 export const uploadAvatar = async (file: File, id: string): Promise<string> => {

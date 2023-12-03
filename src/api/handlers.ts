@@ -1,7 +1,9 @@
 import { type BasicRequest, type BasicResponse } from '../@types/http'
 import { axiosInstance } from '../utils/axios'
 
-export const GET = async (request: BasicRequest): Promise<any> => {
+export const GET = async <T>(
+  request: BasicRequest,
+): Promise<BasicResponse<T>> => {
   const { headers, path, authenticated } = request
 
   try {
@@ -10,8 +12,11 @@ export const GET = async (request: BasicRequest): Promise<any> => {
       withCredentials: authenticated,
     })
 
-    const { body } = response.data
-    return body
+    const retrieveData: BasicResponse<T> = {
+      body: response.data.body,
+    }
+
+    return retrieveData
   } catch (err: any) {
     throw new Error(err)
   }
