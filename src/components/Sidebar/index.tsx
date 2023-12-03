@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigation } from './Navigation'
-import { ThemeSwitch } from './ThemeSwitch'
+// import { ThemeSwitch } from './ThemeSwitch'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../../hooks/theme'
 import { Logo } from '../Logo'
@@ -21,7 +21,7 @@ export const Sidebar = (): React.JSX.Element => {
         </header>
         <Navigation />
       </div>
-      <ThemeSwitch />
+      {/* <ThemeSwitch /> */}
     </aside>
   )
 }

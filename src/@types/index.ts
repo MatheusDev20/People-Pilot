@@ -19,3 +19,9 @@ export type Feedback = {
   onScreen: boolean
   createdId?: string
 }
+
+export type AccordionElement = {
+  order: number
+  label: string
+  info: string
+}
