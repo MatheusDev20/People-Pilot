@@ -70,7 +70,7 @@ export const postEmployee = async (
       path: '/employee',
       body,
     })
-    console.log('ss', data.body.id)
+
     if (file) await uploadAvatar(file, data.body.id)
 
     return data.body.id

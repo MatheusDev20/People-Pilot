@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { type AccordionElement } from '../@types'
 
 export const timeout = async (ms: number): Promise<void> => {
@@ -16,4 +17,8 @@ export const extract = (
       order: mapper.find((obj) => obj[k])?.order,
     }))
     .sort((a, b) => a.order - b.order)
+}
+
+export function getKeysOf<T extends object>(obj: T): string[] {
+  return Object.keys(obj)
 }

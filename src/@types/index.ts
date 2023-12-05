@@ -25,3 +25,10 @@ export type AccordionElement = {
   label: string
   info: string
 }
+
+export type Department = {
+  name: string
+  activeEmployees: number
+  status: string
+  manager: string
+}

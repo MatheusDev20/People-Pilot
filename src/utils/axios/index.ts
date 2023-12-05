@@ -1,5 +1,6 @@
-import axios, { AxiosError } from 'axios'
+import axios, { type AxiosError } from 'axios'
 import { refresh } from '../../api/auth'
+
 const unauthorizedMessages = [
   'Expired Cookie',
   'JsonWebTokenError',
@@ -40,17 +41,10 @@ axiosInstance.interceptors.response.use((response) => {
 }, refreshToken)
 
 export const extractApiError = (
-  error: any,
-  defaultMessage = 'Erro de Sistema',
+  error: AxiosError<any, any>,
+  defaultMessage = 'Erro ao processar a requisição. Tente novamente mais tarde ou entre em contato com o suporte.',
 ): string => {
-  console.log(error)
-  if (error instanceof AxiosError) {
-    console.log(error instanceof AxiosError)
-    const { response } = error
-    const message = response?.data.response.message
-
-    return message
-  }
-
-  return defaultMessage
+  const { response } = error
+  const message = response?.data.response.message
+  return message ?? defaultMessage
 }

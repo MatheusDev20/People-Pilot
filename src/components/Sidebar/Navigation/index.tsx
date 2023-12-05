@@ -5,6 +5,7 @@ import React from 'react'
 import { BsPersonVcard } from 'react-icons/bs'
 import { FiSettings } from 'react-icons/fi'
 import { NavItem } from '../NavItem'
+import { BuildingIcon } from '../../../assets/svgs/building'
 
 export const Navigation = (): React.JSX.Element => {
   return (
@@ -15,15 +16,12 @@ export const Navigation = (): React.JSX.Element => {
         </h3>
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
-          {/* <a href="/app/home">
-            <NavItem icon={<AiOutlineHome />} text="Home" />
-          </a> */}
           <a href="/app/employees">
             <NavItem icon={<BsPersonVcard />} text="Employees" />
           </a>
-          {/* <a href="/home">
-            <NavItem icon={<BiTask />} text="Tasks" />
-          </a> */}
+          <a href="/app/departments">
+            <NavItem icon={<BuildingIcon />} text="Departments" />
+          </a>
           {/* <a href="/departments">
             <NavItem icon={<FcDepartment />} text="Departments" />
           </a> */}

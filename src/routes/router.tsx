@@ -7,6 +7,7 @@ import EmployeeDetailPage from '../pages/employees/detail/page'
 import { DepartmentsPage } from '../pages/departments/page'
 import { PrivateRoute } from './private'
 import { Provider } from '../providers'
+import { CreateDepartmentPage } from '../pages/departments/create/page'
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ export const router = createBrowserRouter([
             element: (
               <PrivateRoute redirectPath="login">
                 <DepartmentsPage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: 'departments/create',
+            element: (
+              <PrivateRoute redirectPath="login">
+                <CreateDepartmentPage />
               </PrivateRoute>
             ),
           },
