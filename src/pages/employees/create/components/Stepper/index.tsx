@@ -9,17 +9,16 @@ import { StandardButton } from '../../../../../components/Buttons/Standard'
 
 import clsx from 'clsx'
 import { CustomDialog } from '../../../../../components/Dialog'
-import { type Feedback } from '../../../../../@types'
+import { type Dialog } from '../../../../../@types'
 import { type ApplicationError } from '../../../../../exceptions/errors'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
-  const [feedback, setFeedback] = useState<Feedback>({
+  const [dialog, setDialog] = useState<Dialog>({
     title: '',
     type: '',
     msg: '',
-    onScreen: false,
   })
 
   const ref = useRef<HTMLDialogElement>(null)
@@ -32,20 +31,18 @@ export const Stepper = (): React.JSX.Element => {
   const { isLoading, mutate } = useMutation({
     mutationFn: postEmployee,
     onError: (error: ApplicationError) => {
-      setFeedback({
+      setDialog({
         msg: error.getErrorMessage(),
         title: 'Failed to create employee',
         type: 'error',
-        onScreen: true,
       })
       onOpenModal()
     },
     onSuccess: (data) => {
-      setFeedback({
+      setDialog({
         msg: 'Employee created successfully',
         title: 'Employee created',
         type: 'success',
-        onScreen: true,
         createdId: data,
       })
       onOpenModal()
@@ -91,7 +88,7 @@ export const Stepper = (): React.JSX.Element => {
 
   return (
     <div className="flex flex-col w-full gap-6 p-3">
-      <CustomDialog ref={ref} feedback={feedback} />
+      <CustomDialog ref={ref} dialogData={dialog} />
       <ul className="steps">
         {steps.map((step) => (
           <li

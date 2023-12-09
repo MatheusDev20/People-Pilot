@@ -12,12 +12,22 @@ export type LogoutPayload = {
   logoutTime: Date
 }
 
-export type Feedback = {
+export type DialogAction = {
+  cb: any
+  type: 'delete' | 'edit' | null
+  successMsg: string
+}
+export type DialogActionState = {
+  loading: boolean
+  success: boolean
+  error: boolean
+}
+export type Dialog = {
   title: string
   type: 'success' | 'error' | 'warning' | ''
   msg: string
-  onScreen: boolean
   createdId?: string
+  action?: DialogAction
 }
 
 export type AccordionElement = {
@@ -27,6 +37,7 @@ export type AccordionElement = {
 }
 
 export type Department = {
+  id: string
   name: string
   activeEmployees: number
   status: string

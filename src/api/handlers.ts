@@ -1,4 +1,4 @@
-import { type BasicRequest, type BasicResponse } from '../@types/http'
+import { type BasicRequest, type BasicResponse } from './../@types/http/index'
 import { axiosInstance } from '../utils/axios'
 
 export const GET = async <T>(
@@ -44,6 +44,25 @@ export const PATCH = async <T>(
 
   try {
     const response = await axiosInstance.patch(`${path}`, formData, {
+      headers: headers ?? {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    })
+    const { data } = response
+
+    return data
+  } catch (err: any) {
+    throw new Error(err)
+  }
+}
+
+export const DELETE = async <T>(
+  request: BasicRequest,
+): Promise<BasicResponse<T>> => {
+  const { headers, path } = request
+  try {
+    const response = await axiosInstance.delete(`${path}`, {
       headers: headers ?? {
         'Content-Type': 'application/json',
       },
