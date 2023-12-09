@@ -1,8 +1,10 @@
+import { type Manager } from '../../@types'
+import { isManager } from '../../@types/guards'
 import { PenIcon } from '../../assets/svgs/pen'
 import { TrashIcon } from '../../assets/svgs/trash'
 
 type TableData<T> = {
-  head: string[]
+  head: Array<keyof T>
   rows: T[]
 }
 
@@ -23,10 +25,10 @@ export const Table = <T extends object>({
       <thead>
         <tr>
           {tableData.head.map((hd) => (
-            <th key={hd}>
+            <th key={String(hd)}>
               <div className="flex justify-center">
                 <span className="text-lg">
-                  {hd.charAt(0).toUpperCase() + hd.slice(1)}
+                  {String(hd).charAt(0).toUpperCase() + String(hd).slice(1)}
                 </span>
               </div>
             </th>
@@ -43,17 +45,29 @@ export const Table = <T extends object>({
       <tbody>
         {tableData.rows.map((row: T, rowIndex: number) => (
           <tr key={rowIndex}>
-            {tableData.head.map((col: string, colIndex: number) => (
+            {tableData.head.map((col, colIndex) => (
               <>
                 <td
                   key={colIndex}
                   className="p-6 border-solid border-neutral border-b"
                 >
-                  <div className="flex justify-center">
-                    <span className="text-lg">
-                      {String(row[col as keyof T])}
-                    </span>
-                  </div>
+                  {col === 'manager' && isManager(row[col]) ? (
+                    <div className="flex justify-center gap-4">
+                      <img
+                        src={(row[col] as Manager).avatar}
+                        className="w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer ml-4"
+                        alt="manager_avatar"
+                      />
+
+                      <span className="text-lg">
+                        {(row[col] as Manager).name}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex justify-center">
+                      <span className="text-lg">{String(row[col])}</span>
+                    </div>
+                  )}
                 </td>
               </>
             ))}

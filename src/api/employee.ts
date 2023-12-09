@@ -8,6 +8,7 @@ import { GET, PATCH, POST } from './handlers'
 import { extractApiError } from '../utils/axios'
 import { timeout } from '../utils'
 import { type EmployeeAPIResponse } from '../@types/api'
+import { employeesMapper } from './mappers/employee'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
   const response = await GET<Employee[]>({
@@ -19,13 +20,13 @@ export const getEmployeeList = async (): Promise<Employee[]> => {
 }
 
 export const getEmployeeById = async (id: string): Promise<Employee> => {
-  const data = await GET<EmployeeAPIResponse>({
+  const response = await GET<EmployeeAPIResponse>({
     path: `/employee/details/${id}`,
     authenticated: true,
   })
-
-  const { body } = data
-  return body
+  const { body } = response
+  console.log('BD', body)
+  return employeesMapper(body)
 }
 
 export const uploadAvatar = async (file: File, id: string): Promise<string> => {

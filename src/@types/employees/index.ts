@@ -1,16 +1,17 @@
+import { type Department } from '..'
+
 export interface Employee {
   name: string
   avatar: string
   birthDate: string
-  created_at: string
   email: string
   hire_date: string
   id: string
   phone: string
   position: string
-  updated_at: string
   status: string
-  department: any
+  department: Department
+  isManager: boolean
 }
 
 export interface ActiveUser {

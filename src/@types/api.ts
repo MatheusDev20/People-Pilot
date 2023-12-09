@@ -13,13 +13,14 @@ export type EmployeeAPIResponse = {
   assignee_tasks: any[]
   created_tasks: any[]
   department: DepartmentAPIResponse
+  managedDepartments: DepartmentAPIResponse[]
 }
 
 export type DepartmentAPIResponse = {
   id: string
   name: string
   description: string
-  manager: string
+  manager: EmployeeAPIResponse
   isActive: boolean
   created_at: string
   updated_at: string

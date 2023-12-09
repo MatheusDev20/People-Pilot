@@ -2,6 +2,7 @@ import { type Department } from '../@types'
 import { type DepartmentAPIResponse } from '../@types/api'
 import { timeout } from '../utils'
 import { DELETE, GET } from './handlers'
+import { departmentsMapper } from './mappers/deparments'
 
 export const listDepartments = async (): Promise<Department[]> => {
   const response = await GET<DepartmentAPIResponse[]>({
@@ -11,13 +12,7 @@ export const listDepartments = async (): Promise<Department[]> => {
 
   const { body } = response
 
-  const departments: Department[] = body.map((dep: DepartmentAPIResponse) => ({
-    id: dep.id,
-    name: dep.name,
-    manager: dep.manager,
-    status: dep.isActive ? 'Active' : 'Inactive',
-    activeEmployees: dep.employees.length,
-  }))
+  const departments: Department[] = body.map(departmentsMapper)
 
   return departments
 }

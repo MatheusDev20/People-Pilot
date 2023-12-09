@@ -22,7 +22,7 @@ export const extract = (
 export function getKeysOf<T extends object>(
   obj: T | undefined,
   omitKeys = '',
-): string[] {
+): Array<keyof T> {
   if (!obj) return []
-  return Object.keys(obj).filter((key) => key !== omitKeys)
+  return Object.keys(obj).filter((key) => key !== omitKeys) as Array<keyof T>
 }

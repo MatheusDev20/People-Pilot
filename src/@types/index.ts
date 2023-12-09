@@ -41,5 +41,13 @@ export type Department = {
   name: string
   activeEmployees: number
   status: string
-  manager: string
+  manager: {
+    name: string
+    avatar: string
+  }
+}
+
+export type Manager = {
+  name: string
+  avatar: string
 }
