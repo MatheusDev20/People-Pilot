@@ -1,6 +1,8 @@
 import React from 'react'
-import { AddEmployeeButton } from '../Buttons/buttons'
+
 import { CustomInput } from '../../../../components/Inputs'
+import { PlusButton } from '../Buttons/buttons'
+import { PlusUser } from '../../../../assets/svgs/plus'
 
 type Props = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -18,7 +20,11 @@ export const Header = ({ handleChange }: Props): React.JSX.Element => {
         wSize="large"
       />
       <div className="flex gap-20 p-2 items-center justify-center place-self-end w-[30%]">
-        <AddEmployeeButton />
+        <PlusButton
+          text="NEW EMPLOYEE"
+          icon={<PlusUser />}
+          routeTo="/app/employee/create"
+        />
       </div>
     </header>
   )

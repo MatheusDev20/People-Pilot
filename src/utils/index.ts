@@ -19,6 +19,7 @@ export const extract = (
     .sort((a, b) => a.order - b.order)
 }
 
-export function getKeysOf<T extends object>(obj: T): string[] {
+export function getKeysOf<T extends object>(obj: T | undefined): string[] {
+  if (!obj) return []
   return Object.keys(obj)
 }

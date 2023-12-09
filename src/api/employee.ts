@@ -7,9 +7,9 @@ import { convertDateFormat } from '../utils/dates'
 import { GET, PATCH, POST } from './handlers'
 import { extractApiError } from '../utils/axios'
 import { timeout } from '../utils'
+import { type EmployeeAPIResponse } from '../@types/api'
 
 export const getEmployeeList = async (): Promise<Employee[]> => {
-  await timeout(3000)
   const response = await GET<Employee[]>({
     path: '/employee',
     authenticated: true,
@@ -19,7 +19,7 @@ export const getEmployeeList = async (): Promise<Employee[]> => {
 }
 
 export const getEmployeeById = async (id: string): Promise<Employee> => {
-  const data = await GET<Employee>({
+  const data = await GET<EmployeeAPIResponse>({
     path: `/employee/details/${id}`,
     authenticated: true,
   })

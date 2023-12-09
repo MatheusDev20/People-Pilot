@@ -11,7 +11,6 @@ export default function EmployeePage(): JSX.Element {
   const [debounce, setDebounce] = useState<string>('')
 
   const { data, isLoading, isError } = useEmployeeList()
-  console.log(data)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
   }

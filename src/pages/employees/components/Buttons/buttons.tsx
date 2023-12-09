@@ -1,7 +1,6 @@
 import { BiFilterAlt } from 'react-icons/bi'
-import React from 'react'
+import React, { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { PlusUser } from '../../../../assets/svgs/plus'
 
 export const FilterButton = (): React.JSX.Element => {
   return (
@@ -14,13 +13,23 @@ export const FilterButton = (): React.JSX.Element => {
   )
 }
 
-export const AddEmployeeButton = (): React.JSX.Element => {
+type PlusProps = {
+  text: string
+  icon: ReactNode
+  routeTo: string
+}
+
+export const PlusButton = ({
+  text,
+  icon,
+  routeTo,
+}: PlusProps): React.JSX.Element => {
   return (
-    <Link className="w-full h-12" to="/app/employee/create">
+    <Link className="w-full h-12" to={routeTo}>
       <button className="btn bg-twitter-blue-main w-full text-white hover:bg-twitter-blue-secondary">
         <div className="flex gap-2 items-center">
-          <PlusUser />
-          <span className="md:text-sm hidden md:flex">NEW EMPLOYEE</span>
+          {icon}
+          <span className="md:text-sm hidden md:flex">{text}</span>
         </div>
       </button>
     </Link>
