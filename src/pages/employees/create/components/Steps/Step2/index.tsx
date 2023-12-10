@@ -3,12 +3,18 @@ import { CustomSelect } from '../../../../../../components/Inputs/Select'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 import React from 'react'
 import { hasMask } from '../../../../../../components/Inputs/Masks'
+import { useQuery } from '@tanstack/react-query'
+import { listDepartments } from '../../../../../../api/departments'
 
 interface Props {
   errors: Record<string, string[]> | null
 }
 export const StepTwo = ({ errors }: Props): React.JSX.Element => {
   const { formData, setFormData } = useCreateEmployeeForm()
+  const { data } = useQuery({
+    queryKey: ['departments'],
+    queryFn: listDepartments,
+  })
 
   const handleStepChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -38,6 +44,7 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           error={errors ? errors.department : null}
           label="Departament"
           placeholder="Select an Department..."
+          options={data?.map((department) => department.name) ?? []}
         />
         <CustomInput
           onChange={handleStepChange}

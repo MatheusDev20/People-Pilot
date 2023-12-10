@@ -1,20 +1,24 @@
 import { AxiosError } from 'axios'
-import { type Employee } from '../@types/employees'
+import { type GetEmployeeListParams, type Employee } from '../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../contexts/create-employee-form'
 import { ApplicationError } from '../exceptions/errors'
 
 import { convertDateFormat } from '../utils/dates'
-import { GET, PATCH, POST } from './handlers'
+import { GET, PATCH, POST, convertQueryParams } from './handlers'
 import { extractApiError } from '../utils/axios'
 import { timeout } from '../utils'
 import { type EmployeeAPIResponse } from '../@types/api'
 import { employeesMapper } from './mappers/employee'
 
-export const getEmployeeList = async (): Promise<Employee[]> => {
+export const getEmployeeList = async (
+  params: GetEmployeeListParams,
+): Promise<Employee[]> => {
+  const path = !params ? '/employee' : convertQueryParams('/employee', params)
   const response = await GET<Employee[]>({
-    path: '/employee',
+    path,
     authenticated: true,
   })
+
   const { body } = response
   return body
 }

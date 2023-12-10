@@ -10,14 +10,12 @@ import clsx from 'clsx'
 
 export default function EmployeeDetailPage(): JSX.Element {
   const [activeTab, setActiveTab] = useState(0)
-
   const { id } = useParams()
 
   const { data, isSuccess } = useQuery({
     queryKey: ['employeeDetail', id],
     queryFn: async () => {
       const data = await getEmployeeById(id ?? '')
-      console.log(data)
       return data
     },
   })

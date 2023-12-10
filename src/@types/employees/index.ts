@@ -56,3 +56,9 @@ export interface AuthPayload {
   accessToken: string
   loggedUser: ActiveUser
 }
+
+export type GetEmployeeListParams = {
+  page?: number
+  limit?: number
+  role?: 'employee' | 'managers' | 'admin'
+}
