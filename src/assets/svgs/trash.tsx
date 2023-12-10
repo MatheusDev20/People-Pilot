@@ -1,4 +1,9 @@
-export const TrashIcon = (): JSX.Element => {
+import clsx from 'clsx'
+
+type Props = {
+  disabled: boolean | undefined
+}
+export const TrashIcon = ({ disabled }: Props): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +11,11 @@ export const TrashIcon = (): JSX.Element => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6 text-error"
+      className={clsx(
+        !disabled
+          ? 'w-6 h-6 text-error'
+          : 'text-gray-500 w-6 h-6 cursor-not-allowed',
+      )}
     >
       <path
         strokeLinecap="round"

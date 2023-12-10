@@ -9,29 +9,29 @@ import { StandardButton } from '../../../../../components/Buttons/Standard'
 
 import clsx from 'clsx'
 import { CustomDialog } from '../../../../../components/Dialog'
-import { type Dialog } from '../../../../../@types'
 import { type ApplicationError } from '../../../../../exceptions/errors'
+import { useDialog } from '../../../../../hooks/dialog'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
-  const [dialog, setDialog] = useState<Dialog>({
-    title: '',
-    type: '',
-    msg: '',
-  })
 
   const ref = useRef<HTMLDialogElement>(null)
   const onOpenModal = (): void => {
     ref.current?.showModal()
   }
+  const { dialog, show } = useDialog(ref)
 
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
-  const { isLoading, mutate } = useMutation({
+  const {
+    isLoading,
+    mutate,
+    data: createdEmployeeId,
+  } = useMutation({
     mutationFn: postEmployee,
     onError: (error: ApplicationError) => {
-      setDialog({
+      show({
         msg: error.getErrorMessage(),
         title: 'Failed to create employee',
         type: 'error',
@@ -39,13 +39,12 @@ export const Stepper = (): React.JSX.Element => {
       onOpenModal()
     },
     onSuccess: (data) => {
-      setDialog({
+      show({
         msg: 'Employee created successfully',
         title: 'Employee created',
         type: 'success',
         createdId: data,
       })
-      onOpenModal()
     },
   })
 
@@ -88,7 +87,11 @@ export const Stepper = (): React.JSX.Element => {
 
   return (
     <div className="flex flex-col w-full gap-6 p-3">
-      <CustomDialog ref={ref} dialogData={dialog} />
+      <CustomDialog
+        ref={ref}
+        dialogData={dialog}
+        redirectUrl={`/app/employee/detail/${createdEmployeeId}`}
+      />
       <ul className="steps">
         {steps.map((step) => (
           <li

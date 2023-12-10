@@ -15,16 +15,18 @@ type Props = {
   dialogData: Dialog
   action?: DialogAction
   actionState?: DialogActionState
+  redirectUrl?: string
 }
 
 export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
   (props, ref) => {
-    const { dialogData, action, actionState } = props
+    const { dialogData, action, actionState, redirectUrl } = props
     const { msg, title, type, createdId } = dialogData
     const navigate = useNavigate()
-    // ???
-    const pushToDetails = (): void => {
-      navigate(`/app/employee/detail/${createdId as string}`)
+
+    const redirect = (): void => {
+      if (!redirectUrl) return
+      navigate(redirectUrl)
     }
     return (
       <dialog className="modal" ref={ref}>
@@ -60,9 +62,7 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
 
           <div className="modal-action gap-4">
             {createdId && (
-              <StandardButton onClick={pushToDetails}>
-                See Details
-              </StandardButton>
+              <StandardButton onClick={redirect}>See Details</StandardButton>
             )}
 
             {action?.type && !actionState?.success && (

@@ -53,6 +53,7 @@ export const CustomSelect = ({
             data: opt.data,
             img: <OptionIcon imgUrl={opt.img} />,
           }))}
+          {...rest}
         />
       ) : (
         <select
@@ -78,7 +79,7 @@ export const CustomSelect = ({
   )
 }
 
-export const ReactSelect = ({ options }: any): JSX.Element => {
+export const ReactSelect = ({ options, ...rest }: any): JSX.Element => {
   const final = options.map((opt: any) => ({
     value: opt.data,
     label: <CustomOption data={opt.data} img={opt.img} />,
@@ -109,7 +110,7 @@ export const ReactSelect = ({ options }: any): JSX.Element => {
   return (
     <Select
       options={final}
-      placeholder="Choose the manager email to assign the department ..."
+      {...rest}
       components={{ IndicatorSeparator: () => null }}
       styles={colourStyles}
     />

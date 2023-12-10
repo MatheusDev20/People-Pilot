@@ -45,9 +45,16 @@ export type Department = {
     name: string
     avatar: string
   }
+  enableDelete?: boolean
 }
 
 export type Manager = {
   name: string
   avatar: string
+}
+
+export type CreateDepartmentForm = {
+  name: string
+  managerEmail: string
+  description: string
 }

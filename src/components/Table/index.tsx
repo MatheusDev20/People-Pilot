@@ -1,4 +1,4 @@
-import { type Manager } from '../../@types'
+import { type Department, type Manager } from '../../@types'
 import { isManager } from '../../@types/guards'
 import { PenIcon } from '../../assets/svgs/pen'
 import { TrashIcon } from '../../assets/svgs/trash'
@@ -11,7 +11,11 @@ type TableData<T> = {
 export type TableProps<T> = {
   tableData: TableData<T>
   editAction: (row: T) => void
-  deleteAction: (row: T) => void
+  // deleteAction: (row: T) => void
+  deleteAction: {
+    fn: (row: T) => void
+    enable: boolean
+  }
 }
 
 export const Table = <T extends object>({
@@ -83,12 +87,13 @@ export const Table = <T extends object>({
                     <PenIcon />
                   </button>
                   <button
+                    disabled={(row as Department).enableDelete}
                     className="bg-transparent"
                     onClick={() => {
-                      deleteAction(row)
+                      deleteAction.fn(row)
                     }}
                   >
-                    <TrashIcon />
+                    <TrashIcon disabled={(row as Department).enableDelete} />
                   </button>
                 </div>
               </div>

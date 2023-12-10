@@ -76,9 +76,9 @@ export const DepartmentsPage = (): JSX.Element => {
         <LoadingDots size="w-24" />
       </div>
     )
-  const filteredData = data?.filter((department) =>
-    department.name.includes(search),
-  )
+  const filteredData = data
+    ?.filter((department) => department.name.includes(search))
+    .map((dep) => ({ ...dep, enableDelete: dep.activeEmployees !== 0 }))
   return (
     <>
       <CustomDialog
@@ -109,7 +109,7 @@ export const DepartmentsPage = (): JSX.Element => {
           <Table
             tableData={{ head: tableHeaders, rows: filteredData }}
             editAction={handleEdit}
-            deleteAction={handleDelete}
+            deleteAction={{ fn: handleDelete, enable: true }}
           />
         ) : (
           <NotFound />
