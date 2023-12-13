@@ -39,11 +39,13 @@ export type AccordionElement = {
 export type Department = {
   id: string
   name: string
+  description: string
   activeEmployees: number
   status: string
   manager: {
     name: string
     avatar: string
+    email: string
   }
   enableDelete?: boolean
 }

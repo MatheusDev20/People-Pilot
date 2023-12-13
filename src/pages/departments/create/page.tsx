@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { CustomInput, CustomSelect } from '../../../components/Inputs'
-import { getEmployeeList } from '../../../api/employee'
-import { type GetEmployeeListParams } from '../../../@types/employees'
 import { useRef, useState } from 'react'
 import { type CreateDepartmentForm } from '../../../@types'
 import { StandardButton } from '../../../components/Buttons/Standard'
@@ -11,6 +9,7 @@ import { CustomDialog } from '../../../components/Dialog'
 import { createDepartmentSchema } from '../../../validations/schemas/departments'
 import { validateSchema } from '../../../validations/schemas'
 import { postDepartment } from '../../../api/departments'
+import { useManagers } from '../../../hooks/managers'
 
 export const CreateDepartmentPage = (): JSX.Element => {
   const [formData, setFormData] = useState<CreateDepartmentForm>({
@@ -22,23 +21,7 @@ export const CreateDepartmentPage = (): JSX.Element => {
 
   const ref = useRef<HTMLDialogElement>(null)
   const { dialog, show } = useDialog(ref)
-
-  const params: GetEmployeeListParams = {
-    role: 'managers',
-  }
-  // TODO: Tirar isso daqui
-  const { data } = useQuery({
-    queryKey: ['managersList', params],
-    queryFn: async ({ queryKey }) => {
-      const managers = await getEmployeeList(
-        queryKey[1] as GetEmployeeListParams,
-      )
-      return managers.map((manager) => ({
-        data: manager.email,
-        img: manager.avatar,
-      }))
-    },
-  })
+  const { managers } = useManagers()
 
   const { mutate } = useMutation({
     mutationFn: postDepartment,
@@ -117,7 +100,7 @@ export const CreateDepartmentPage = (): JSX.Element => {
             wSize="medium"
             placeholder="Choose the manager email to assign the department ..."
             error={errors ? errors.managerMail : null}
-            options={data ?? []}
+            options={managers}
           />
         </div>
         <StandardButton onClick={handleSubmitDepartment} size="w-[25%]">

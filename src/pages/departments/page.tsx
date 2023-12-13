@@ -12,9 +12,11 @@ import { BuildingIcon } from '../../assets/svgs/building'
 import { useState, type ChangeEvent, useRef } from 'react'
 import { NotFound } from '../../components/Exceptions/NotFound'
 import { CustomDialog } from '../../components/Dialog'
+import { useNavigate } from 'react-router-dom'
 
 export const DepartmentsPage = (): JSX.Element => {
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const {
     isLoading: listLoading,
@@ -52,8 +54,11 @@ export const DepartmentsPage = (): JSX.Element => {
     setSearch(e.target.value)
   }
   const handleEdit = (row: Department): void => {
-    onOpenModal()
+    navigate(`/app/departments/edit/${row.id}`, {
+      state: { department: row },
+    })
   }
+
   const handleDelete = (row: Department): void => {
     setDialog({
       title: `Are you sure you want to delete ${row.name} Department`,
@@ -68,7 +73,10 @@ export const DepartmentsPage = (): JSX.Element => {
     onOpenModal()
   }
 
-  const tableHeaders = getKeysOf<Department>(data ? data[0] : undefined, 'id')
+  const tableHeaders = getKeysOf<Department>(data ? data[0] : undefined, [
+    'id',
+    'description',
+  ])
 
   if (listLoading)
     return (
@@ -76,9 +84,11 @@ export const DepartmentsPage = (): JSX.Element => {
         <LoadingDots size="w-24" />
       </div>
     )
+
   const filteredData = data
     ?.filter((department) => department.name.includes(search))
     .map((dep) => ({ ...dep, enableDelete: dep.activeEmployees !== 0 }))
+
   return (
     <>
       <CustomDialog
@@ -106,11 +116,16 @@ export const DepartmentsPage = (): JSX.Element => {
       </header>
       <div className="overflow-x-auto p-5 flex items-center justify-center border-solid">
         {!error && filteredData?.length ? (
-          <Table
-            tableData={{ head: tableHeaders, rows: filteredData }}
-            editAction={handleEdit}
-            deleteAction={{ fn: handleDelete, enable: true }}
-          />
+          <>
+            <Table
+              tableData={{
+                head: tableHeaders,
+                rows: filteredData,
+              }}
+              editAction={handleEdit}
+              deleteAction={{ fn: handleDelete, enable: true }}
+            />
+          </>
         ) : (
           <NotFound />
         )}

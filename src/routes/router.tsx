@@ -8,6 +8,7 @@ import { DepartmentsPage } from '../pages/departments/page'
 import { PrivateRoute } from './private'
 import { Provider } from '../providers'
 import { CreateDepartmentPage } from '../pages/departments/create/page'
+import { EditDepartmentPage } from '../pages/departments/edit'
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,7 @@ export const router = createBrowserRouter([
               </PrivateRoute>
             ),
           },
+          /* Departments Routes */
           {
             path: 'departments',
             element: (
@@ -67,6 +69,14 @@ export const router = createBrowserRouter([
             element: (
               <PrivateRoute redirectPath="login">
                 <CreateDepartmentPage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: 'departments/edit/:id',
+            element: (
+              <PrivateRoute redirectPath="login">
+                <EditDepartmentPage />
               </PrivateRoute>
             ),
           },
