@@ -1,16 +1,9 @@
-export const Logo = ({ size }: { size: string }): JSX.Element => {
+import HRLOGO from '../../assets/imgs/hr_max_logo.png'
+
+export const Logo = (): JSX.Element => {
   return (
     <div className="flex flex-col gap-3">
-      <span
-        className={`${size} place-self-center cursor-pointer dark:text-white font-bebas`}
-      >
-        DUNDER
-      </span>
-      <span
-        className={`${size} place-self-center cursor-pointer dark:text-white font-bebas`}
-      >
-        MIFFLIN
-      </span>
+      <img src={HRLOGO} alt="logo" className="object-cover w-40 h-40" />
     </div>
   )
 }

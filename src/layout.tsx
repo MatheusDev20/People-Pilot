@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
 
@@ -7,12 +7,17 @@ export default function BaseLayout({
 }: {
   children: React.ReactNode
 }): React.JSX.Element {
+  useEffect(() => {
+    const root = window.document.documentElement
+    root.classList.add('dark')
+  }, [])
+
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <Sidebar />
-      <div className={'w-full flex flex-col ml-[80px] md:ml-[230px] h-screen'}>
+      <div className={'w-full flex flex-col h-screen flex-1'}>
         <Header />
-        <main className="flex-1 p-3 bg-base-100">{children}</main>
+        <main className="p-3 bg-base-100">{children}</main>
       </div>
     </div>
   )

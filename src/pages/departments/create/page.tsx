@@ -64,12 +64,14 @@ export const CreateDepartmentPage = (): JSX.Element => {
       managerEmail: e.value,
     })
   }
+
   const handleSubmitDepartment = async (): Promise<void> => {
     setErrors(null)
     const { errors, veredict } = await validateSchema<CreateDepartmentForm>(
       formData,
       createDepartmentSchema,
     )
+
     if (!veredict || errors) {
       setErrors(errors)
       return

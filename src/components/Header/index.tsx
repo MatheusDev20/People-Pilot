@@ -7,7 +7,7 @@ export const Header = (): React.JSX.Element => {
   const { user, signOut } = useAuth()
 
   return (
-    <header className="flex justify-end p-4 bg-base-300 border-solid border-neutral border-b-[0.4px]">
+    <header className="flex justify-end p-4 bg-base-300 border-solid border-neutral border-b-[0.4px] w-full">
       {/* Logged user Avatar */}
       <div className="flex md:justify-normal">
         <div className="flex gap-8 items-center  pl-12 pr-12">
@@ -32,7 +32,6 @@ export const Header = (): React.JSX.Element => {
           </div> */}
           {/* Logout Button */}
           <div className="flex gap-3">
-            <span className="dark:text-white text-sm">Logout</span>
             <svg
               onClick={signOut}
               fill="none"
