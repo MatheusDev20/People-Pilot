@@ -10,7 +10,7 @@ export const Sidebar = (): React.JSX.Element => {
     >
       <div className="relative">
         <header className="flex items-center justify-center py-12 ">
-          <Link to="/app/home">
+          <Link to="/app/employees">
             <Logo />
           </Link>
         </header>

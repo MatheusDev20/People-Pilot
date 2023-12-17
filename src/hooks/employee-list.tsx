@@ -11,7 +11,10 @@ type Hook = {
 export const useEmployeeList = (): Hook => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['employeeList'],
-    queryFn: getEmployeeList,
+    queryFn: async () => {
+      const employees = await getEmployeeList({})
+      return employees
+    },
   })
 
   return {

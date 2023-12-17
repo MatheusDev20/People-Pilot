@@ -14,6 +14,7 @@ export const getEmployeeList = async (
   params: GetEmployeeListParams,
 ): Promise<Employee[]> => {
   const path = !params ? '/employee' : convertQueryParams('/employee', params)
+
   const response = await GET<Employee[]>({
     path,
     authenticated: true,
@@ -29,7 +30,6 @@ export const getEmployeeById = async (id: string): Promise<Employee> => {
     authenticated: true,
   })
   const { body } = response
-  console.log('BD', body)
   return employeesMapper(body)
 }
 

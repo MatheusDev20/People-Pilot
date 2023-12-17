@@ -50,7 +50,7 @@ const AuthProvider = ({
       setUser(user)
       setLocalStorage('profile', JSON.stringify(user))
       setLoading(false)
-      navigate('/app/home')
+      navigate('/app/employees')
     } catch (err: any) {
       setLoading(false)
       setFailedMessage(err.message)

@@ -23,14 +23,14 @@ export const router = createBrowserRouter([
         path: '/app',
         element: <Root />,
         children: [
-          {
-            path: 'home',
-            element: (
-              <PrivateRoute redirectPath="/login">
-                <h1>Home Page</h1>
-              </PrivateRoute>
-            ),
-          },
+          // {
+          //   path: 'home',
+          //   element: (
+          //     <PrivateRoute redirectPath="/login">
+          //       <h1>Home Page</h1>
+          //     </PrivateRoute>
+          //   ),
+          // },
           {
             path: 'employees',
             element: (

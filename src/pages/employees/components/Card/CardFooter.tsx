@@ -1,36 +1,24 @@
 import React from 'react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { BsTelephoneForward } from 'react-icons/bs'
+import { type Department } from '../../../../@types'
 
 interface Props {
-  department: string
-  hiredDate: string
+  department: Department
   phone: string
   email: string
 }
 export const CardFooter = ({
   department,
-  hiredDate,
   phone,
   email,
 }: Props): React.JSX.Element => {
   return (
     <footer className="flex flex-col p-5 gap-6 rounded-md bg-accent-content">
       <header className="flex items-center justify-between">
-        <div className="flex flex-col gap-2">
-          <span className="text-sm text-blue-500 font-semibold dark:text-white">
-            Department
-          </span>
-          <p className="text-sm text-black font-semibold dark:text-white">
-            Tech
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 items-center">
-          <span className="text-sm text-blue-500 dark:text-white font-semibold">
-            Hired Date
-          </span>
-          <p className="text-sm text-black font-semibold dark:text-white">
-            {hiredDate}
+        <div className="flex gap-2 justify-center w-full p-3">
+          <p className="text-md dark:text-twitter-blue-main font-semibold">
+            {department.name} {'Department'}
           </p>
         </div>
       </header>
