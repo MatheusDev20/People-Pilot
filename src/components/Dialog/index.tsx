@@ -16,11 +16,12 @@ type Props = {
   action?: DialogAction
   actionState?: DialogActionState
   redirectUrl?: string
+  reset?: any
 }
 
 export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
   (props, ref) => {
-    const { dialogData, action, actionState, redirectUrl } = props
+    const { dialogData, action, actionState, redirectUrl, reset } = props
     const { msg, title, type, createdId } = dialogData
     const navigate = useNavigate()
 
@@ -28,6 +29,11 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
       if (!redirectUrl) return
       navigate(redirectUrl)
     }
+
+    const closeAndReset = (): void => {
+      if (reset) reset()
+    }
+
     return (
       <dialog className="modal" ref={ref}>
         <div className="modal-box w-11/12 max-w-2xl">
@@ -76,7 +82,9 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
             )}
 
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button onClick={closeAndReset} className="btn">
+                Close
+              </button>
             </form>
           </div>
         </div>

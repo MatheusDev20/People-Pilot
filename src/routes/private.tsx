@@ -11,5 +11,6 @@ export const PrivateRoute = ({ children, redirectPath }: Props): ReactNode => {
   if (!user) {
     return <Navigate to={redirectPath} replace />
   }
+
   return children
 }

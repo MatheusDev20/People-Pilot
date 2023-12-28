@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
           {
             path: 'employee/create',
             element: (
-              <PrivateRoute redirectPath="login">
+              <PrivateRoute redirectPath="/login">
                 <CreateEmployeePage />
               </PrivateRoute>
             ),
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
           {
             path: 'employee/detail/:id',
             element: (
-              <PrivateRoute redirectPath="login">
+              <PrivateRoute redirectPath="/login">
                 <EmployeeDetailPage />
               </PrivateRoute>
             ),
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
           {
             path: 'departments',
             element: (
-              <PrivateRoute redirectPath="login">
+              <PrivateRoute redirectPath="/login">
                 <DepartmentsPage />
               </PrivateRoute>
             ),
@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
           {
             path: 'departments/create',
             element: (
-              <PrivateRoute redirectPath="login">
+              <PrivateRoute redirectPath="/login">
                 <CreateDepartmentPage />
               </PrivateRoute>
             ),
@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
           {
             path: 'departments/edit/:id',
             element: (
-              <PrivateRoute redirectPath="login">
+              <PrivateRoute redirectPath="/login">
                 <EditDepartmentPage />
               </PrivateRoute>
             ),

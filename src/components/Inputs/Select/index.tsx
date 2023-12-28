@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-redeclare */
 import clsx from 'clsx'
 import React, { type InputHTMLAttributes } from 'react'
 import { CiCircleAlert } from 'react-icons/ci'
@@ -14,6 +16,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   placeholder?: string
   error: string[] | null
   options: string[] | CustomOptionData[]
+  defaultValue?: any
 }
 
 const classes = {
@@ -28,6 +31,7 @@ export const CustomSelect = ({
   error,
   placeholder,
   options,
+  defaultValue,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
   return (
@@ -53,6 +57,7 @@ export const CustomSelect = ({
             data: opt.data,
             img: <OptionIcon imgUrl={opt.img} />,
           }))}
+          defaultValue={defaultValue}
           {...rest}
         />
       ) : (
@@ -79,7 +84,11 @@ export const CustomSelect = ({
   )
 }
 
-export const ReactSelect = ({ options, ...rest }: any): JSX.Element => {
+export const ReactSelect = ({
+  options,
+  defaultValue,
+  ...rest
+}: any): JSX.Element => {
   const final = options.map((opt: any) => ({
     value: opt.data,
     label: <CustomOption data={opt.data} img={opt.img} />,
@@ -106,7 +115,18 @@ export const ReactSelect = ({ options, ...rest }: any): JSX.Element => {
       backgroundColor: !isFocused ? 'oklch(var(--ac))' : 'oklch(var(--b3))',
     }),
   }
-
+  console.log('3')
+  if (defaultValue) {
+    return (
+      <Select
+        options={final}
+        value={defaultValue}
+        {...rest}
+        components={{ IndicatorSeparator: () => null }}
+        styles={colourStyles}
+      />
+    )
+  }
   return (
     <Select
       options={final}

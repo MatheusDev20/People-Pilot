@@ -1,6 +1,6 @@
 import Default from '../../../../assets/imgs/fake-avatar1.png'
 type Props = {
-  img: string
+  img: any
   data: string
 }
 

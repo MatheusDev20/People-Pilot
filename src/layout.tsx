@@ -13,9 +13,9 @@ export default function BaseLayout({
   }, [])
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <Sidebar />
-      <div className={'w-full flex flex-col h-screen flex-1'}>
+      <div className={'w-full flex flex-col flex-1'}>
         <Header />
         <main className="p-3 bg-base-100">{children}</main>
       </div>

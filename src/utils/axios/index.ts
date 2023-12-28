@@ -1,11 +1,15 @@
 import axios, { type AxiosError } from 'axios'
-import { refresh } from '../../api/auth'
+import { logout, refresh } from '../../api/auth'
+import { removeLocalStorage } from '../auth'
 
 const unauthorizedMessages = [
-  'Expired Cookie',
   'JsonWebTokenError',
   'Token Signature Verification Failed',
+  'EXPIRED ACCESS TOKEN',
 ]
+
+// Both tokens expired the user should be logged out
+const signOutMessages = ['EXPIRED BOTH TOKENS']
 
 export type HttpResponse = {
   response: any
@@ -31,6 +35,16 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   ) {
     await refresh()
     return await axiosInstance(originalRequest)
+  }
+  if (
+    status === 401 &&
+    originalRequest &&
+    signOutMessages.includes(axiosData.response.message)
+  ) {
+    await logout()
+    removeLocalStorage('profile')
+    // See this is right
+    window.location.reload()
   }
 
   throw error

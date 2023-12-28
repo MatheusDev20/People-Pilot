@@ -76,6 +76,28 @@ export const DELETE = async <T>(
   }
 }
 
+export const PUT = async <T>(
+  request: BasicRequest,
+): Promise<BasicResponse<T>> => {
+  const { headers, path, authenticated, body } = request
+  const sendHeaders = headers ?? {
+    'Content-Type': 'application/json',
+  }
+
+  try {
+    const response = await axiosInstance.put(`${path}`, body, {
+      headers: sendHeaders,
+      withCredentials: authenticated,
+    })
+
+    const { data } = response
+
+    return data
+  } catch (err: any) {
+    throw new Error(err)
+  }
+}
+
 export const convertQueryParams = (path: string, params: object): string => {
   return (
     `${path}?` +

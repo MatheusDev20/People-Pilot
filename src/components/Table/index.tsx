@@ -2,6 +2,7 @@ import { type Department, type Manager } from '../../@types'
 import { isManager } from '../../@types/guards'
 import { PenIcon } from '../../assets/svgs/pen'
 import { TrashIcon } from '../../assets/svgs/trash'
+import FakeAvatar from '../../assets/imgs/fake-avatar1.png'
 
 type TableData<T> = {
   head: Array<keyof T>
@@ -22,6 +23,7 @@ export const Table = <T extends object>({
   editAction,
   deleteAction,
 }: TableProps<T>): JSX.Element => {
+  console.log(tableData)
   return (
     <table className="table flex">
       {/* head */}
@@ -53,10 +55,11 @@ export const Table = <T extends object>({
                 key={colIndex}
                 className="p-6 border-solid border-neutral border-b"
               >
-                {col === 'manager' && isManager(row[col]) ? (
+                {col === 'manager' ? (
                   <div className="flex justify-center gap-4">
                     <img
-                      src={(row[col] as Manager).avatar}
+                      src={(row[col] as Manager).avatar ?? FakeAvatar}
+                      // src={FakeAvatar}
                       className="w-8 h-8 md:w-10 md:h-10 rounded-full cursor-pointer ml-4"
                       alt="manager_avatar"
                     />

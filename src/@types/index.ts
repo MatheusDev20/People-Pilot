@@ -60,3 +60,11 @@ export type CreateDepartmentForm = {
   managerEmail: string
   description: string
 }
+
+// See if utility type Partial Helps
+export type UpdateDepartmentData = {
+  id: string
+  name?: string
+  description?: string
+  managerEmail?: string
+}

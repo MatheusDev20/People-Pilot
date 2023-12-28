@@ -1,7 +1,11 @@
-import { type CreateDepartmentForm, type Department } from '../@types'
+import {
+  type UpdateDepartmentData,
+  type CreateDepartmentForm,
+  type Department,
+} from '../@types'
 import { type DepartmentAPIResponse } from '../@types/api'
 import { timeout } from '../utils'
-import { DELETE, GET, POST } from './handlers'
+import { DELETE, GET, POST, PUT } from './handlers'
 import { departmentsMapper } from './mappers/deparments'
 
 export const listDepartments = async (): Promise<Department[]> => {
@@ -11,7 +15,6 @@ export const listDepartments = async (): Promise<Department[]> => {
   })
 
   const { body } = response
-
   const departments: Department[] = body.map(departmentsMapper)
   return departments
 }
@@ -24,7 +27,6 @@ export const postDepartment = async (
     authenticated: true,
     body: {
       ...data,
-      managerMail: data.managerEmail,
     },
   })
 
@@ -35,10 +37,25 @@ export const postDepartment = async (
 export const excludeDepartment = async (
   departmentId: string,
 ): Promise<string> => {
-  await timeout(3000)
   const response = await DELETE<{ id: string }>({
     path: `/departments/${departmentId}`,
     authenticated: true,
+  })
+
+  const { body } = response
+
+  return body.id
+}
+
+export const updateDepartment = async (
+  updateData: UpdateDepartmentData,
+): Promise<string> => {
+  await timeout(5000)
+  const { id, ...rest } = updateData
+  const response = await PUT<{ id: string }>({
+    path: `/departments/${id}`,
+    authenticated: true,
+    body: rest,
   })
 
   const { body } = response

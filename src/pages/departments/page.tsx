@@ -26,7 +26,7 @@ export const DepartmentsPage = (): JSX.Element => {
     queryKey: ['departments'],
     queryFn: listDepartments,
   })
-  const { mutate, isLoading, isSuccess, isError } = useMutation({
+  const { mutate, isLoading, isSuccess, isError, reset } = useMutation({
     mutationFn: excludeDepartment,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['departments'] })
@@ -88,7 +88,6 @@ export const DepartmentsPage = (): JSX.Element => {
   const filteredData = data
     ?.filter((department) => department.name.includes(search))
     .map((dep) => ({ ...dep, enableDelete: dep.activeEmployees !== 0 }))
-
   return (
     <>
       <CustomDialog
@@ -96,6 +95,7 @@ export const DepartmentsPage = (): JSX.Element => {
         dialogData={dialog}
         action={dialog.action}
         actionState={{ loading: isLoading, success: isSuccess, error: isError }}
+        reset={reset}
       />
       <header className="items-center md:gap-6 w-full p-8 flex justify-between">
         <CustomInput
