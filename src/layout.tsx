@@ -13,7 +13,8 @@ export default function BaseLayout({
   }, [])
 
   return (
-    <div className="flex min-h-screen">
+    // TODO: Overflow hidden?
+    <div className="flex min-h-screen overflow-hidden">
       <Sidebar />
       <div className={'w-full flex flex-col flex-1'}>
         <Header />

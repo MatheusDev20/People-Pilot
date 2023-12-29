@@ -23,6 +23,7 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
   (props, ref) => {
     const { dialogData, action, actionState, redirectUrl, reset } = props
     const { msg, title, type, createdId } = dialogData
+
     const navigate = useNavigate()
 
     const redirect = (): void => {
@@ -33,7 +34,7 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
     const closeAndReset = (): void => {
       if (reset) reset()
     }
-
+    console.log(props)
     return (
       <dialog className="modal" ref={ref}>
         <div className="modal-box w-11/12 max-w-2xl">
@@ -48,8 +49,8 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
               </>
             ) : (
               <>
-                <span className={getTextClass(type)}>{title}</span>
                 {getIcon(type)}
+                <span className={getTextClass(type)}>{title}</span>
               </>
             )}
           </header>
@@ -72,7 +73,11 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
             )}
 
             {action?.type && !actionState?.success && (
-              <StandardButton size="w-[20%]" onClick={action.cb}>
+              <StandardButton
+                size="w-[20%]"
+                onClick={action.cb}
+                disabled={actionState?.loading}
+              >
                 {actionState?.loading ? (
                   <span className="loading w-4 loading-dots"></span>
                 ) : (
@@ -82,8 +87,8 @@ export const CustomDialog = forwardRef<HTMLDialogElement, Props>(
             )}
 
             <form method="dialog">
-              <button onClick={closeAndReset} className="btn">
-                Close
+              <button onClick={redirect || closeAndReset} className="btn">
+                Finish
               </button>
             </form>
           </div>

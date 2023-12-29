@@ -8,9 +8,6 @@ const unauthorizedMessages = [
   'EXPIRED ACCESS TOKEN',
 ]
 
-// Both tokens expired the user should be logged out
-const signOutMessages = ['EXPIRED BOTH TOKENS']
-
 export type HttpResponse = {
   response: any
   timestamp: string
@@ -33,18 +30,16 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
     originalRequest &&
     unauthorizedMessages.includes(axiosData.response.message)
   ) {
-    await refresh()
-    return await axiosInstance(originalRequest)
-  }
-  if (
-    status === 401 &&
-    originalRequest &&
-    signOutMessages.includes(axiosData.response.message)
-  ) {
-    await logout()
-    removeLocalStorage('profile')
-    // See this is right
-    window.location.reload()
+    try {
+      // If i cant refresh with the new token the user should be signed out
+      await refresh()
+      return await axiosInstance(originalRequest)
+    } catch (err) {
+      await logout()
+      removeLocalStorage('profile')
+      // See this is right
+      window.location.reload()
+    }
   }
 
   throw error
