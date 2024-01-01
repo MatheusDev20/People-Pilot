@@ -5,8 +5,7 @@ import { ApplicationError } from '../exceptions/errors'
 
 import { convertDateFormat } from '../utils/dates'
 import { GET, PATCH, POST, convertQueryParams } from './handlers'
-import { extractApiError } from '../utils/axios'
-import { timeout } from '../utils'
+import { extractApiError } from '../axios/interceptors'
 import { type EmployeeAPIResponse } from '../@types/api'
 import { employeesMapper } from './mappers/employee'
 
@@ -14,7 +13,6 @@ export const getEmployeeList = async (
   params: GetEmployeeListParams,
 ): Promise<Employee[]> => {
   const path = !params ? '/employee' : convertQueryParams('/employee', params)
-
   const response = await GET<Employee[]>({
     path,
     authenticated: true,
@@ -52,7 +50,6 @@ export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   try {
-    await timeout(1000)
     const { stepOne, stepTwo, stepThree } = employeeFormData
     const file = stepThree.avatar
 
@@ -83,6 +80,7 @@ export const postEmployee = async (
     if (err instanceof AxiosError) {
       throw new ApplicationError(extractApiError(err))
     }
+
     throw new ApplicationError('General System Failure Try again later')
   }
 }

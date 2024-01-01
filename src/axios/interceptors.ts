@@ -1,6 +1,6 @@
 import axios, { type AxiosError } from 'axios'
-import { logout, refresh } from '../../api/auth'
-import { removeLocalStorage } from '../auth'
+import { logout, refresh } from '../api/auth'
+import { removeLocalStorage } from '../utils/auth'
 
 const unauthorizedMessages = [
   'JsonWebTokenError',
@@ -41,7 +41,6 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
       window.location.reload()
     }
   }
-
   throw error
 }
 

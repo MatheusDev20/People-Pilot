@@ -56,7 +56,7 @@ export const Table = <T extends object>({
                 className="p-6 border-solid border-neutral border-b"
               >
                 {col === 'manager' ? (
-                  <div className="flex justify-center gap-4">
+                  <div className="flex justify-center gap-4 p-1">
                     <img
                       src={(row[col] as Manager).avatar ?? FakeAvatar}
                       // src={FakeAvatar}

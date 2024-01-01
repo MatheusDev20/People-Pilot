@@ -103,7 +103,11 @@ export const CreateDepartmentPage = (): JSX.Element => {
             options={managers}
           />
         </div>
-        <StandardButton onClick={handleSubmitDepartment} size="w-[25%]">
+        <StandardButton
+          onClick={handleSubmitDepartment}
+          size="w-[25%]"
+          disabled={Object.values(formData).every((value) => value === '')}
+        >
           Create Department
         </StandardButton>
       </div>

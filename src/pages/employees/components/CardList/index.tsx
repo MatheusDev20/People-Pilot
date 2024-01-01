@@ -1,13 +1,12 @@
 import React from 'react'
 import { EmployeeCard } from '../Card'
-import { Pagination } from '../Pagination'
+// import { Pagination } from '../Pagination'
 import { type Employee } from '../../../../@types/employees'
 
 interface Props {
   list: Employee[]
 }
 export const CardList = ({ list }: Props): React.JSX.Element => {
-  console.log(list)
   return (
     <main className="flex flex-col gap-0 cursor-pointer">
       <div className="p-8 grid grid-cols-4 gap-4 w-full">
@@ -33,11 +32,6 @@ export const CardList = ({ list }: Props): React.JSX.Element => {
           )
         })}
       </div>
-      <footer className="px-8 place-self-center w-full">
-        <Pagination.Wrapper>
-          <Pagination.List />
-        </Pagination.Wrapper>
-      </footer>
     </main>
   )
 }

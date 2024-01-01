@@ -8,11 +8,18 @@ type Hook = {
   isLoading: boolean
   isError: boolean
 }
-export const useEmployeeList = (): Hook => {
+
+type Props = {
+  page: number
+}
+export const useEmployeeList = ({ page }: Props): Hook => {
+  console.log('page', page)
   const { isLoading, isError, data } = useQuery({
     queryKey: ['employeeList'],
+    keepPreviousData: true,
     queryFn: async () => {
-      const employees = await getEmployeeList({})
+      const employees = await getEmployeeList({ limit: 8, page })
+
       return employees
     },
   })
