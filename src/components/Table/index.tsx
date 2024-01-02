@@ -1,5 +1,4 @@
 import { type Department, type Manager } from '../../@types'
-import { isManager } from '../../@types/guards'
 import { PenIcon } from '../../assets/svgs/pen'
 import { TrashIcon } from '../../assets/svgs/trash'
 import FakeAvatar from '../../assets/imgs/fake-avatar1.png'
