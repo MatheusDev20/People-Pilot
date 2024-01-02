@@ -7,15 +7,11 @@ import { NotFound } from '../../components/Exceptions/NotFound'
 import { Pagination } from './components/Pagination'
 import { useQuery } from '@tanstack/react-query'
 import { getEmployeeList } from '../../api/employee'
-import {
-  type Employee,
-  type GetEmployeeListParams,
-} from '../../@types/employees'
+import { type GetEmployeeListParams } from '../../@types/employees'
 
 export default function EmployeePage(): JSX.Element {
   const [search, setSearch] = useState<string>('')
   const [debounce, setDebounce] = useState<string>('')
-  const [preFetchPage, setPreFetchPage] = useState<Employee[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
   // const { data, isLoading, isError } = useEmployeeList({ page: currentPage })
