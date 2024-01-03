@@ -8,9 +8,11 @@ import { Logo } from '../../components/Logo'
 export default function LoginPage(): JSX.Element {
   const { user } = useAuth()
   const navigate = useNavigate()
+
   useEffect(() => {
     if (user) navigate('/app/employees')
   }, [])
+
   return (
     <div className="w-full h-screen">
       <main className="flex flex-col md:flex-row sm:h-full">

@@ -61,7 +61,7 @@ const AuthProvider = ({
     await logout()
     removeLocalStorage('profile')
     setUser(null)
-    navigate('/login')
+    navigate('/')
   }
 
   return (
