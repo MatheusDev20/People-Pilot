@@ -8,6 +8,7 @@ import { GET, PATCH, POST, convertQueryParams } from './handlers'
 import { extractApiError } from '../axios/interceptors'
 import { type EmployeeAPIResponse } from '../@types/api'
 import { employeesMapper } from './mappers/employee'
+import { timeout } from '../utils'
 
 export const getEmployeeList = async (
   params: GetEmployeeListParams,
@@ -61,6 +62,7 @@ export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   try {
+    await timeout(3000)
     const { stepOne, stepTwo, stepThree, stepFour } = employeeFormData
     const file = stepFour.avatar
 

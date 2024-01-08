@@ -1,3 +1,5 @@
+import { type PaymentInformation } from './employees'
+
 export type EmployeeAPIResponse = {
   id: string
   name: string
@@ -14,6 +16,7 @@ export type EmployeeAPIResponse = {
   created_tasks: any[]
   department: DepartmentAPIResponse
   managedDepartments: DepartmentAPIResponse[]
+  paymentInfo: PaymentInformation
 }
 
 export type DepartmentAPIResponse = {

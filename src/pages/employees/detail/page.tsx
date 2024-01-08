@@ -79,9 +79,6 @@ export default function EmployeeDetailPage(): JSX.Element {
             <BasicInfoProfile employee={data} />
           </TabContent>
           <TabContent idx={1} activeTab={activeTab}>
-            Aqui vai o básico de pagamento
-          </TabContent>
-          <TabContent idx={2} activeTab={activeTab}>
             Tasks Assigned
           </TabContent>
         </div>

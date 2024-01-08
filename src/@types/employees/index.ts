@@ -11,6 +11,7 @@ export interface Employee {
   position: string
   status: string
   department: Department
+  paymentInfo: PaymentInformation | null
   isManager: boolean
 }
 
@@ -67,4 +68,11 @@ export type GetEmployeeListParams = {
   page?: number
   limit?: number
   role?: 'employee' | 'managers' | 'admin'
+}
+export type PaymentInformation = {
+  bankName: string
+  accountNumber: string
+  agencyNumber: string
+  accountType: string
+  pixKey: string
 }

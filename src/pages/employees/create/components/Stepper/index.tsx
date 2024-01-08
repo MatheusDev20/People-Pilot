@@ -12,33 +12,31 @@ import { CustomDialog } from '../../../../../components/Dialog/SimpleDialog'
 import { type ApplicationError } from '../../../../../exceptions/errors'
 import { useDialog } from '../../../../../hooks/dialog'
 import { StepThree } from '../Steps/Step3'
+import { useToast } from '../../../../../hooks/toast'
+import { ToastMessage } from '../../../../../components/Toast'
 
 export const Stepper = (): React.JSX.Element => {
+  const [creatingLoading, setCreatingLoading] = useState(false)
   const { formData } = useCreateEmployeeForm()
   const [activeStep, setActiveStep] = React.useState(0)
 
   const ref = useRef<HTMLDialogElement>(null)
-  const onOpenModal = (): void => {
-    ref.current?.showModal()
-  }
   const { dialog, show } = useDialog(ref)
+  const { toast, showToast } = useToast()
 
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
-  const {
-    isLoading,
-    mutate,
-    isError,
-    isSuccess,
-    data: createdEmployeeId,
-  } = useMutation({
+  const { mutate, data: createdEmployeeId } = useMutation({
     mutationFn: postEmployee,
-    onError: (error: ApplicationError) => {
-      show({
-        msg: error.getErrorMessage(),
-        title: 'Failed to create employee',
+    onError: async (error: ApplicationError) => {
+      setCreatingLoading(false)
+      await showToast({
+        message: `Failed to create employee! ${error.message}`,
         type: 'error',
+        duration: 15000,
       })
+
+      throw error
     },
     onSuccess: () => {
       show({
@@ -65,7 +63,7 @@ export const Stepper = (): React.JSX.Element => {
           <StepFour
             errors={errors}
             setErrors={setErrors}
-            isLoading={isLoading}
+            isLoading={creatingLoading}
           />
         )
     }
@@ -86,11 +84,13 @@ export const Stepper = (): React.JSX.Element => {
   }
 
   const handleFinish = async (): Promise<void> => {
+    setCreatingLoading(true)
     mutate(formData)
   }
-  console.log(formData)
+
   return (
     <div className="flex flex-col w-full gap-6 p-3">
+      <ToastMessage message={toast.message} type={toast.type} />
       <CustomDialog
         ref={ref}
         dialogData={dialog}
@@ -117,7 +117,7 @@ export const Stepper = (): React.JSX.Element => {
       <div className="justify-center gap-24 flex p-3">
         {activeStep !== 0 && (
           <StandardButton
-            disabled={isLoading}
+            disabled={creatingLoading}
             onClick={handleBack}
             size="w-[10%]"
           >
@@ -126,7 +126,7 @@ export const Stepper = (): React.JSX.Element => {
         )}
         {activeStep === steps.length - 1 ? (
           <StandardButton onClick={handleFinish}>
-            {isLoading ? (
+            {creatingLoading ? (
               <span className="loading loading-dots"></span>
             ) : (
               'Create'

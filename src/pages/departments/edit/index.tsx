@@ -14,7 +14,6 @@ import {
   CustomOption,
   OptionIcon,
 } from '../../../components/Inputs/Select/Option'
-import { CustomDialog } from '../../../components/Dialog/SimpleDialog'
 import { useToast } from '../../../hooks/toast'
 import { ToastMessage } from '../../../components/Toast'
 import { ActionDialog } from '../../../components/Dialog/ActionDialog'
@@ -42,6 +41,7 @@ export const EditDepartmentPage = (): JSX.Element => {
       await showToast({
         message: 'Failed to perform update, try again later',
         type: 'error',
+        duration: 5000,
       })
       throw error
     },

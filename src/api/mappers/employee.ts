@@ -8,6 +8,7 @@ export const employeesMapper = (employee: EmployeeAPIResponse): Employee => {
     avatar: employee.avatar,
     birthDate: employee.birthDate,
     department: departmentsMapper(employee.department),
+    paymentInfo: employee.paymentInfo ?? null,
     email: employee.email,
     hire_date: employee.hire_date,
     name: employee.name,
