@@ -3,7 +3,7 @@ import {
   type ContextData,
   type StepValues,
 } from '../../../contexts/create-employee-form'
-import { stepOneSchema, stepTwoSchema, validateFile } from '..'
+import { stepOneSchema, stepThreeSchema, stepTwoSchema, validateFile } from '..'
 import { type ValidationResult } from '../../../@types/yup'
 
 export const validateCurrentStep = async (
@@ -24,7 +24,11 @@ export const validateCurrentStep = async (
       break
 
     case 2:
-      validation = validateFile(formData.stepThree.avatar)
+      validation = await validateStep(formData.stepThree, stepThreeSchema)
+      break
+
+    case 3:
+      validation = validateFile(formData.stepFour.avatar)
 
       break
 

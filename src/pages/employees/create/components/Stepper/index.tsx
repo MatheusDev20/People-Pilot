@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useRef, useState } from 'react'
-import { StepOne, StepThree, StepTwo, steps } from '../Steps'
+import { StepOne, StepFour, StepTwo, steps } from '../Steps'
 import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
 import { validateCurrentStep } from '../../../../../validations/schemas'
 import { useMutation } from '@tanstack/react-query'
@@ -11,6 +11,7 @@ import clsx from 'clsx'
 import { CustomDialog } from '../../../../../components/Dialog'
 import { type ApplicationError } from '../../../../../exceptions/errors'
 import { useDialog } from '../../../../../hooks/dialog'
+import { StepThree } from '../Steps/Step3'
 
 export const Stepper = (): React.JSX.Element => {
   const { formData } = useCreateEmployeeForm()
@@ -57,8 +58,11 @@ export const Stepper = (): React.JSX.Element => {
         return <StepTwo errors={errors} />
 
       case 2:
+        return <StepThree errors={errors} />
+
+      case 3:
         return (
-          <StepThree
+          <StepFour
             errors={errors}
             setErrors={setErrors}
             isLoading={isLoading}
@@ -98,7 +102,7 @@ export const Stepper = (): React.JSX.Element => {
             className={clsx(
               {
                 'step-success':
-                  step.stepId < activeStep || formData.stepThree.avatar,
+                  step.stepId < activeStep || formData.stepFour.avatar,
               },
               { 'step-accent': step.stepId === activeStep },
               'step step-primary',
@@ -112,8 +116,12 @@ export const Stepper = (): React.JSX.Element => {
       <div className="flex p-3">{getCurrentStep(activeStep)}</div>
       <div className="justify-center gap-24 flex p-3">
         {activeStep !== 0 && (
-          <StandardButton disabled={isLoading} onClick={handleBack}>
-            Back
+          <StandardButton
+            disabled={isLoading}
+            onClick={handleBack}
+            size="w-[10%]"
+          >
+            Previous Step
           </StandardButton>
         )}
         {activeStep === steps.length - 1 ? (
@@ -125,7 +133,9 @@ export const Stepper = (): React.JSX.Element => {
             )}
           </StandardButton>
         ) : (
-          <StandardButton onClick={handleNext}>NEXT</StandardButton>
+          <StandardButton onClick={handleNext} size="w-[10%]">
+            Next Step
+          </StandardButton>
         )}
       </div>
     </div>

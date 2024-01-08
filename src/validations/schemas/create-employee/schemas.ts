@@ -16,6 +16,14 @@ export const stepTwoSchema = object({
   hireDate: string().required('Hire date is required'),
 })
 
+export const stepThreeSchema = object({
+  bankName: string().required('Bank name is required'),
+  accountNumber: string().required('Account number is required'),
+  accountType: string().required('Account type is required'),
+  agencyNumber: string().required('Agency number is required'),
+  pixKey: string().required('Pix key is required'),
+})
+
 const validFileExtensions = ['jpg', 'png', 'jpeg']
 
 export function validateFile(file: File | null): ValidationResult {

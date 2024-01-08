@@ -3,10 +3,11 @@ import {
   Business,
   PersonIcon,
 } from './../../../../../assets/icons/index'
+import { MoneyIcon } from '../../../../../assets/svgs/money'
 
 export * from './Step1'
 export * from './Step2'
-export * from './Step3'
+export * from './Step4'
 
 export const steps = [
   {
@@ -21,6 +22,11 @@ export const steps = [
   },
   {
     stepId: 2,
+    label: 'Payment Information',
+    icon: MoneyIcon,
+  },
+  {
+    stepId: 3,
     label: 'Avatar Upload',
     icon: Avatar,
   },

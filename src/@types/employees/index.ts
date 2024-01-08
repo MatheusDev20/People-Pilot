@@ -29,10 +29,8 @@ export interface ActiveUser {
 
 export interface StepOneData {
   name: string
-  lastName: string
   birthDate: string
   email: string
-  address: string
   phone: string
 }
 
@@ -44,6 +42,14 @@ export interface StepTwoData {
 }
 
 export interface StepThreeData {
+  bankName: string
+  accountNumber: string
+  accountType: string
+  agencyNumber: string
+  pixKey: string
+}
+
+export interface StepFourData {
   avatar: File | null
 }
 

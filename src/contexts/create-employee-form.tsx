@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import {
   type StepOneData,
-  type StepThreeData,
+  type StepFourData,
   type StepTwoData,
+  type StepThreeData,
 } from '../@types/employees'
 import React, { createContext, useContext, useMemo, useState } from 'react'
 
@@ -10,6 +11,7 @@ export interface ContextData {
   stepOne: StepOneData
   stepTwo: StepTwoData
   stepThree: StepThreeData
+  stepFour: StepFourData
 }
 
 interface ContextProps {
@@ -40,6 +42,13 @@ const CreateEmployeeFormProvider: React.FC<Props> = ({ children }: Props) => {
       password: '',
     },
     stepThree: {
+      bankName: '',
+      accountType: '',
+      accountNumber: '',
+      agencyNumber: '',
+      pixKey: '',
+    },
+    stepFour: {
       avatar: null,
     },
   } as ContextData)
