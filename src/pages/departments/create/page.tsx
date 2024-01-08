@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import { type CreateDepartmentForm } from '../../../@types'
 import { StandardButton } from '../../../components/Buttons/Standard'
 import { useDialog } from '../../../hooks/dialog'
-import { CustomDialog } from '../../../components/Dialog'
+import { CustomDialog } from '../../../components/Dialog/SimpleDialog'
 import { createDepartmentSchema } from '../../../validations/schemas/departments'
 import { validateSchema } from '../../../validations/schemas'
 import { postDepartment } from '../../../api/departments'
@@ -23,14 +23,13 @@ export const CreateDepartmentPage = (): JSX.Element => {
   const { dialog, show } = useDialog(ref)
   const { managers } = useManagers()
 
-  const { mutate } = useMutation({
+  const { mutate, isError, isLoading, isSuccess } = useMutation({
     mutationFn: postDepartment,
-    onSuccess: (data) => {
+    onSuccess: () => {
       show({
-        msg: `Department ${formData.name} created! `,
+        msg: `Department ${formData.name} created with success `,
         title: 'Department Created',
         type: 'success',
-        createdId: data.id,
       })
     },
   })

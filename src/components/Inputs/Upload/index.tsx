@@ -22,8 +22,8 @@ export const UploadInput = ({
     }
     setFormData({
       ...formData,
-      stepThree: {
-        ...formData.stepThree,
+      stepFour: {
+        ...formData.stepFour,
         avatar: file,
       },
     })

@@ -11,8 +11,9 @@ import { PlusButton } from '../employees/components/Buttons/buttons'
 import { BuildingIcon } from '../../assets/svgs/building'
 import { useState, type ChangeEvent, useRef } from 'react'
 import { NotFound } from '../../components/Exceptions/NotFound'
-import { CustomDialog } from '../../components/Dialog'
+import { CustomDialog } from '../../components/Dialog/SimpleDialog'
 import { useNavigate } from 'react-router-dom'
+import { ActionDialog } from '../../components/Dialog/ActionDialog'
 
 export const DepartmentsPage = (): JSX.Element => {
   const queryClient = useQueryClient()
@@ -90,7 +91,7 @@ export const DepartmentsPage = (): JSX.Element => {
     .map((dep) => ({ ...dep, enableDelete: dep.activeEmployees !== 0 }))
   return (
     <>
-      <CustomDialog
+      <ActionDialog
         ref={ref}
         dialogData={dialog}
         action={dialog.action}

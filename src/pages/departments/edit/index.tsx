@@ -14,9 +14,10 @@ import {
   CustomOption,
   OptionIcon,
 } from '../../../components/Inputs/Select/Option'
-import { CustomDialog } from '../../../components/Dialog'
+import { CustomDialog } from '../../../components/Dialog/SimpleDialog'
 import { useToast } from '../../../hooks/toast'
 import { ToastMessage } from '../../../components/Toast'
+import { ActionDialog } from '../../../components/Dialog/ActionDialog'
 
 export const EditDepartmentPage = (): JSX.Element => {
   const ref = useRef<HTMLDialogElement>(null)
@@ -57,7 +58,7 @@ export const EditDepartmentPage = (): JSX.Element => {
           mutate({ id: department.id, ...diff })
         },
         type: 'edit',
-        successMsg: 'Department updated!',
+        successMsg: 'Department updated with success!',
       },
     })
   }
@@ -101,7 +102,7 @@ export const EditDepartmentPage = (): JSX.Element => {
     <>
       <ToastMessage message={toast.message} type={toast.type} />
       <div className="p-8">
-        <CustomDialog
+        <ActionDialog
           ref={ref}
           dialogData={dialog}
           action={dialog.action}

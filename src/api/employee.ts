@@ -46,12 +46,23 @@ export const uploadAvatar = async (file: File, id: string): Promise<string> => {
   return data.body.id
 }
 
+export const updatePaymentInfo = async (
+  paymentInfo: any,
+  id: string,
+): Promise<void> => {
+  await POST<{ id: string }>({
+    authenticated: true,
+    path: `/employee/payment-info/${id}`,
+    body: paymentInfo,
+  })
+}
+
 export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   try {
-    const { stepOne, stepTwo, stepThree } = employeeFormData
-    const file = stepThree.avatar
+    const { stepOne, stepTwo, stepThree, stepFour } = employeeFormData
+    const file = stepFour.avatar
 
     const birthDate = convertDateFormat(stepOne.birthDate)
     const hireDate = convertDateFormat(stepTwo.hireDate)
@@ -72,8 +83,10 @@ export const postEmployee = async (
       path: '/employee',
       body,
     })
+    const { id } = data.body
 
-    if (file) await uploadAvatar(file, data.body.id)
+    if (file) await uploadAvatar(file, id)
+    await updatePaymentInfo(stepThree, id)
 
     return data.body.id
   } catch (err) {

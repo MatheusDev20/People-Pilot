@@ -8,7 +8,7 @@ import { postEmployee } from '../../../../../api/employee'
 import { StandardButton } from '../../../../../components/Buttons/Standard'
 
 import clsx from 'clsx'
-import { CustomDialog } from '../../../../../components/Dialog'
+import { CustomDialog } from '../../../../../components/Dialog/SimpleDialog'
 import { type ApplicationError } from '../../../../../exceptions/errors'
 import { useDialog } from '../../../../../hooks/dialog'
 import { StepThree } from '../Steps/Step3'
@@ -28,6 +28,8 @@ export const Stepper = (): React.JSX.Element => {
   const {
     isLoading,
     mutate,
+    isError,
+    isSuccess,
     data: createdEmployeeId,
   } = useMutation({
     mutationFn: postEmployee,
@@ -37,14 +39,12 @@ export const Stepper = (): React.JSX.Element => {
         title: 'Failed to create employee',
         type: 'error',
       })
-      onOpenModal()
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       show({
         msg: 'Employee created successfully',
         title: 'Employee created',
         type: 'success',
-        createdId: data,
       })
     },
   })
@@ -88,7 +88,7 @@ export const Stepper = (): React.JSX.Element => {
   const handleFinish = async (): Promise<void> => {
     mutate(formData)
   }
-
+  console.log(formData)
   return (
     <div className="flex flex-col w-full gap-6 p-3">
       <CustomDialog
