@@ -68,3 +68,9 @@ export type UpdateDepartmentData = {
   description?: string
   managerEmail?: string
 }
+
+export type AppBanks = {
+  id: string
+  name: string
+  code: number
+}

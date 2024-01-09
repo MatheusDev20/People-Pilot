@@ -89,7 +89,6 @@ export const postEmployee = async (
 
     if (file) await uploadAvatar(file, id)
     await updatePaymentInfo(stepThree, id)
-
     return data.body.id
   } catch (err) {
     if (err instanceof AxiosError) {

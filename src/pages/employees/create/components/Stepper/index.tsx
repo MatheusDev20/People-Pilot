@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { StepOne, StepFour, StepTwo, steps } from '../Steps'
 import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
 import { validateCurrentStep } from '../../../../../validations/schemas'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { postEmployee } from '../../../../../api/employee'
 import { StandardButton } from '../../../../../components/Buttons/Standard'
 
@@ -14,6 +14,7 @@ import { useDialog } from '../../../../../hooks/dialog'
 import { StepThree } from '../Steps/Step3'
 import { useToast } from '../../../../../hooks/toast'
 import { ToastMessage } from '../../../../../components/Toast'
+import { getAvailableBanks } from '../../../../../api/banks'
 
 export const Stepper = (): React.JSX.Element => {
   const [creatingLoading, setCreatingLoading] = useState(false)
@@ -39,12 +40,18 @@ export const Stepper = (): React.JSX.Element => {
       throw error
     },
     onSuccess: () => {
+      setCreatingLoading(false)
       show({
         msg: 'Employee created successfully',
         title: 'Employee created',
         type: 'success',
       })
     },
+  })
+
+  const { data: availableBanks } = useQuery({
+    queryKey: ['employee'],
+    queryFn: getAvailableBanks,
   })
 
   const getCurrentStep = (currStep: number): JSX.Element | undefined => {
@@ -56,7 +63,7 @@ export const Stepper = (): React.JSX.Element => {
         return <StepTwo errors={errors} />
 
       case 2:
-        return <StepThree errors={errors} />
+        return <StepThree availableBanks={availableBanks} errors={errors} />
 
       case 3:
         return (

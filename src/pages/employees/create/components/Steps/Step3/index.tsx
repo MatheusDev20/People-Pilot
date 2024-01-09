@@ -1,12 +1,15 @@
+import { type AppBanks } from '../../../../../../@types'
 import { CustomInput, CustomSelect } from '../../../../../../components/Inputs'
 import { hasMask } from '../../../../../../components/Inputs/Masks'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 
 interface Props {
   errors: Record<string, string[]> | null
+  availableBanks: AppBanks[] | undefined
 }
-export const StepThree = ({ errors }: Props): JSX.Element => {
+export const StepThree = ({ errors, availableBanks }: Props): JSX.Element => {
   const { formData, setFormData } = useCreateEmployeeForm()
+  const options = availableBanks ? availableBanks.map((bank) => bank.name) : []
 
   const handleStepChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -14,7 +17,6 @@ export const StepThree = ({ errors }: Props): JSX.Element => {
     const name = e.target.name
     const mask = hasMask(name)
     const value = mask ? mask(e.target.value) : e.target.value
-    console.log(value)
     setFormData({
       ...formData,
       stepThree: {
@@ -28,14 +30,15 @@ export const StepThree = ({ errors }: Props): JSX.Element => {
     <div className="w-full flex flex-col gap-5 p-12">
       {/* BankName and AccountType */}
       <div className="flex w-full">
-        <CustomInput
+        <CustomSelect
           wSize="medium"
           name="bankName"
           onChange={handleStepChange}
           value={formData.stepThree.bankName}
+          options={options}
           error={errors ? errors.bankName : null}
           label="Bank Name"
-          placeholder="Itau Unibanco SA..."
+          placeholder="Select one of the available banks..."
           type="text"
         />
         {/* Email */}
