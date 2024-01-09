@@ -23,7 +23,7 @@ export const CreateDepartmentPage = (): JSX.Element => {
   const { dialog, show } = useDialog(ref)
   const { managers } = useManagers()
 
-  const { mutate, isError, isLoading, isSuccess } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: postDepartment,
     onSuccess: () => {
       show({
