@@ -1,6 +1,6 @@
 # People Pilot - Employee Management Platform 
 
- <img src="./src/assets/imgs/hr_max_logo.png" alt="logo"/>
+ <img src="./src/assets/imgs/people_pilot_logo.pngg" alt="logo"/>
 
 
 ## Introduction
