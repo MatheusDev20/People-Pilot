@@ -41,6 +41,13 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
       window.location.reload()
     }
   }
+
+  if (status === 401) {
+    await logout()
+    removeLocalStorage('profile')
+    window.location.reload()
+  }
+
   throw error
 }
 

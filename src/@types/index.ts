@@ -36,17 +36,20 @@ export type AccordionElement = {
   info: string
 }
 
+export type ManagerData = {
+  name: string
+  avatar: string
+  email: string
+}
+
+// An department can have a manager or not
 export type Department = {
   id: string
   name: string
   description: string
   activeEmployees: number
   status: string
-  manager: {
-    name: string
-    avatar: string
-    email: string
-  }
+  manager: ManagerData | null
   enableDelete?: boolean
 }
 

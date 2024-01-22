@@ -54,7 +54,9 @@ export default function EmployeeDetailPage(): JSX.Element {
             <InfoLabel title="Admission Date" info={data.hire_date} w="100%" />
             <InfoLabel
               title="Manager"
-              info={data.department.manager.name}
+              info={
+                data.department.manager ? data.department.manager.name : 'N/A'
+              }
               w="100%"
             />
             <InfoLabel title="Position" info={data.position} w="100%" />
