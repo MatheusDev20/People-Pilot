@@ -1,0 +1,5 @@
+-> Tela para listagem de todos os funcionários, com paginação.
+-> Tela para criação de um novo funcionário
+-> Adição de dados de pagamento para um novo funcionário
+-> Tela para adição, edição e deleção de um departamento.
+-> Listagem em tabela dos departamentos.
