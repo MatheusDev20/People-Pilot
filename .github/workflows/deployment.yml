@@ -23,7 +23,7 @@ jobs:
         cache: 'npm'
 
     - run: echo 'Starting building...'
-    - run: npm build
+    - run: npm run build
     - run: echo 'Done!'
     - run: echo 'Moving files via secure shell ...'
     - run: scp -r  ./dist/* root@204.48.26.219:/var/www/peoplepilot.com.br/html 
