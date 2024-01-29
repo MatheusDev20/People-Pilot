@@ -29,12 +29,13 @@ jobs:
     - name: Adding Known Hosts
       run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-    - run: echo 'Starting building...'
-    - run: npm run build
-    - run: echo 'Done!'
-    - run: echo 'Moving files via secure shell ...'
-    - run: scp -r  ./dist/* root@204.48.26.219:/var/www/peoplepilot.com.br/html 
-    - run: echo 'Done!'
-    - run: echo 'Deployed successfully!'
+    - name: Install Dependencies
+      run: npm install
+
+    - name: 'Building App'
+      run: npm run build
+    - name: 'Moving Files via Security Shell'
+
+      run: scp -r  ./dist/* root@204.48.26.219:/var/www/peoplepilot.com.br/html
 
     
