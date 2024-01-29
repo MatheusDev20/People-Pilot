@@ -26,7 +26,7 @@ export const EditDepartmentPage = (): JSX.Element => {
   const oldData = {
     name: department.name,
     description: department.description,
-    managerEmail: department.manager.email,
+    managerEmail: department.manager ? department.manager.email : '',
   }
   const { managers } = useManagers()
   const { dialog, show, hideDialog } = useDialog(ref)
@@ -86,11 +86,15 @@ export const EditDepartmentPage = (): JSX.Element => {
     return { diff }
   }
   const defaultSelectOption = {
-    value: department.manager.email,
+    value: department.manager ? department.manager.email : '',
     label: (
       <CustomOption
-        data={department.manager.email}
-        img={<OptionIcon imgUrl={department.manager.avatar} />}
+        data={department.manager ? department.manager.email : ''}
+        img={
+          <OptionIcon
+            imgUrl={department.manager ? department.manager.email : ''}
+          />
+        }
       />
     ),
   }
@@ -143,7 +147,7 @@ export const EditDepartmentPage = (): JSX.Element => {
             />
             <CustomSelect
               defaultValue={
-                department.manager.email === formData.managerEmail
+                department.manager?.email === formData.managerEmail
                   ? defaultSelectOption
                   : ''
               }
