@@ -86,7 +86,6 @@ export const postEmployee = async (
       body,
     })
     const { id } = data.body
-
     if (file) await uploadAvatar(file, id)
     await updatePaymentInfo(stepThree, id)
     return data.body.id

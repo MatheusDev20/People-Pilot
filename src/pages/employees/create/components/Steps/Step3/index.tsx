@@ -48,7 +48,7 @@ export const StepThree = ({ errors, availableBanks }: Props): JSX.Element => {
           onChange={handleStepChange}
           wSize="medium"
           error={errors ? errors.accountType : null}
-          options={['CORRENTE', 'POUPANÇA']}
+          options={['CORRENTE', 'POUPANCA']}
           label="Account Type"
           placeholder="Selecione o tipo de conta (Corrente/Poupança)"
         />

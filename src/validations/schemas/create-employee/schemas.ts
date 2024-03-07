@@ -1,5 +1,5 @@
 import { type ValidationResult } from '../../../@types/yup'
-import { object, string } from 'yup'
+import { mixed, object, string } from 'yup'
 
 export const stepOneSchema = object({
   name: string()
@@ -19,7 +19,8 @@ export const stepTwoSchema = object({
 export const stepThreeSchema = object({
   bankName: string().required('Bank name is required'),
   accountNumber: string().required('Account number is required'),
-  accountType: string().required('Account type is required'),
+  // accountType: string().required('Account type is required'),
+  accountType: mixed().oneOf(['CORRENTE', 'POUPANCA']),
   agencyNumber: string().required('Agency number is required'),
   pixKey: string().required('Pix key is required'),
 })
