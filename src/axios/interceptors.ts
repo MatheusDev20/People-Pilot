@@ -25,6 +25,8 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   const status = response?.status
   const axiosData = response?.data as HttpResponse
 
+  if (axiosData.response.message === 'Invalid Credentials') throw error
+
   if (
     status === 401 &&
     originalRequest &&

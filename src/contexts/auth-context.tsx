@@ -53,7 +53,7 @@ const AuthProvider = ({
       navigate('/app/employees')
     } catch (err: any) {
       setLoading(false)
-      setFailedMessage(err.message)
+      setFailedMessage('Credenciais Inválidas')
     }
   }
 

@@ -7,6 +7,8 @@ import { type ObjectSchema } from 'yup'
 
 import { useAuth } from '../../../../contexts/auth-context'
 import { LoginInput } from '../Inputs'
+import { WarningIcon } from '../../../../assets/svgs/warning'
+import { Exclamation } from '../../../../assets/svgs/exclamation'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
@@ -18,8 +20,10 @@ export const Form = (): React.JSX.Element => {
   const { signIn, loading, failedMessage, setFailedMessage } = useAuth()
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     if (failedMessage) setFailedMessage('')
+
     e.preventDefault()
     const { veredict, errors } = await validateForm(loginForm, loginFormSchema)
+
     if (!veredict) {
       setErrors(errors)
       return
@@ -64,7 +68,10 @@ export const Form = (): React.JSX.Element => {
               placeholder="Password..."
             />
             {failedMessage && (
-              <span className="text-sm text-red-500">{failedMessage}</span>
+              <div className="w-full flex justify-center gap-2">
+                <Exclamation />
+                <span className="text-sm text-red-500">{failedMessage}</span>
+              </div>
             )}
           </div>
           <a className="text-sm mb-10 mt-5 link-primary cursor-pointer no-underline font-medium hover:text-blue-400">

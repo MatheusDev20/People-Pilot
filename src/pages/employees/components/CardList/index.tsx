@@ -9,7 +9,7 @@ interface Props {
 export const CardList = ({ list }: Props): React.JSX.Element => {
   return (
     <main className="flex flex-col gap-0 cursor-pointer">
-      <div className="p-8 grid grid-cols-4 gap-4 w-full">
+      <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-2 gap-4 w-full">
         {list.map((employee) => {
           return (
             <EmployeeCard.Wrapper key={employee.id} id={employee.id}>

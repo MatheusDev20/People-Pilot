@@ -140,7 +140,7 @@ export const Stepper = (): React.JSX.Element => {
             )}
           </StandardButton>
         ) : (
-          <StandardButton onClick={handleNext} size="w-[10%]">
+          <StandardButton onClick={handleNext} size="w-[150px]">
             Next Step
           </StandardButton>
         )}

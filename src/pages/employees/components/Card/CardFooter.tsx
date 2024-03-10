@@ -17,7 +17,7 @@ export const CardFooter = ({
     <footer className="flex flex-col p-5 gap-6 rounded-md bg-accent-content">
       <header className="flex items-center justify-between">
         <div className="flex gap-2 justify-center w-full p-3">
-          <p className="text-md dark:text-twitter-blue-main font-semibold">
+          <p className="text-xs sm:text-sm md:text-md dark:text-twitter-blue-main font-semibold">
             {department.name} {'Department'}
           </p>
         </div>

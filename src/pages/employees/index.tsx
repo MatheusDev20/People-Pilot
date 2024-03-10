@@ -24,12 +24,6 @@ export default function EmployeePage(): JSX.Element {
     queryKey: ['employeeList', params],
     queryFn: async ({ queryKey }) =>
       await getEmployeeList(queryKey[1] as GetEmployeeListParams),
-
-    // queryFn: async () => {
-    //   const employees = await getEmployeeList(params)
-
-    //   return employees
-    // },
   })
 
   const filteredData = !data
@@ -55,7 +49,7 @@ export default function EmployeePage(): JSX.Element {
   return (
     <>
       {isError ? (
-        <h1>Deu erro fi</h1>
+        <h1>Error</h1>
       ) : (
         <div className="flex flex-col md:flex-col sm:h-full max-w-full">
           <Header handleChange={handleChange} />
