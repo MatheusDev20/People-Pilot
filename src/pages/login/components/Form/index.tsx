@@ -7,7 +7,6 @@ import { type ObjectSchema } from 'yup'
 
 import { useAuth } from '../../../../contexts/auth-context'
 import { LoginInput } from '../Inputs'
-import { WarningIcon } from '../../../../assets/svgs/warning'
 import { Exclamation } from '../../../../assets/svgs/exclamation'
 
 export const Form = (): React.JSX.Element => {

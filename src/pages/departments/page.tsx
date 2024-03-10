@@ -106,9 +106,9 @@ export const DepartmentsPage = (): JSX.Element => {
           placeholder="Sales..."
           wSize="large"
         />
-        <div className="flex gap-20 p-2 items-center justify-center place-self-end w-[30%]">
+        <div className="flex md:gap-20 p-2 items-center justify-center place-self-end sm:[w-[25%]] md:w-[50%]">
           <PlusButton
-            text="NEW DEPARTMENT"
+            text="Add new Department"
             icon={<BuildingIcon />}
             routeTo="/app/departments/create"
           />
