@@ -7,7 +7,10 @@ import { FiSettings } from 'react-icons/fi'
 import { NavItem } from '../NavItem'
 import { BuildingIcon } from '../../../assets/svgs/building'
 
-export const Navigation = (): React.JSX.Element => {
+type Props = {
+  isOpen: boolean
+}
+export const Navigation = ({ isOpen }: Props): React.JSX.Element => {
   return (
     <nav className="flex flex-col gap-4">
       <div>
@@ -17,10 +20,18 @@ export const Navigation = (): React.JSX.Element => {
         {/* Nav Item */}
         <div className="flex flex-col mt-3 gap-5">
           <a href="/app/employees">
-            <NavItem icon={<BsPersonVcard />} text="Employees" />
+            <NavItem
+              hideText={!isOpen}
+              icon={<BsPersonVcard />}
+              text="Employees"
+            />
           </a>
           <a href="/app/departments">
-            <NavItem icon={<BuildingIcon />} text="Departments" />
+            <NavItem
+              hideText={!isOpen}
+              icon={<BuildingIcon />}
+              text="Departments"
+            />
           </a>
           {/* <a href="/departments">
             <NavItem icon={<FcDepartment />} text="Departments" />
@@ -33,7 +44,7 @@ export const Navigation = (): React.JSX.Element => {
           Support
         </span>
         <div className="flex flex-col mt-3 gap-5">
-          <NavItem icon={<FiSettings />} text="Settings" />
+          <NavItem hideText={!isOpen} icon={<FiSettings />} text="Settings" />
         </div>
       </div>
     </nav>

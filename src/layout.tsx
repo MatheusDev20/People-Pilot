@@ -11,13 +11,15 @@ export default function BaseLayout({
     const root = window.document.documentElement
     root.classList.add('dark')
   }, [])
-
+  const [sidebarOpen, setSidebarOpen] = React.useState(true)
+  const handleSidebar = (): void => {
+    setSidebarOpen(!sidebarOpen)
+  }
   return (
-    // TODO: Overflow hidden?
     <div className="flex min-h-screen overflow-hidden">
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} />
       <div className={'w-full flex flex-col flex-1'}>
-        <Header />
+        <Header expand={handleSidebar} />
         <main className="p-3 bg-base-100">{children}</main>
       </div>
     </div>

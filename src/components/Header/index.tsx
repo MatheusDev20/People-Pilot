@@ -2,12 +2,23 @@
 import React from 'react'
 import avatar from '../../assets/imgs/fake-avatar1.png'
 import { useAuth } from '../../contexts/auth-context'
+import { ChevronDouble } from '../../assets/svgs/chevron-double'
 
-export const Header = (): React.JSX.Element => {
+type Props = {
+  expand: () => void
+}
+
+export const Header = ({ expand }: Props): React.JSX.Element => {
   const { user, signOut } = useAuth()
 
   return (
-    <header className="flex justify-end p-4 bg-base-300 border-solid border-neutral border-b-[0.4px] w-full">
+    <header className="flex justify-between p-4 bg-base-300 border-solid border-neutral border-b-[0.4px] w-full">
+      <div
+        className="border rounded-full flex items-center p-2 border-neutral hover:border-twitter-blue-main cursor-pointer"
+        onClick={expand}
+      >
+        <ChevronDouble classStyles="w-6 h-6r" />
+      </div>
       {/* Logged user Avatar */}
       <div className="flex md:justify-normal">
         <div className="flex gap-8 items-center  pl-12 pr-12">
