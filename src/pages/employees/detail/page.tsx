@@ -1,12 +1,14 @@
 import Employee from '../../../assets/imgs/fake-avatar1.png'
 import { TabContent, TabsNavigation } from './components/Tabs'
 import { useState } from 'react'
-import { BasicInfoProfile } from './components/Tabs/BasicProfile'
+import { BasicInfoProfile } from './components/Tabs/components/Profile'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getEmployeeById } from '../../../api/employee'
 import { InfoLabel } from './components/InfoLabel'
 import clsx from 'clsx'
+import { Task } from './components/Tabs/components/Tasks'
+import { DocumentsData } from './components/Tabs/components/Documents'
 
 export default function EmployeeDetailPage(): JSX.Element {
   const [activeTab, setActiveTab] = useState(0)
@@ -72,16 +74,17 @@ export default function EmployeeDetailPage(): JSX.Element {
       )}
       {/* Basic Info + Avatar */}
 
-      {/* Personal Information + Payment information */}
       {isSuccess ? (
         <div className="md:flex-1 flex flex-col">
-          {/* Tabs */}
           <TabsNavigation handleTab={handleTab} activeTab={activeTab} />
           <TabContent idx={0} activeTab={activeTab}>
             <BasicInfoProfile employee={data} />
           </TabContent>
           <TabContent idx={1} activeTab={activeTab}>
-            Tasks Assigned
+            <Task />
+          </TabContent>
+          <TabContent idx={2} activeTab={activeTab}>
+            <DocumentsData />
           </TabContent>
         </div>
       ) : (

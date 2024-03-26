@@ -1,6 +1,11 @@
 /* eslint-disable no-void */
 /* eslint-disable @typescript-eslint/no-confusing-void-expression */
 import React from 'react'
+import { PersonSVG } from '../../../../../assets/svgs/person'
+import { TaskSVG } from '../../../../../assets/svgs/tasks'
+import { TabNavItem } from './components/TabNavItem'
+import { DocumentsSVG } from '../../../../../assets/svgs/documents'
+import { RocketSVG } from '../../../../../assets/svgs/rockets'
 
 interface NavigationProps {
   handleTab: (activeTab: number) => void
@@ -17,21 +22,37 @@ export const TabsNavigation = ({
   activeTab,
 }: NavigationProps): React.JSX.Element => {
   return (
-    <div role="tablist" className="tabs tabs-boxed">
-      <span
-        role="tab"
-        className={activeTab === 0 ? 'tab-active tab' : 'tab'}
+    <div role="tablist" className="tabs items-center tabs-boxed">
+      <div
         onClick={() => handleTab(0)}
+        className={activeTab === 0 ? 'tab-active tab' : 'tab'}
       >
-        Profile
-      </span>
-      <span
-        role="tab"
-        className={activeTab === 2 ? 'tab-active tab' : 'tab'}
+        <TabNavItem icon={<PersonSVG classStyles="w-6 h-6" />} text="Profile" />
+      </div>
+      <div
+        onClick={() => handleTab(1)}
+        className={activeTab === 1 ? 'tab-active tab' : 'tab'}
+      >
+        <TabNavItem icon={<TaskSVG classStyles="w-6 h-6" />} text="Tasks" />
+      </div>
+      <div
         onClick={() => handleTab(2)}
+        className={activeTab === 2 ? 'tab-active tab' : 'tab'}
       >
-        Tasks Assigned
-      </span>
+        <TabNavItem
+          icon={<DocumentsSVG classStyles="w-6 h-6" />}
+          text="Documents"
+        />
+      </div>
+      <div
+        onClick={() => handleTab(3)}
+        className={activeTab === 3 ? 'tab-active tab' : 'tab'}
+      >
+        <TabNavItem
+          icon={<RocketSVG classStyles="w-6 h-6" />}
+          text="OKRs e Metas"
+        />
+      </div>
     </div>
   )
 }

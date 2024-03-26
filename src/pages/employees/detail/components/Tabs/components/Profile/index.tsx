@@ -1,12 +1,12 @@
 import React from 'react'
 // import { InfoLabel } from '../../InfoLabel'
-import { type Employee } from '../../../../../../@types/employees'
-import { Accordion } from '../../../../../../components/Accordion'
-import { extract } from '../../../../../../utils'
+import { type Employee } from '../../../../../../../@types/employees'
+import { Accordion } from '../../../../../../../components/Accordion'
+import { extract } from '../../../../../../../utils'
 import {
   PaymentInfoMapper,
   PersonalInfoMapper,
-} from '../../../../../../utils/mappers/accordion'
+} from '../../../../../../../utils/mappers/accordion'
 
 type Props = {
   employee: Employee

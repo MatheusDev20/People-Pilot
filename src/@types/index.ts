@@ -77,3 +77,7 @@ export type AppBanks = {
   name: string
   code: number
 }
+
+export type SVGProps = {
+  classStyles: string
+}
