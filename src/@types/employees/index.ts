@@ -1,4 +1,4 @@
-import { type Department } from '..'
+import { type PersonalDocuments, type Department } from '..'
 
 export interface Employee {
   name: string
@@ -13,6 +13,7 @@ export interface Employee {
   department: Department
   paymentInfo: PaymentInformation | null
   isManager: boolean
+  documents: PersonalDocuments[]
 }
 
 export interface ActiveUser {

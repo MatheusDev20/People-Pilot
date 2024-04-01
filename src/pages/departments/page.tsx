@@ -76,6 +76,7 @@ export const DepartmentsPage = (): JSX.Element => {
   const tableHeaders = getKeysOf<Department>(data ? data[0] : undefined, [
     'id',
     'description',
+    'employees',
   ])
 
   if (listLoading)
@@ -87,7 +88,8 @@ export const DepartmentsPage = (): JSX.Element => {
 
   const filteredData = data
     ?.filter((department) => department.name.includes(search))
-    .map((dep) => ({ ...dep, enableDelete: dep.activeEmployees !== 0 }))
+    .map((dep) => ({ ...dep, enableDelete: dep?.employees.length !== 0 }))
+
   return (
     <>
       <ActionDialog

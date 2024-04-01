@@ -3,12 +3,14 @@ import React from 'react'
 import avatar from '../../assets/imgs/fake-avatar1.png'
 import { useAuth } from '../../contexts/auth-context'
 import { ChevronDouble } from '../../assets/svgs/chevron-double'
+import { ChevronRigth } from '../../assets/svgs/chevron-rigth'
 
 type Props = {
+  isOpen: boolean
   expand: () => void
 }
 
-export const Header = ({ expand }: Props): React.JSX.Element => {
+export const Header = ({ expand, isOpen }: Props): React.JSX.Element => {
   const { user, signOut } = useAuth()
 
   return (
@@ -17,7 +19,11 @@ export const Header = ({ expand }: Props): React.JSX.Element => {
         className="border rounded-full flex items-center p-2 border-neutral hover:border-twitter-blue-main cursor-pointer"
         onClick={expand}
       >
-        <ChevronDouble classStyles="w-6 h-6r" />
+        {isOpen ? (
+          <ChevronDouble classStyles="w-6 h-6r" />
+        ) : (
+          <ChevronRigth classStyles="w-6 h-6" />
+        )}
       </div>
       {/* Logged user Avatar */}
       <div className="flex md:justify-normal">

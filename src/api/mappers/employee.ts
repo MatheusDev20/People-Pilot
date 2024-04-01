@@ -17,6 +17,7 @@ export const employeesMapper = (employee: EmployeeAPIResponse): Employee => {
       position: employee.position,
       status: employee.status,
       isManager: employee.managedDepartments.length > 0,
+      documents: employee.documents,
     }
   } catch (err: any) {
     throw new Error(err)

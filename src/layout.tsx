@@ -19,7 +19,7 @@ export default function BaseLayout({
     <div className="flex min-h-screen overflow-hidden">
       <Sidebar isOpen={sidebarOpen} />
       <div className={'w-full flex flex-col flex-1'}>
-        <Header expand={handleSidebar} />
+        <Header isOpen={sidebarOpen} expand={handleSidebar} />
         <main className="p-3 bg-base-100">{children}</main>
       </div>
     </div>

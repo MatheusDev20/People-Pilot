@@ -16,7 +16,8 @@ export const departmentsMapper = (dep: DepartmentAPIResponse): Department => {
           }
         : null,
       status: dep.isActive ? 'Active' : 'Inactive',
-      activeEmployees: dep.employees.length,
+      employees: dep.employees,
+      employeeCount: dep.employeeCount,
     }
   } catch (err: any) {
     throw new Error(err)

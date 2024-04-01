@@ -1,3 +1,4 @@
+import { type PersonalDocuments } from '.'
 import { type PaymentInformation } from './employees'
 
 export type EmployeeAPIResponse = {
@@ -17,6 +18,7 @@ export type EmployeeAPIResponse = {
   department: DepartmentAPIResponse
   managedDepartments: DepartmentAPIResponse[]
   paymentInfo: PaymentInformation
+  documents: PersonalDocuments[]
 }
 
 export type DepartmentAPIResponse = {
@@ -28,4 +30,5 @@ export type DepartmentAPIResponse = {
   created_at: string
   updated_at: string
   employees: any[]
+  employeeCount: number
 }

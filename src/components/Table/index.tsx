@@ -22,7 +22,6 @@ export const Table = <T extends object>({
   editAction,
   deleteAction,
 }: TableProps<T>): JSX.Element => {
-  console.log(tableData)
   return (
     <table className="table flex">
       {/* head */}
@@ -69,7 +68,9 @@ export const Table = <T extends object>({
                   </div>
                 ) : (
                   <div className="flex justify-center">
-                    <span className="text-lg">{String(row[col])}</span>
+                    <span className="text-lg place-self-center">
+                      {String(row[col])}
+                    </span>
                   </div>
                 )}
               </td>
@@ -83,7 +84,7 @@ export const Table = <T extends object>({
                       editAction(row)
                     }}
                   >
-                    <PenIcon />
+                    <PenIcon classStyles="w-6 h-6 text-twitter-blue-main hover:text-twitter-blue-secondary" />
                   </button>
                   <button
                     disabled={(row as Department).enableDelete}

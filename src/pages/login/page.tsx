@@ -19,7 +19,7 @@ export default function LoginPage(): JSX.Element {
         <aside className="md:w-1/2 sm:w-full sm:h-full flex items-center py-12">
           <main className="flex flex-col p-12 mb-4 w-full">
             <div className="flex flex-col gap-11 items-center">
-              <Logo />
+              <Logo isOpen />
               <h3 className="text-white tracking-tighter md:text-2xl text-sm">
                 Welcome back! please enter your credentials!
               </h3>
@@ -27,7 +27,6 @@ export default function LoginPage(): JSX.Element {
             <Form />
           </main>
         </aside>
-
         <aside
           className="md:w-1/2 h-full bg-cover bg-center hidden md:flex"
           style={{

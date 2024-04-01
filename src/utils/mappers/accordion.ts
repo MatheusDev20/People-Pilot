@@ -5,7 +5,7 @@ type ExtractMapperItem<T extends string | number | symbol> = Partial<
 > & {
   order: number
 }
-type ExtractMapper<T extends string | number | symbol> = Array<
+export type ExtractMapper<T extends string | number | symbol> = Array<
   ExtractMapperItem<T>
 >
 

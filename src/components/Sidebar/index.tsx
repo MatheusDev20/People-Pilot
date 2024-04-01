@@ -13,9 +13,9 @@ export const Sidebar = ({ isOpen }: Props): React.JSX.Element => {
     {
       'md:w-[200px]': isOpen,
       'w-[80px]': isOpen,
-      'w-[100px]': !isOpen,
+      'w-[70px]': !isOpen,
     },
-    'border-solid border-neutral border-r-[0.4px] flex-col gap-2 justify-between bg-base-300 sticky top-0',
+    'transition-width duration-200 ease-in-out border-solid border-neutral flex items-center border-r-[0.4px] flex-col bg-base-300 sticky top-0',
   )
   return (
     <aside className={sidebarClass}>

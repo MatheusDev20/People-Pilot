@@ -1,4 +1,4 @@
-import { type ActiveUser } from './employees'
+import { type Employee, type ActiveUser } from './employees'
 
 export type LoginFormData = {
   email: string
@@ -47,10 +47,11 @@ export type Department = {
   id: string
   name: string
   description: string
-  activeEmployees: number
+  employees: Employee[]
   status: string
   manager: ManagerData | null
   enableDelete?: boolean
+  employeeCount: number
 }
 
 export type Manager = {
@@ -81,3 +82,22 @@ export type AppBanks = {
 export type SVGProps = {
   classStyles: string
 }
+
+export type PersonalDocuments = {
+  id: string
+  documentType: string
+  metadata: Record<string, any>
+  fileUrl: string
+  uploaded_at: string
+  updated_at: string
+}
+
+type Doc = {
+  id: string
+}
+
+export type RG = {
+  numero: string
+  orgaoEmissor: string
+  dataExpiracao: string
+} & Doc

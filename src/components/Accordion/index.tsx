@@ -29,6 +29,7 @@ export const Accordion = ({ title, accordionValues }: Props): JSX.Element => {
                   key={value.order}
                   label={value.label}
                   info={value.info}
+                  width="full"
                 />
               ))}
             </>

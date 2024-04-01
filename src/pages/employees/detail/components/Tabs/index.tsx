@@ -24,18 +24,21 @@ export const TabsNavigation = ({
   return (
     <div role="tablist" className="tabs items-center tabs-boxed">
       <div
+        role="tab"
         onClick={() => handleTab(0)}
         className={activeTab === 0 ? 'tab-active tab' : 'tab'}
       >
         <TabNavItem icon={<PersonSVG classStyles="w-6 h-6" />} text="Profile" />
       </div>
       <div
+        role="tab"
         onClick={() => handleTab(1)}
         className={activeTab === 1 ? 'tab-active tab' : 'tab'}
       >
         <TabNavItem icon={<TaskSVG classStyles="w-6 h-6" />} text="Tasks" />
       </div>
       <div
+        role="tab"
         onClick={() => handleTab(2)}
         className={activeTab === 2 ? 'tab-active tab' : 'tab'}
       >
