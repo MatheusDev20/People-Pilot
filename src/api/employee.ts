@@ -5,7 +5,7 @@ import { ApplicationError } from '../exceptions/errors'
 
 import { convertDateFormat } from '../utils/dates'
 import { GET, PATCH, POST, convertQueryParams } from './handlers'
-import { extractApiError } from '../axios/interceptors'
+import { extractApiError } from '../libs/axios/interceptors'
 import { type EmployeeAPIResponse } from '../@types/api'
 import { employeesMapper } from './mappers/employee'
 import { timeout } from '../utils'

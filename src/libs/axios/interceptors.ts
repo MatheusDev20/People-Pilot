@@ -1,6 +1,6 @@
 import axios, { type AxiosError } from 'axios'
-import { logout, refresh } from '../api/auth'
-import { removeLocalStorage } from '../utils/auth'
+import { logout, refresh } from '../../api/auth'
+import { removeLocalStorage } from '../../utils/auth'
 
 const unauthorizedMessages = [
   'JsonWebTokenError',
@@ -26,7 +26,6 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   const axiosData = response?.data as HttpResponse
 
   if (axiosData.response.message === 'Invalid Credentials') throw error
-
   if (
     status === 401 &&
     originalRequest &&

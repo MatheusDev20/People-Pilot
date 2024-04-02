@@ -1,5 +1,5 @@
 import { type BasicRequest, type BasicResponse } from './../@types/http/index'
-import { axiosInstance } from '../axios/interceptors'
+import { axiosInstance } from '../libs/axios/interceptors'
 
 export const GET = async <T>(
   request: BasicRequest,
