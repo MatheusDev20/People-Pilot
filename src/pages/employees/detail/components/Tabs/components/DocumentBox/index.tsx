@@ -1,6 +1,8 @@
 import { type PersonalDocuments } from '../../../../../../../@types'
+import { AttachmentIcon } from '../../../../../../../assets/svgs/attachment'
 import { DocumentText } from '../../../../../../../assets/svgs/document-text'
 import { PenIcon } from '../../../../../../../assets/svgs/pen'
+import { DownloadFileButton } from '../../../../../../../components/Buttons/File'
 import { CircleBorder } from '../../../../../../../components/CircleBorder'
 import { SingleInfoDisplay } from '../../../../../../../components/InfoDisplay'
 import { extract } from '../../../../../../../utils'
@@ -9,6 +11,7 @@ import { documentMappers } from '../../../../../../../utils/mappers/documents'
 type Props = {
   data: PersonalDocuments
 }
+
 export const DocumentBox = ({ data }: Props): JSX.Element => {
   const mapper = documentMappers[data.documentType]
   return (
@@ -41,10 +44,14 @@ export const DocumentBox = ({ data }: Props): JSX.Element => {
             ))}
           </div>
         </main>
-        <div className="w-[30%] p-4">
-          <span className="text-lg font-semibold place-self-center">
-            Anexos
-          </span>
+        <div className="w-[30%] flex-col flex p-4 gap-6">
+          <header className="place-self-center flex gap-2 items-center">
+            <span className="text-lg font-semibold">Anexos</span>
+            <AttachmentIcon classStyles="w-6 h-6" />
+          </header>
+          <div className="w-full place-self-center p-6 gap-6 items-center flex flex-col">
+            <DownloadFileButton maxClicks={3} fileUrl={data.fileUrl} />
+          </div>
         </div>
       </div>
     </div>

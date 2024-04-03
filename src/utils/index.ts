@@ -28,3 +28,10 @@ export function getKeysOf<T extends object>(
     keyof T
   >
 }
+
+export const extractDocumentName = (fileUrl: string): string => {
+  if (!fileUrl) return ''
+  const parts = fileUrl.split('/')
+  const documentName = parts.pop()
+  return documentName ?? ''
+}
