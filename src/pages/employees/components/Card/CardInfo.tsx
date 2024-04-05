@@ -1,5 +1,5 @@
 import React from 'react'
-import fallBack from '../../../../assets/imgs/fake-avatar1.png'
+import fallBack from '@/assets/imgs/fake-avatar1.png'
 interface Props {
   employeeName: string
   employeePosition: string

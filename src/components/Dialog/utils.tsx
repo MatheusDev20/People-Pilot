@@ -1,6 +1,6 @@
-import { CheckIcon } from '../../assets/svgs/check'
-import { Exclamation } from '../../assets/svgs/exclamation'
-import { WarningIcon } from '../../assets/svgs/warning'
+import { CheckIcon } from '@/assets/svgs/check'
+import { Exclamation } from '@/assets/svgs/exclamation'
+import { WarningIcon } from '@/assets/svgs/warning'
 
 export const getTextClass = (
   type: 'success' | 'error' | 'warning' | '',

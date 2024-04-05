@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react'
-import avatar from '../../assets/imgs/fake-avatar1.png'
-import { useAuth } from '../../contexts/auth-context'
-import { ChevronDouble } from '../../assets/svgs/chevron-double'
-import { ChevronRigth } from '../../assets/svgs/chevron-rigth'
+import avatar from '@/assets/imgs/fake-avatar1.png'
+import { useAuth } from '@/contexts/auth-context'
+import { ChevronDouble } from '@/assets/svgs/chevron-double'
+import { ChevronRigth } from '@/assets/svgs/chevron-rigth'
 
 type Props = {
   isOpen: boolean

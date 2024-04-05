@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
+import { type LoginFormData } from '@/@types'
+import { useAuth } from '@/contexts/auth-context'
+import { loginFormSchema } from '@/validations/schemas/login/login-form-schema'
 import React, { type ChangeEvent, type FormEvent, useState } from 'react'
-import { type LoginFormData } from '../../../../@types'
-import { loginFormSchema } from '../../../../validations/schemas/login/login-form-schema'
-import { type ValidationResult } from '../../../../@types/yup'
-import { type ObjectSchema } from 'yup'
-
-import { useAuth } from '../../../../contexts/auth-context'
 import { LoginInput } from '../Inputs'
-import { Exclamation } from '../../../../assets/svgs/exclamation'
+import { Exclamation } from '@/assets/svgs/exclamation'
+import { type ObjectSchema } from 'yup'
+import { type ValidationResult } from '@/@types/yup'
 
 export const Form = (): React.JSX.Element => {
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)

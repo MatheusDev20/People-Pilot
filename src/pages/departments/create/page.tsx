@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useMutation } from '@tanstack/react-query'
-import { CustomInput, CustomSelect } from '../../../components/Inputs'
 import { useRef, useState } from 'react'
-import { type CreateDepartmentForm } from '../../../@types'
-import { StandardButton } from '../../../components/Buttons/Standard'
-import { useDialog } from '../../../hooks/dialog'
-import { CustomDialog } from '../../../components/Dialog/SimpleDialog'
-import { createDepartmentSchema } from '../../../validations/schemas/departments'
-import { validateSchema } from '../../../validations/schemas'
-import { postDepartment } from '../../../api/departments'
-import { useManagers } from '../../../hooks/managers'
+import { useDialog } from '@/hooks/dialog'
+import { useManagers } from '@/hooks/managers'
+import { postDepartment } from '@/api/departments'
+import { validateSchema } from '@/validations/schemas'
+import { createDepartmentSchema } from '@/validations/schemas/departments'
+import { CustomDialog } from '@/components/Dialog/SimpleDialog'
+import { StandardButton } from '@/components/Buttons/Standard'
+import { type CreateDepartmentForm } from '@/@types'
+import { CustomInput, CustomSelect } from '@/components/Inputs'
 
 export const CreateDepartmentPage = (): JSX.Element => {
   const [formData, setFormData] = useState<CreateDepartmentForm>({

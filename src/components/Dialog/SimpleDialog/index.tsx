@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
+import { type Dialog } from '@/@types'
 import { forwardRef } from 'react'
-import { type Dialog } from '../../../@types'
-import { getIcon, getTextClass } from '../utils'
-import { StandardButton } from '../../Buttons/Standard'
 import { useNavigate } from 'react-router-dom'
+import { getIcon, getTextClass } from '../utils'
+import { StandardButton } from '@/components/Buttons/Standard'
 
 type Props = {
   dialogData: Dialog

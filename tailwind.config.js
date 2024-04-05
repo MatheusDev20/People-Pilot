@@ -9,7 +9,6 @@ export default {
     fontFamily: {
       bebas: ['BEBAS', 'sans-serif'],
     },
-
     colors: {
       black: colors.black,
       white: colors.white,
@@ -19,6 +18,7 @@ export default {
         600: '#343536',
         700: '#272729',
         900: '#1A1A1B',
+        disabled: '#B0B0B0',
       },
       emerald: colors.emerald,
       indigo: colors.indigo,
@@ -31,9 +31,6 @@ export default {
           secondary: `rgb(26, 140, 216)`,
         },
       },
-      // btn: {
-      //   disabled:
-      // }
     },
   },
   darkMode: 'class',

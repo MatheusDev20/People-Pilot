@@ -1,4 +1,4 @@
-import { type PersonalDocuments } from '../../../../../../@types'
+import { type PersonalDocuments } from '@/@types'
 import { DocumentBox } from '../components/DocumentBox'
 
 type Props = {

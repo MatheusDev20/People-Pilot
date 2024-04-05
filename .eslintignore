@@ -1,3 +1,4 @@
 *.js
 .prettierignore
 tailwind.config.js
+vite.config.ts

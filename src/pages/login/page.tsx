@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import sideImage from '../../assets/imgs/login_side.jpg'
-import { Form } from './components/Form'
-import { useAuth } from '../../contexts/auth-context'
-import { useNavigate } from 'react-router-dom'
-import { Logo } from '../../components/Logo'
+import sideImage from '@/assets/imgs/login_side.jpg'
+import { useAuth } from '@/contexts/auth-context'
+import { Form, useNavigate } from 'react-router-dom'
+import { Logo } from '@/components/Logo'
 
 export default function LoginPage(): JSX.Element {
   const { user } = useAuth()

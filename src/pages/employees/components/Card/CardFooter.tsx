@@ -1,7 +1,7 @@
+import { type Department } from '@/@types'
 import React from 'react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { BsTelephoneForward } from 'react-icons/bs'
-import { type Department } from '../../../../@types'
 
 interface Props {
   department: Department

@@ -1,4 +1,4 @@
-import NotFoundPNG from '../../assets/imgs/404.png'
+import NotFoundPNG from '@/assets/imgs/404.png'
 
 export const NotFound = (): JSX.Element => {
   return (

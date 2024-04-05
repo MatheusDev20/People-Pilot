@@ -1,7 +1,7 @@
+import { timeout } from '@/utils'
 import { useState } from 'react'
-import { timeout } from '../utils'
 
-type ToastData = {
+export type ToastData = {
   message: string
   type: 'success' | 'warning' | 'error' | ''
   duration: number | null | 'permanent'

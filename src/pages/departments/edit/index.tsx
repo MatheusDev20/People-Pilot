@@ -2,21 +2,20 @@
 // import { useParams } from 'react-router-dom'
 
 import { useLocation } from 'react-router-dom'
-import { type CreateDepartmentForm, type Department } from '../../../@types'
-import { CustomInput, CustomSelect } from '../../../components/Inputs'
-import { StandardButton } from '../../../components/Buttons/Standard'
-import { useManagers } from '../../../hooks/managers'
+
 import { type ChangeEvent, useState, useRef } from 'react'
-import { updateDepartment } from '../../../api/departments'
+
 import { useMutation } from '@tanstack/react-query'
-import { useDialog } from '../../../hooks/dialog'
-import {
-  CustomOption,
-  OptionIcon,
-} from '../../../components/Inputs/Select/Option'
-import { useToast } from '../../../hooks/toast'
-import { ToastMessage } from '../../../components/Toast'
-import { ActionDialog } from '../../../components/Dialog/ActionDialog'
+import { type CreateDepartmentForm, type Department } from '@/@types'
+import { useManagers } from '@/hooks/managers'
+import { useDialog } from '@/hooks/dialog'
+import { useToast } from '@/hooks/toast'
+import { updateDepartment } from '@/api/departments'
+import { CustomOption, OptionIcon } from '@/components/Inputs/Select/Option'
+import { ToastMessage } from '@/components/Toast'
+import { ActionDialog } from '@/components/Dialog/ActionDialog'
+import { CustomInput, CustomSelect } from '@/components/Inputs'
+import { StandardButton } from '@/components/Buttons/Standard'
 
 export const EditDepartmentPage = (): JSX.Element => {
   const ref = useRef<HTMLDialogElement>(null)

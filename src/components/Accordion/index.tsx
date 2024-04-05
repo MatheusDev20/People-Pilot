@@ -1,7 +1,6 @@
-import { type AccordionElement } from '../../@types'
-import AlertIcon from '../../assets/svgs/alert.svg'
+import { type AccordionElement } from '@/@types'
+import AlertIcon from '@/assets/svgs/alert.svg'
 import { SingleInfoDisplay } from '../InfoDisplay'
-// import { InfoLabel } from '../../pages/employees/detail/components/InfoLabel'
 
 type Props = {
   title: string
