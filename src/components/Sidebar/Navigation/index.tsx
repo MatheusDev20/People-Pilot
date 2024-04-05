@@ -3,7 +3,7 @@ import React from 'react'
 // import { FcDepartment } from 'react-icons/fc'
 // import { BiTask } from 'react-icons/bi'
 import { BsPersonVcard } from 'react-icons/bs'
-import { NavItem } from '../NavItem'
+import { NavItemR } from '../NavItem'
 import { BuildingIcon } from '../../../assets/svgs/building'
 import { Link } from 'react-router-dom'
 
@@ -17,14 +17,14 @@ export const Navigation = ({ isOpen }: Props): React.JSX.Element => {
         {/* Nav Item */}
         <div className="flex flex-col gap-5 p-2 ">
           <Link to="/app/employees">
-            <NavItem
+            <NavItemR
               hideText={!isOpen}
               icon={<BsPersonVcard />}
               text="Employees"
             />
           </Link>
           <Link to="/app/departments">
-            <NavItem
+            <NavItemR
               hideText={!isOpen}
               icon={<BuildingIcon />}
               text="Departments"

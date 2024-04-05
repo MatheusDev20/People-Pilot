@@ -5,21 +5,22 @@ interface Props {
   text: string
   hideText: boolean
 }
-
-export const NavItem = ({ icon, text, hideText }: Props): React.JSX.Element => {
+export const NavItemR = ({
+  icon,
+  text,
+  hideText,
+}: Props): React.JSX.Element => {
   return (
-    <div className="group flex items-center place-self-center gap-4 px-6 cursor-pointer w-full hover:bg-gray-200 dark:hover:bg-darkGray-600 h-8 rounded-xl">
-      <span className="md:text-sm text-gray-500 dark:text-white group-hover:text-white group-hover:font-semibold">
-        {icon}
-      </span>
+    <button className="btn btn-ghost gap-4 w-full">
+      {icon}
       <span
         className={clsx(
-          'text-sm text-gray-500 dark:text-white group-hover:text-white group-hover:font-semibold hidden',
+          'font-bold text-white',
           hideText ? 'hidden' : 'md:block',
         )}
       >
         {text}
       </span>
-    </div>
+    </button>
   )
 }
