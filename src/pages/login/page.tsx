@@ -3,6 +3,7 @@ import sideImage from '@/assets/imgs/login_side.jpg'
 import { useAuth } from '@/contexts/auth-context'
 import { Form, useNavigate } from 'react-router-dom'
 import { Logo } from '@/components/Logo'
+import { LoginForm } from './components/Form'
 
 export default function LoginPage(): JSX.Element {
   const { user } = useAuth()
@@ -23,7 +24,7 @@ export default function LoginPage(): JSX.Element {
                 Welcome back! please enter your credentials!
               </h3>
             </div>
-            <Form />
+            <LoginForm />
           </main>
         </aside>
         <aside

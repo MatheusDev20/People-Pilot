@@ -8,7 +8,7 @@ import { Exclamation } from '@/assets/svgs/exclamation'
 import { type ObjectSchema } from 'yup'
 import { type ValidationResult } from '@/@types/yup'
 
-export const Form = (): React.JSX.Element => {
+export const LoginForm = (): React.JSX.Element => {
   const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
   const [loginForm, setLogin] = useState<LoginFormData>({
     password: '',
