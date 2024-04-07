@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import sideImage from '@/assets/imgs/login_side.jpg'
 import { useAuth } from '@/contexts/auth-context'
-import { Form, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Logo } from '@/components/Logo'
 import { LoginForm } from './components/Form'
 
