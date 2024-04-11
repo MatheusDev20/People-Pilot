@@ -28,14 +28,14 @@ export const TabsNavigation = ({
         onClick={() => handleTab(0)}
         className={activeTab === 0 ? 'tab-active tab' : 'tab'}
       >
-        <TabNavItem icon={<PersonSVG classStyles="w-6 h-6" />} text="Profile" />
+        <TabNavItem icon={<PersonSVG classStyles="w-6 h-6" />} text="Perfil" />
       </div>
       <div
         role="tab"
         onClick={() => handleTab(1)}
         className={activeTab === 1 ? 'tab-active tab' : 'tab'}
       >
-        <TabNavItem icon={<TaskSVG classStyles="w-6 h-6" />} text="Tasks" />
+        <TabNavItem icon={<TaskSVG classStyles="w-6 h-6" />} text="Tarefas" />
       </div>
       <div
         role="tab"
@@ -44,7 +44,7 @@ export const TabsNavigation = ({
       >
         <TabNavItem
           icon={<DocumentsSVG classStyles="w-6 h-6" />}
-          text="Documents"
+          text="Documentos"
         />
       </div>
       <div

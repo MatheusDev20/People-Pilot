@@ -15,11 +15,11 @@ export const BasicInfoProfile = ({ employee }: Props): React.JSX.Element => {
   return (
     <div className="join join-vertical w-full gap-8">
       <Accordion
-        title="Profile & Company Informations"
+        title="Informações Pessoais"
         accordionValues={extract(employee, PersonalInfoMapper)}
       />
       <Accordion
-        title="Payment Informations"
+        title="Informações Bancárias"
         accordionValues={
           employee.paymentInfo
             ? extract(employee.paymentInfo, PaymentInfoMapper)

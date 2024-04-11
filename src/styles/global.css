@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+
 @font-face {
   font-family: "BEBAS";
   src: url('../../fonts/BebasNeue-Regular.ttf');
@@ -14,4 +16,14 @@ body {
 * {
   margin: 0;
   padding: 0;
+}
+
+.arrow-down {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.arrow-up {
+  position: absolute;
 }

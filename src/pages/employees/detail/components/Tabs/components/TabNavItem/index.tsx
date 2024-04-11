@@ -6,8 +6,8 @@ type Props = {
 export const TabNavItem = ({ icon, text }: Props): JSX.Element => {
   return (
     <div className="flex w-full gap-3 items-center justify-center">
-      {icon}
-      <span>{text}</span>
+      <span className="text-white font-bold">{icon}</span>
+      <span className="text-white font-bold">{text}</span>
     </div>
   )
 }

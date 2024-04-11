@@ -9,6 +9,7 @@ import { InfoLabel } from './components/InfoLabel'
 import clsx from 'clsx'
 import { Task } from './components/Tabs/Tasks'
 import { DocumentsData } from './components/Tabs/Documents'
+import { convertDateFormat } from '@/utils/dates'
 
 export default function EmployeeDetailPage(): JSX.Element {
   const [activeTab, setActiveTab] = useState(0)
@@ -35,7 +36,7 @@ export default function EmployeeDetailPage(): JSX.Element {
             <img
               src={employee.avatar ?? Employee}
               alt="employee_picture"
-              className="w-48 h-48 rounded-md object-cover"
+              className="w-32 h-32 rounded-full object-cover"
             />
 
             <span className="text-md font-black dark:text-white leading-6">
@@ -56,12 +57,12 @@ export default function EmployeeDetailPage(): JSX.Element {
           {/* Other Infos */}
           <div className="flex flex-col gap-5 w-full">
             <InfoLabel
-              title="Admission Date"
-              info={employee.hire_date}
+              title="Data de Admissão"
+              info={convertDateFormat(employee.hire_date)}
               w="100%"
             />
             <InfoLabel
-              title="Manager"
+              title="Gestor"
               info={
                 employee.department.manager
                   ? employee.department.manager.name
@@ -69,9 +70,9 @@ export default function EmployeeDetailPage(): JSX.Element {
               }
               w="100%"
             />
-            <InfoLabel title="Position" info={employee.position} w="100%" />
+            <InfoLabel title="Cargo" info={employee.position} w="100%" />
             <InfoLabel
-              title="Department"
+              title="Departmento"
               info={employee.department.name}
               w="100%"
             />
