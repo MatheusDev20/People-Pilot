@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { type GetEmployeeListParams } from '../@types/employees'
-import { getEmployeeList } from '../api/employee'
+import { getEmployeeList } from '../api/employee/employee.query'
 
 type Manager = {
   img: string

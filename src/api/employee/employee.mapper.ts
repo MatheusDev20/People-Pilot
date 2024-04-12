@@ -1,6 +1,6 @@
 import { type EmployeeAPIResponse } from '../../@types/api'
 import { type Employee } from '../../@types/employees'
-import { departmentsMapper } from './deparments'
+import { departmentsMapper } from '../departments/deparments.mapper'
 
 export const employeesMapper = (employee: EmployeeAPIResponse): Employee => {
   try {

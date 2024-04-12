@@ -2,11 +2,11 @@ import {
   type UpdateDepartmentData,
   type CreateDepartmentForm,
   type Department,
-} from '../@types'
-import { type DepartmentAPIResponse } from '../@types/api'
-import { timeout } from '../utils'
-import { DELETE, GET, POST, PUT } from './handlers'
-import { departmentsMapper } from './mappers/deparments'
+} from '../../@types'
+import { type DepartmentAPIResponse } from '../../@types/api'
+import { timeout } from '../../utils'
+import { DELETE, GET, POST, PUT } from '../handlers'
+import { departmentsMapper } from './deparments.mapper'
 
 export const listDepartments = async (): Promise<Department[]> => {
   const response = await GET<DepartmentAPIResponse[]>({

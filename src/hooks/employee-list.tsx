@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { useQuery } from '@tanstack/react-query'
 import { type Employee } from '../@types/employees'
-import { getEmployeeList } from '../api/employee'
+import { getEmployeeList } from '../api/employee/employee.query'
 
 type Hook = {
   data: Employee[]

@@ -4,7 +4,10 @@ import { type Department, type Dialog } from '../../@types'
 import { getKeysOf } from '../../utils'
 import { Table } from '../../components/Table'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { excludeDepartment, listDepartments } from '../../api/departments'
+import {
+  excludeDepartment,
+  listDepartments,
+} from '../../api/departments/departments.query'
 import { LoadingDots } from '../../components/Loading/Dots'
 import { CustomInput } from '../../components/Inputs'
 import { PlusButton } from '../employees/components/Buttons/buttons'

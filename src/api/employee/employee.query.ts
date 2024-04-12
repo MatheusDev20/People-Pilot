@@ -1,14 +1,17 @@
 import { AxiosError } from 'axios'
-import { type GetEmployeeListParams, type Employee } from '../@types/employees'
-import { type ContextData as CreateEmployeeFormData } from '../contexts/create-employee-form'
-import { ApplicationError } from '../exceptions/errors'
+import {
+  type GetEmployeeListParams,
+  type Employee,
+} from '../../@types/employees'
+import { type ContextData as CreateEmployeeFormData } from '../../contexts/create-employee-form'
+import { ApplicationError } from '../../exceptions/errors'
 
-import { convertDateFormat } from '../utils/dates'
-import { GET, PATCH, POST, convertQueryParams } from './handlers'
-import { extractApiError } from '../libs/axios/interceptors'
-import { type EmployeeAPIResponse } from '../@types/api'
-import { employeesMapper } from './mappers/employee'
-import { timeout } from '../utils'
+import { convertDateFormat } from '../../utils/dates'
+import { GET, PATCH, POST, convertQueryParams } from '../handlers'
+import { extractApiError } from '../../libs/axios/interceptors'
+import { type EmployeeAPIResponse } from '../../@types/api'
+import { employeesMapper } from './employee.mapper'
+import { timeout } from '../../utils'
 
 export const getEmployeeList = async (
   params: GetEmployeeListParams,

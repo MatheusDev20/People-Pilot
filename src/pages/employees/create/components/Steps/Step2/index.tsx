@@ -4,7 +4,7 @@ import { useCreateEmployeeForm } from '../../../../../../contexts/create-employe
 import React from 'react'
 import { hasMask } from '../../../../../../components/Inputs/Masks'
 import { useQuery } from '@tanstack/react-query'
-import { listDepartments } from '../../../../../../api/departments'
+import { listDepartments } from '../../../../../../api/departments/departments.query'
 
 interface Props {
   errors: Record<string, string[]> | null

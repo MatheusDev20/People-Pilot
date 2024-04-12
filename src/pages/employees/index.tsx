@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { NotFound } from '../../components/Exceptions/NotFound'
 import { Pagination } from './components/Pagination'
 import { useQuery } from '@tanstack/react-query'
-import { getEmployeeList } from '../../api/employee'
+import { getEmployeeList } from '../../api/employee/employee.query'
 import { type GetEmployeeListParams } from '../../@types/employees'
 
 export default function EmployeePage(): JSX.Element {

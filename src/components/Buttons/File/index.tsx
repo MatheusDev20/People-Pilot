@@ -45,12 +45,12 @@ export const DownloadFileButton = ({
   return (
     <button
       onClick={() => handleDownload()}
-      className={`btn-primary btn w-[60%] hover:bg-blue-400 border flex items-center justify-center ${
+      className={`btn-primary btn w-[100%] hover:bg-blue-400 border flex items-center ${
         btnDisabled ? 'cursor-not-allowed' : ''
       }`}
     >
       <AttachmentIcon classStyles="w-5 h-5" />
-      {fileName}
+      <span className="md:block hidden font-bold text-sm">{fileName}</span>
     </button>
   )
 }

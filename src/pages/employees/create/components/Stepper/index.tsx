@@ -4,7 +4,7 @@ import { StepOne, StepFour, StepTwo, steps } from '../Steps'
 import { useCreateEmployeeForm } from '../../../../../contexts/create-employee-form'
 import { validateCurrentStep } from '../../../../../validations/schemas'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { postEmployee } from '../../../../../api/employee'
+import { postEmployee } from '../../../../../api/employee/employee.query'
 import { StandardButton } from '../../../../../components/Buttons/Standard'
 
 import clsx from 'clsx'
