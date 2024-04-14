@@ -8,7 +8,7 @@ export type ToastData = {
 }
 type Props = {
   toast: ToastData
-  showToast: (toast: ToastData) => Promise<void>
+  showToast: (toast: ToastData) => void
 }
 
 export const useToast = (): Props => {
@@ -18,11 +18,16 @@ export const useToast = (): Props => {
     duration: null,
   })
 
-  const showToast = async (toast: ToastData): Promise<void> => {
+  const showToast = (toast: ToastData): void => {
     setToast(toast)
     if (toast.duration === 'permanent') return
-    await timeout(toast.duration ?? 5000)
-    closeToast()
+    timeout(toast.duration ?? 5000)
+      .then(() => {
+        closeToast()
+      })
+      .catch(() => {
+        closeToast()
+      })
   }
 
   const closeToast = (): void => {

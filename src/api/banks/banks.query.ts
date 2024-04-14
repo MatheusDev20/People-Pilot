@@ -1,5 +1,5 @@
-import { type AppBanks } from '../@types'
-import { GET } from './handlers'
+import { type AppBanks } from '../../@types'
+import { GET } from '../handlers'
 
 export const getAvailableBanks = async (): Promise<AppBanks[]> => {
   const res = await GET<AppBanks[]>({

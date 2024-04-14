@@ -8,7 +8,7 @@ import { extractDocumentName } from '@/utils'
 type Props = {
   fileUrl: string
   maxClicks: number
-  showToast?: (toastData: ToastData) => Promise<void>
+  showToast?: (toastData: ToastData) => void
 }
 
 export const DownloadFileButton = ({
@@ -22,7 +22,7 @@ export const DownloadFileButton = ({
 
   const handleDownload = async (): Promise<void> => {
     if (clickCount >= maxClicks && showToast) {
-      await showToast({
+      showToast({
         duration: 4000,
         message: 'Você atingiu o limite de downloads para este arquivo!',
         type: 'warning',
@@ -45,12 +45,12 @@ export const DownloadFileButton = ({
   return (
     <button
       onClick={() => handleDownload()}
-      className={`btn-primary btn w-[100%] hover:bg-blue-400 border flex items-center ${
+      className={`btn-primary btn w-[60%] hover:bg-blue-400 border flex items-center ${
         btnDisabled ? 'cursor-not-allowed' : ''
       }`}
     >
-      <AttachmentIcon classStyles="w-5 h-5" />
-      <span className="md:block hidden font-bold text-sm">{fileName}</span>
+      <AttachmentIcon classStyles="hidden md:block w-5 h-5" />
+      <span className="font-bold text-xs md:text-sm">{fileName}</span>
     </button>
   )
 }

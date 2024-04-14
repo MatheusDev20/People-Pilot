@@ -1,5 +1,5 @@
 import axios, { type AxiosError } from 'axios'
-import { logout, refresh } from '../../api/auth'
+import { logout, refresh } from '../../api/auth/auth.query'
 import { removeLocalStorage } from '../../utils/auth'
 
 const unauthorizedMessages = [

@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import { type ActiveUser } from '../@types/employees'
 import { type LoginFormData } from '../@types'
-import { login, logout } from '../api/auth'
+import { login, logout } from '../api/auth/auth.query'
 import { useNavigate } from 'react-router-dom'
 import {
   getFromLocalStorage,

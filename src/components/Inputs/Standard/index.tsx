@@ -3,7 +3,7 @@ import React, { type InputHTMLAttributes } from 'react'
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   wSize: 'small' | 'medium' | 'large'
-  label: string
+  label?: string
   mask?: any
   error: string[] | null
   step?: 'stepOne' | 'stepTwo' | 'stepThree'
@@ -35,9 +35,11 @@ export const CustomInput = ({
       )}
     >
       <div className="label">
-        <span className="label-text dark:text-white font-semibold">
-          {label}
-        </span>
+        {label && (
+          <span className="label-text dark:text-white font-semibold">
+            {label}
+          </span>
+        )}
       </div>
       {/* <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
         {label}

@@ -21,7 +21,7 @@ export const Header = ({ handleChange }: Props): React.JSX.Element => {
       />
       <div className="flex gap-20 p-2 items-center justify-center place-self-end w-[30%]">
         <PlusButton
-          text="NEW EMPLOYEE"
+          text="Adicionar"
           icon={<PlusUser />}
           routeTo="/app/employee/create"
         />

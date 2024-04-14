@@ -14,7 +14,7 @@ import { useDialog } from '../../../../../hooks/dialog'
 import { StepThree } from '../Steps/Step3'
 import { useToast } from '../../../../../hooks/toast'
 import { ToastMessage } from '../../../../../components/Toast'
-import { getAvailableBanks } from '../../../../../api/banks'
+import { getAvailableBanks } from '../../../../../api/banks/banks.query'
 
 export const Stepper = (): React.JSX.Element => {
   const [creatingLoading, setCreatingLoading] = useState(false)
@@ -31,7 +31,7 @@ export const Stepper = (): React.JSX.Element => {
     mutationFn: postEmployee,
     onError: async (error: ApplicationError) => {
       setCreatingLoading(false)
-      await showToast({
+      showToast({
         message: `Failed to create employee! ${error.message}`,
         type: 'error',
         duration: 15000,

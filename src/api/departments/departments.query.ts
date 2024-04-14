@@ -13,7 +13,6 @@ export const listDepartments = async (): Promise<Department[]> => {
     path: '/departments',
     authenticated: true,
   })
-
   const { body } = response
   const departments: Department[] = body.map(departmentsMapper)
   return departments
@@ -29,6 +28,7 @@ export const postDepartment = async (
       ...data,
     },
   })
+  await timeout(2000)
 
   const { body } = response
   return { id: body.id }

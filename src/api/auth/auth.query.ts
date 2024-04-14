@@ -2,8 +2,8 @@ import {
   type LoginPayload,
   type LoginFormData,
   type LogoutPayload,
-} from './../@types/index'
-import { POST } from './handlers'
+} from '../../@types/index'
+import { POST } from '../handlers'
 
 export const login = async (data: LoginFormData): Promise<LoginPayload> => {
   const response = await POST<LoginPayload>({

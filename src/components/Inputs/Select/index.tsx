@@ -115,7 +115,6 @@ export const ReactSelect = ({
       backgroundColor: !isFocused ? 'oklch(var(--ac))' : 'oklch(var(--b3))',
     }),
   }
-  console.log('3')
   if (defaultValue) {
     return (
       <Select

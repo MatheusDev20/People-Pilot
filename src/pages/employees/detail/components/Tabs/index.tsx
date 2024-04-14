@@ -47,15 +47,6 @@ export const TabsNavigation = ({
           text="Documentos"
         />
       </div>
-      <div
-        onClick={() => handleTab(3)}
-        className={activeTab === 3 ? 'tab-active tab' : 'tab'}
-      >
-        <TabNavItem
-          icon={<RocketSVG classStyles="w-6 h-6" />}
-          text="OKRs e Metas"
-        />
-      </div>
     </div>
   )
 }
