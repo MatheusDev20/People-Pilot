@@ -34,6 +34,7 @@ export const CustomSelect = ({
   defaultValue,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
+  console.log(wSize, 'wSize')
   return (
     <div
       className={clsx(
@@ -42,7 +43,7 @@ export const CustomSelect = ({
           [classes.largeInput]: wSize === 'large',
           [classes.smallInput]: wSize === 'small',
         },
-        'flex flex-col gap-3 w-full p-2',
+        'flex flex-col gap-3 p-2',
       )}
     >
       {/* Input Label */}

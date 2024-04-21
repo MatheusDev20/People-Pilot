@@ -5,7 +5,6 @@ import { PersonSVG } from '../../../../../assets/svgs/person'
 import { TaskSVG } from '../../../../../assets/svgs/tasks'
 import { TabNavItem } from './components/TabNavItem'
 import { DocumentsSVG } from '../../../../../assets/svgs/documents'
-import { RocketSVG } from '../../../../../assets/svgs/rockets'
 
 interface NavigationProps {
   handleTab: (activeTab: number) => void

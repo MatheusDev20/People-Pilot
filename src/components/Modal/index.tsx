@@ -15,7 +15,7 @@ export const GenericModal = forwardRef<HTMLDialogElement, Props>(
     const { id, action, children } = props
     return (
       <dialog id={`modal_${id}`} className="modal p-8" ref={ref}>
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box w-11/12 max-w-5xl p-12">
           <header className="flex justify-between">
             <h3 className="font-bold text-lg">{action}</h3>
             <form method="dialog">
@@ -29,7 +29,7 @@ export const GenericModal = forwardRef<HTMLDialogElement, Props>(
               </CircleBorder>
             </form>
           </header>
-          <div className="divider w-[100%] mt-3 m-auto divider-primary" />
+          <div className="divider w-[100%] mt-3 mb-6 m-auto divider-primary" />
           {children}
         </div>
       </dialog>

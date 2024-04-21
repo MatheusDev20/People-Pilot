@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useManagers } from '@/hooks/managers'
-import { postDepartment } from '@/api/departments/departments.query'
 import { validateSchema } from '@/validations/schemas'
 import { createDepartmentSchema } from '@/validations/schemas/departments'
 import { StandardButton } from '@/components/Buttons/Standard'
@@ -84,7 +83,7 @@ export const CreateForm = ({ modalRef, showToast }: Props): JSX.Element => {
           onChange={handleSelectChange}
           name="managerEmail"
           label="Department Manager Email"
-          wSize="medium"
+          wSize="large"
           placeholder="Choose the manager email to assign the department ..."
           error={errors ? errors.managerMail : null}
           options={managers}

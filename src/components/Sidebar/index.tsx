@@ -19,7 +19,7 @@ export const Sidebar = ({ isOpen }: Props): React.JSX.Element => {
   )
   return (
     <aside className={sidebarClass}>
-      <div className="relative">
+      <div className="fixed">
         <header className="flex items-center justify-center p-3">
           <Link to="/app/employees">
             <Logo isOpen={isOpen} />

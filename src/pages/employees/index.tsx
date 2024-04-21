@@ -18,7 +18,11 @@ export default function EmployeePage(): JSX.Element {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value)
   }
-  const params: GetEmployeeListParams = { limit: 8, page: currentPage }
+  const params: GetEmployeeListParams = {
+    limit: 8,
+    page: currentPage,
+    role: 'employee',
+  }
 
   const { isLoading, isError, data } = useQuery({
     queryKey: ['employeeList', params],
