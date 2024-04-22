@@ -18,7 +18,7 @@ export const StandardButton = ({
       disabled={disabled}
       className={clsx(
         !disabled
-          ? `btn-primary btn ${size} hover:bg-blue-400`
+          ? `btn-primary btn ${size} hover:bg-blue-400 text-white`
           : `btn-disabled btn ${size}`,
       )}
       {...rest}

@@ -12,7 +12,7 @@ type CustomOptionData = {
 }
 interface CustomInputProps extends InputHTMLAttributes<HTMLSelectElement> {
   wSize: 'small' | 'medium' | 'large'
-  label: string
+  label?: string
   placeholder?: string
   error: string[] | null
   options: string[] | CustomOptionData[]
@@ -34,7 +34,6 @@ export const CustomSelect = ({
   defaultValue,
   ...rest
 }: CustomInputProps): React.JSX.Element => {
-  console.log(wSize, 'wSize')
   return (
     <div
       className={clsx(
@@ -47,9 +46,11 @@ export const CustomSelect = ({
       )}
     >
       {/* Input Label */}
-      <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
-        {label}
-      </label>
+      {label && (
+        <label className="font-semibold text-sm p-2.5 text-gray-600 dark:text-white">
+          {label}
+        </label>
+      )}
       {/* Input Itself */}
 
       {typeof options[0] !== 'string' ? (

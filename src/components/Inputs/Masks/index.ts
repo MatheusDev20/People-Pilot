@@ -23,11 +23,21 @@ export const normalizePhone = (value: string): string | undefined => {
   return input.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4')
 }
 
+export const maskCPF = (value: string): string | undefined => {
+  if (!value) return ''
+  const input = value.replace(/[^0-9]/g, '').slice(0, 11)
+  return input.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+}
+
 export const hasMask = (name: string): MaskFn | undefined => {
   if (name === 'phone') {
     return normalizePhone
   }
   if (name === 'birthDate') {
     return normalizeDate
+  }
+
+  if (name === 'cpf') {
+    return maskCPF
   }
 }

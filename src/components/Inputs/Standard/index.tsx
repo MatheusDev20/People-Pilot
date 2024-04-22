@@ -46,6 +46,7 @@ export const CustomInput = ({
       </label> */}
       <input
         {...rest}
+        value={mask ? mask(rest.value) : rest.value}
         type="text"
         className={clsx(
           error && 'input-error outline-none',

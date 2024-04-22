@@ -4,6 +4,7 @@ type ExtractMapperItem<T extends string | number | symbol> = Partial<
   Record<T, number | string>
 > & {
   order: number
+  mask?: any
 }
 export type ExtractMapper<T extends string | number | symbol> = Array<
   ExtractMapperItem<T>

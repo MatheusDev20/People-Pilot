@@ -99,5 +99,10 @@ type Doc = {
 export type RG = {
   numero: string
   orgaoEmissor: string
-  dataExpiracao: string
+  dataEmissao: string
+  ufEmissor: string
+} & Doc
+
+export type CPF = {
+  numero: string
 } & Doc
