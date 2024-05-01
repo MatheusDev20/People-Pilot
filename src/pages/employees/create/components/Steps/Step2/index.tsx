@@ -2,7 +2,10 @@ import { CustomInput } from '../../../../../../components/Inputs/Standard'
 import { CustomSelect } from '../../../../../../components/Inputs/Select'
 import { useCreateEmployeeForm } from '../../../../../../contexts/create-employee-form'
 import React from 'react'
-import { hasMask } from '../../../../../../components/Inputs/Masks'
+import {
+  hasMask,
+  normalizeDate,
+} from '../../../../../../components/Inputs/Masks'
 import { useQuery } from '@tanstack/react-query'
 import { listDepartments } from '../../../../../../api/departments/departments.query'
 
@@ -56,14 +59,13 @@ export const StepTwo = ({ errors }: Props): React.JSX.Element => {
           placeholder="New employee position..."
           label="Position"
         />
-
         <CustomInput
           onChange={handleStepChange}
           name="hireDate"
           step="stepTwo"
           disabled={true}
           value={formData.stepTwo.hireDate}
-          mask="99/99/9999"
+          mask={normalizeDate}
           error={errors ? errors.hireDate : null}
           wSize="medium"
           placeholder="01/12/2023..."

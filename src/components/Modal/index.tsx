@@ -19,14 +19,14 @@ export const GenericModal = forwardRef<HTMLDialogElement, Props>(
           <header className="flex justify-between">
             <h3 className="font-bold text-lg">{action}</h3>
             <form method="dialog">
-              <CircleBorder
-                borderColor="neutral"
-                borderHover="twitter-blue-main"
-              >
-                <button>
+              <button>
+                <CircleBorder
+                  borderColor="neutral"
+                  borderHover="twitter-blue-main"
+                >
                   <CloseIcon classStyles="w-6 h-6" />
-                </button>
-              </CircleBorder>
+                </CircleBorder>
+              </button>
             </form>
           </header>
           <div className="divider w-[100%] mt-3 mb-6 m-auto divider-primary" />

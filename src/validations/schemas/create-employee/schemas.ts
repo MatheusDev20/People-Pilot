@@ -27,20 +27,24 @@ export const stepThreeSchema = object({
 
 const validFileExtensions = ['jpg', 'png', 'jpeg']
 
-export function validateFile(file: File | null): ValidationResult {
+export function validateFile(
+  file: File | null,
+  validExt: string[],
+): ValidationResult {
   if (!file) {
     return {
       errors: {
-        avatar: ['Avatar is required'],
+        file: ['Arquivo é obrigatório'],
       },
       veredict: false,
     }
   }
+
   const fileExt = file.name.split('.')[1]
-  if (!validFileExtensions.includes(fileExt)) {
+  if (!validExt.includes(fileExt)) {
     return {
       errors: {
-        avatar: [
+        file: [
           `File extension not supported - Supported Extensions ( ${validFileExtensions.join(
             ',',
           )} )`,

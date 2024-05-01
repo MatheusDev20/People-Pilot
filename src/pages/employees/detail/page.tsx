@@ -54,29 +54,6 @@ export default function EmployeeDetailPage(): JSX.Element {
               {employee.isManager ? 'Manager' : 'Employee'}
             </span>
           </div>
-
-          {/* <div className="flex flex-col gap-5 w-full">
-            <InfoLabel
-              title="Data de Admissão"
-              info={convertDateFormat(employee.hire_date)}
-              w="100%"
-            />
-            <InfoLabel
-              title="Gestor"
-              info={
-                employee.department.manager
-                  ? employee.department.manager.name
-                  : 'N/A'
-              }
-              w="100%"
-            />
-            <InfoLabel title="Cargo" info={employee.position} w="100%" />
-            <InfoLabel
-              title="Departmento"
-              info={employee.department.name}
-              w="100%"
-            />
-          </div> */}
         </aside>
       ) : (
         <span>Error Loading Data</span>
@@ -94,7 +71,7 @@ export default function EmployeeDetailPage(): JSX.Element {
             <Task />
           </TabContent>
           <TabContent idx={2} activeTab={activeTab}>
-            <DocumentsData data={employee.documents} />
+            <DocumentsData data={employee} />
           </TabContent>
         </div>
       ) : (

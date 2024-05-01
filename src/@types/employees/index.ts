@@ -77,3 +77,9 @@ export type PaymentInformation = {
   accountType: string
   pixKey: string
 }
+
+export type CreateEmployeeDocumentFormData = {
+  type: string
+  metadata: Record<string, any>
+  file: File | null
+} & { employeeId: string }

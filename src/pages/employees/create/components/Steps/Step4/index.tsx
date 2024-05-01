@@ -8,6 +8,7 @@ interface Props {
   setErrors: React.Dispatch<SetStateAction<Record<string, string[]> | null>>
   isLoading: boolean
 }
+
 const Loading = (): React.JSX.Element => {
   return (
     <div className="flex flex-col items-center w-full gap-5">
@@ -22,17 +23,24 @@ export const StepFour = ({
   setErrors,
   isLoading,
 }: Props): React.JSX.Element => {
-  const {
-    formData: { stepFour },
-  } = useCreateEmployeeForm()
+  const { formData, setFormData } = useCreateEmployeeForm()
 
+  const handleInput = (file: File | null): void => {
+    setFormData({
+      ...formData,
+      stepFour: {
+        ...formData.stepFour,
+        avatar: file,
+      },
+    })
+  }
   return (
     <div className="flex w-full p-12 gap-5 items-center">
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          {!stepFour.avatar ? (
+          {!formData.stepFour.avatar ? (
             <img
               src={genericAvatar}
               alt="preview"
@@ -40,12 +48,19 @@ export const StepFour = ({
             />
           ) : (
             <img
-              src={URL.createObjectURL(stepFour.avatar)}
+              src={URL.createObjectURL(formData.stepFour.avatar)}
               alt="preview"
               className="rounded-full h-36 w-36"
             />
           )}
-          <UploadInput errors={errors ?? null} setErrors={setErrors} />
+          <UploadInput
+            handleInputEvent={handleInput}
+            errors={errors ?? null}
+            setErrors={setErrors}
+            uploadHint="Selecione uma imagem de perfil..."
+            allowedFormats={['jpg', 'png', 'jpeg']}
+            currentFile={formData.stepFour.avatar}
+          />
         </>
       )}
     </div>

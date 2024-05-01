@@ -18,14 +18,14 @@ import { getAvailableBanks } from '../../../../../api/banks/banks.query'
 
 export const Stepper = (): React.JSX.Element => {
   const [creatingLoading, setCreatingLoading] = useState(false)
-  const { formData } = useCreateEmployeeForm()
+  const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
   const [activeStep, setActiveStep] = React.useState(0)
 
   const ref = useRef<HTMLDialogElement>(null)
+
+  const { formData } = useCreateEmployeeForm()
   const { dialog, show } = useDialog(ref)
   const { toast, showToast } = useToast()
-
-  const [errors, setErrors] = useState<Record<string, string[]> | null>(null)
 
   const { mutate, data: createdEmployeeId } = useMutation({
     mutationFn: postEmployee,

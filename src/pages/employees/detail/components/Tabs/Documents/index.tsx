@@ -1,17 +1,19 @@
-import { type PersonalDocuments } from '@/@types'
 import { DocumentBox } from '../components/DocumentBox'
 import { PlusAdd } from '@/assets/svgs/add'
 import { GenericModal } from '@/components/Modal'
 import { useRef } from 'react'
 import { DocumentForm } from '../components/DocumentForm'
+import { type Employee } from '@/@types/employees'
+import { useToast } from '@/hooks/toast'
+import { ToastMessage } from '@/components/Toast'
 
 type Props = {
-  data: PersonalDocuments[]
+  data: Employee
 }
 
 export const DocumentsData = ({ data }: Props): JSX.Element => {
   const ref = useRef<HTMLDialogElement>(null)
-
+  const { toast, showToast } = useToast()
   const onOpenModal = (ref: React.RefObject<HTMLDialogElement>): void => {
     ref.current?.showModal()
   }
@@ -21,6 +23,7 @@ export const DocumentsData = ({ data }: Props): JSX.Element => {
   }
   return (
     <div>
+      <ToastMessage message={toast.message} type={toast.type} />
       <div className="flex flex-col gap-12">
         <header
           className="flex gap-2 items-center cursor-pointer group"
@@ -32,13 +35,18 @@ export const DocumentsData = ({ data }: Props): JSX.Element => {
           </span>
         </header>
         <div className="flex flex-col gap-8">
-          {data.map((document) => (
+          {data.documents.map((document) => (
             <DocumentBox key={document.id} data={document} />
           ))}
         </div>
       </div>
+      {/* TODO: Estado se mantendo após fechar o modal */}
       <GenericModal ref={ref} id="create-document" action="Adicionar Documento">
-        <DocumentForm />
+        <DocumentForm
+          employeeId={data.id}
+          modalRef={ref}
+          showToast={showToast}
+        />
       </GenericModal>
     </div>
   )

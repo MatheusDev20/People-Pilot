@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import {
   type GetEmployeeListParams,
   type Employee,
+  type CreateEmployeeDocumentFormData,
 } from '../../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../../contexts/create-employee-form'
 import { ApplicationError } from '../../exceptions/errors'
@@ -11,7 +12,6 @@ import { GET, PATCH, POST, convertQueryParams } from '../handlers'
 import { extractApiError } from '../../libs/axios/interceptors'
 import { type EmployeeAPIResponse } from '../../@types/api'
 import { employeesMapper } from './employee.mapper'
-import { timeout } from '../../utils'
 
 export const getEmployeeList = async (
   params: GetEmployeeListParams,
@@ -65,7 +65,6 @@ export const postEmployee = async (
   employeeFormData: CreateEmployeeFormData,
 ): Promise<string> => {
   try {
-    await timeout(3000)
     const { stepOne, stepTwo, stepThree, stepFour } = employeeFormData
     const file = stepFour.avatar
 
@@ -92,6 +91,34 @@ export const postEmployee = async (
     if (file) await uploadAvatar(file, id)
     await updatePaymentInfo(stepThree, id)
     return data.body.id
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      throw new ApplicationError(extractApiError(err))
+    }
+
+    throw new ApplicationError('General System Failure Try again later')
+  }
+}
+
+export const postEmployeeDocument = async (
+  data: CreateEmployeeDocumentFormData,
+): Promise<void> => {
+  try {
+    const headers = {
+      'Content-Type': 'multipart/form-data',
+    }
+    const formData = new FormData()
+    if (data.file) formData.append('document', data.file)
+
+    formData.append('documentType', data.type.toLowerCase())
+    formData.append('metadata', JSON.stringify(data.metadata))
+
+    await POST({
+      path: `/employee/${data.employeeId}/documents`,
+      authenticated: true,
+      headers,
+      body: formData,
+    })
   } catch (err) {
     if (err instanceof AxiosError) {
       throw new ApplicationError(extractApiError(err))
