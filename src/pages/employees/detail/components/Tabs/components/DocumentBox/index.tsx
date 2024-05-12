@@ -77,7 +77,7 @@ export const DocumentBox = ({ data }: Props): JSX.Element => {
               <div className="w-full place-self-center p-6 gap-6 items-center flex flex-col">
                 <DownloadFileButton
                   maxClicks={3}
-                  fileUrl={data.fileUrl}
+                  file={data}
                   showToast={showToast}
                 />
               </div>
