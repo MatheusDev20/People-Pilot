@@ -13,7 +13,6 @@ type Props = {
   page: number
 }
 export const useEmployeeList = ({ page }: Props): Hook => {
-  console.log('page', page)
   const { isLoading, isError, data } = useQuery({
     queryKey: ['employeeList'],
     keepPreviousData: true,

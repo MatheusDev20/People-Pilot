@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { useEffect } from 'react'
 import sideImage from '@/assets/imgs/login_side.jpg'
 import { useAuth } from '@/contexts/auth-context'
-import { useNavigate } from 'react-router-dom'
 import { Logo } from '@/components/Logo'
 import { LoginForm } from './components/Form'
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginPage(): JSX.Element {
   const { user } = useAuth()
-  const navigate = useNavigate()
 
+  const navigate = useNavigate()
   useEffect(() => {
     if (user) navigate('/app/employees')
   }, [])
@@ -19,7 +20,7 @@ export default function LoginPage(): JSX.Element {
         <aside className="md:w-1/2 sm:w-full sm:h-full flex items-center py-12">
           <main className="flex flex-col p-12 mb-4 w-full">
             <div className="flex flex-col gap-11 items-center">
-              <Logo isOpen />
+              <Logo isOpen brandUrl="" />
               <h3 className="text-white tracking-tighter md:text-2xl text-sm">
                 Welcome back! please enter your credentials!
               </h3>

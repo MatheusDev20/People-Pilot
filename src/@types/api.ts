@@ -1,4 +1,4 @@
-import { type PersonalDocuments } from '.'
+import { type Organization, type PersonalDocuments } from './index'
 import { type PaymentInformation } from './employees'
 
 export type EmployeeAPIResponse = {
@@ -19,6 +19,7 @@ export type EmployeeAPIResponse = {
   managedDepartments: DepartmentAPIResponse[]
   paymentInfo: PaymentInformation
   documents: PersonalDocuments[]
+  organization: Organization
 }
 
 export type DepartmentAPIResponse = {

@@ -1,5 +1,6 @@
 import { type BasicRequest, type BasicResponse } from './../@types/http/index'
 import { axiosInstance } from '../libs/axios/interceptors'
+import { getFromLocalStorage } from '@/utils/auth'
 
 export const GET = async <T>(
   request: BasicRequest,
@@ -105,4 +106,10 @@ export const convertQueryParams = (path: string, params: object): string => {
       .map(([key, value]) => `${key}=${value}`)
       .join('&')
   )
+}
+
+export const getTenant = (): string | null => {
+  const item = getFromLocalStorage('organization')
+  if (!item) return ''
+  return JSON.parse(item).id
 }

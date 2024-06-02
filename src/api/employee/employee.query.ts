@@ -3,15 +3,25 @@ import {
   type GetEmployeeListParams,
   type Employee,
   type CreateEmployeeDocumentFormData,
+  type ActiveUser,
 } from '../../@types/employees'
 import { type ContextData as CreateEmployeeFormData } from '../../contexts/create-employee-form'
 import { ApplicationError } from '../../exceptions/errors'
 
 import { convertDateFormat } from '../../utils/dates'
-import { GET, PATCH, POST, convertQueryParams } from '../handlers'
+import { GET, PATCH, POST, convertQueryParams, getTenant } from '../handlers'
 import { extractApiError } from '../../libs/axios/interceptors'
 import { type EmployeeAPIResponse } from '../../@types/api'
-import { employeesMapper } from './employee.mapper'
+import { employeesMapper, loggedEmployeeMapper } from './employee.mapper'
+
+export const getMe = async (): Promise<ActiveUser> => {
+  const response = await GET<EmployeeAPIResponse>({
+    path: '/employee/me',
+    authenticated: true,
+  })
+  const { body } = response
+  return loggedEmployeeMapper(body)
+}
 
 export const getEmployeeList = async (
   params: GetEmployeeListParams,
@@ -20,6 +30,9 @@ export const getEmployeeList = async (
   const response = await GET<Employee[]>({
     path,
     authenticated: true,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
 
   const { body } = response
@@ -36,7 +49,10 @@ export const getEmployeeById = async (id: string): Promise<Employee> => {
 }
 
 export const uploadAvatar = async (file: File, id: string): Promise<string> => {
-  const headers = 'multipart/form-data'
+  const headers = {
+    'Content-Type': 'multipart/form-data',
+    'x-organization-id': getTenant(),
+  }
   const formData = new FormData()
   formData.append('employee_avatar', file)
 
@@ -58,6 +74,9 @@ export const updatePaymentInfo = async (
     authenticated: true,
     path: `/employee/payment-info/${id}`,
     body: paymentInfo,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
 }
 
@@ -86,6 +105,9 @@ export const postEmployee = async (
       authenticated: false,
       path: '/employee',
       body,
+      headers: {
+        'x-organization-id': getTenant(),
+      },
     })
     const { id } = data.body
     if (file) await uploadAvatar(file, id)
@@ -106,6 +128,7 @@ export const postEmployeeDocument = async (
   try {
     const headers = {
       'Content-Type': 'multipart/form-data',
+      'x-organization-id': getTenant(),
     }
     const formData = new FormData()
     if (data.file) formData.append('document', data.file)

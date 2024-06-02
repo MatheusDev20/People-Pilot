@@ -1,4 +1,4 @@
-import { type PersonalDocuments, type Department } from '..'
+import { type PersonalDocuments, type Department, type Organization } from '..'
 
 export interface Employee {
   name: string
@@ -27,6 +27,7 @@ export interface ActiveUser {
   position: string
   updated_at: string
   status: string
+  organization: Organization
 }
 
 export interface StepOneData {

@@ -3,12 +3,15 @@ import { Navigation } from './Navigation'
 import { Link } from 'react-router-dom'
 import { Logo } from '../Logo'
 import clsx from 'clsx'
+import { useAuth } from '@/contexts/auth-context'
 
 type Props = {
   isOpen: boolean
 }
 
 export const Sidebar = ({ isOpen }: Props): React.JSX.Element => {
+  const { organization } = useAuth()
+
   const sidebarClass = clsx(
     {
       'md:w-[200px]': isOpen,
@@ -22,7 +25,7 @@ export const Sidebar = ({ isOpen }: Props): React.JSX.Element => {
       <div className="fixed">
         <header className="flex items-center justify-center p-3">
           <Link to="/app/employees">
-            <Logo isOpen={isOpen} />
+            <Logo isOpen={isOpen} brandUrl={organization?.brand_image ?? ''} />
           </Link>
         </header>
         <Navigation isOpen={isOpen} />

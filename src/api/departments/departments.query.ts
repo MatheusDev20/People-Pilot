@@ -5,13 +5,16 @@ import {
 } from '../../@types'
 import { type DepartmentAPIResponse } from '../../@types/api'
 import { timeout } from '../../utils'
-import { DELETE, GET, POST, PUT } from '../handlers'
+import { DELETE, GET, POST, PUT, getTenant } from '../handlers'
 import { departmentsMapper } from './deparments.mapper'
 
 export const listDepartments = async (): Promise<Department[]> => {
   const response = await GET<DepartmentAPIResponse[]>({
     path: '/departments',
     authenticated: true,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
   const { body } = response
   const departments: Department[] = body.map(departmentsMapper)
@@ -27,6 +30,9 @@ export const postDepartment = async (
     body: {
       ...data,
     },
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
   await timeout(2000)
 
@@ -40,6 +46,9 @@ export const excludeDepartment = async (
   const response = await DELETE<{ id: string }>({
     path: `/departments/${departmentId}`,
     authenticated: true,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
 
   const { body } = response
@@ -56,6 +65,9 @@ export const updateDepartment = async (
     path: `/departments/${id}`,
     authenticated: true,
     body: rest,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
 
   const { body } = response

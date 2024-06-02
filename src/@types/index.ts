@@ -106,3 +106,9 @@ export type RG = {
 export type CPF = {
   numero: string
 } & Doc
+
+export type Organization = {
+  id: string
+  name: string
+  brand_image: string
+}

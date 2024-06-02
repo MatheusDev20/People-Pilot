@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { type AccordionElement } from '../@types'
 
+export const TENANT_HEADER = 'x-organization-id'
 export const timeout = async (ms: number): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, ms))
 }
