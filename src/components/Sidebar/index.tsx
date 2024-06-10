@@ -22,10 +22,14 @@ export const Sidebar = ({ isOpen }: Props): React.JSX.Element => {
   )
   return (
     <aside className={sidebarClass}>
-      <div className="fixed">
+      <div className="fixed flex flex-col gap-3">
         <header className="flex items-center justify-center p-3">
           <Link to="/app/employees">
-            <Logo isOpen={isOpen} brandUrl={organization?.brand_image ?? ''} />
+            <Logo
+              isOpen={isOpen}
+              brandUrl={organization?.brand_image ?? ''}
+              brandName={organization?.name}
+            />
           </Link>
         </header>
         <Navigation isOpen={isOpen} />
