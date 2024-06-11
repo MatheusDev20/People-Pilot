@@ -43,6 +43,9 @@ export const getEmployeeById = async (id: string): Promise<Employee> => {
   const response = await GET<EmployeeAPIResponse>({
     path: `/employee/details/${id}`,
     authenticated: true,
+    headers: {
+      'x-organization-id': getTenant(),
+    },
   })
   const { body } = response
   return employeesMapper(body)

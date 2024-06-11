@@ -25,7 +25,9 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
   const status = response?.status
   const axiosData = response?.data as HttpResponse
 
+  // If it just an invalid credentials error, just return the error
   if (axiosData.response.message === 'Invalid Credentials') throw error
+
   if (
     status === 401 &&
     originalRequest &&
@@ -38,7 +40,6 @@ export const refreshToken = async (error: AxiosError): Promise<any> => {
     } catch (err) {
       await logout()
       removeLocalStorage('profile')
-      // See this is right
       window.location.reload()
     }
   }
