@@ -94,7 +94,6 @@ export const Stepper = (): React.JSX.Element => {
     setCreatingLoading(true)
     mutate(formData)
   }
-
   return (
     <div className="flex flex-col w-full gap-6 p-3">
       <ToastMessage message={toast.message} type={toast.type} />
@@ -108,11 +107,11 @@ export const Stepper = (): React.JSX.Element => {
           <li
             className={clsx(
               {
-                'step-success':
+                'step-success step-primary':
                   step.stepId < activeStep || formData.stepFour.avatar,
               },
               { 'step-accent': step.stepId === activeStep },
-              'step step-primary',
+              'step',
             )}
             key={step.label}
           >

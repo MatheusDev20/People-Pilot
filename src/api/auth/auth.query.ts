@@ -11,6 +11,7 @@ export const login = async (data: LoginFormData): Promise<LoginPayload> => {
     body: data,
     authenticated: true,
   })
+
   const { body } = response
 
   return body

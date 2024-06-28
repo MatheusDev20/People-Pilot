@@ -21,6 +21,7 @@ export const UploadInput = ({
 }: Props): React.JSX.Element => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files ? e.target.files[0] : null
+
     const { errors, veredict } = validateFile(file, allowedFormats)
     if (!veredict) {
       setErrors(errors)
@@ -36,10 +37,10 @@ export const UploadInput = ({
           <div className="flex flex-col items-center gap-3 justify-center pt-5 pb-6">
             <img src={uploadIcon} alt="upload-icon" className="w-8 h-8" />
             {currentFile ? (
-              <p>{currentFile.name}</p>
+              <p className="text-green-500 max-w-[100%]">{currentFile.name}</p>
             ) : (
               <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                <span className="font-semibold">{uploadHint}</span>
+                <span className="font-semibold text-white">{uploadHint}</span>
               </p>
             )}
 

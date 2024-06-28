@@ -126,10 +126,18 @@ export const DocumentForm = ({
       )}
       <StandardButton
         size="w-[25%]"
-        disabled={Object.values(formData).every((value) => value === '')}
+        disabled={formData.file === null}
+        // disabled={
+        //   Object.values(formData).every((value) => value === '') ||
+        //   formData === null
+        // }
         onClick={handleSave}
       >
-        {isLoading ? <span className="loading loading-dots"></span> : 'Salvar'}
+        {isLoading ? (
+          <span className="loading loading-dots"></span>
+        ) : (
+          'Adicionar Documento'
+        )}
       </StandardButton>
     </div>
   )

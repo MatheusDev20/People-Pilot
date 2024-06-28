@@ -25,8 +25,6 @@ export const stepThreeSchema = object({
   pixKey: string().required('Pix key is required'),
 })
 
-const validFileExtensions = ['jpg', 'png', 'jpeg']
-
 export function validateFile(
   file: File | null,
   validExt: string[],
@@ -45,9 +43,9 @@ export function validateFile(
     return {
       errors: {
         file: [
-          `File extension not supported - Supported Extensions ( ${validFileExtensions.join(
+          `File extension not supported - Supported Extensions - [${validExt.join(
             ',',
-          )} )`,
+          )}]`,
         ],
       },
       veredict: false,

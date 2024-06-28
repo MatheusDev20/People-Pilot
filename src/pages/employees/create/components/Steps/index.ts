@@ -12,22 +12,22 @@ export * from './Step4'
 export const steps = [
   {
     stepId: 0,
-    label: 'Personal Informations',
+    label: 'Informações Pessoais',
     icon: PersonIcon,
   },
   {
     stepId: 1,
-    label: 'Company Informations',
+    label: 'Informações da Empresa',
     icon: Business,
   },
   {
     stepId: 2,
-    label: 'Payment Information',
+    label: 'Informações Bancárias',
     icon: MoneyIcon,
   },
   {
     stepId: 3,
-    label: 'Avatar Upload',
+    label: 'Upload de Imagem',
     icon: Avatar,
   },
 ]
