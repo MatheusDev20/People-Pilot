@@ -28,7 +28,11 @@ export const validateCurrentStep = async (
       break
 
     case 3:
-      validation = validateFile(formData.stepFour.avatar)
+      validation = validateFile(formData.stepFour.avatar, [
+        'jpg',
+        'png',
+        'jpeg',
+      ])
 
       break
 
