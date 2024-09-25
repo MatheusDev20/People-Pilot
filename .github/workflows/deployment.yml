@@ -4,9 +4,9 @@
 name: Frontend Deployment
 
 on:
-  release:
-    types: [published]
-
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
