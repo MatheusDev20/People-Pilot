@@ -34,8 +34,8 @@ jobs:
 
     - name: 'Building App'
       run: npm run build
-    - name: 'Moving Files via Security Shell'
 
-      run: scp -r  ./dist/* root@204.48.26.219:/var/www/peoplepilot.com.br/html
+    - name: 'Moving Files via Security Shell'
+      run: scp -r  ./dist/* ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/var/www/peoplepilot.com.br/html
 
     
